@@ -93,6 +93,8 @@ namespace Tamphan_WorkingBCMBP_WF
             weblogin.ExecuteScriptAsync("document.getElementById('btnDangNhap').click();");
 
             await Task.Delay(2000); // chờ load trang sau khi đăng nhập
+
+            //nếu bị lỗi captcha hoặc đăng nhập không thành công thì thử lại
             for (int i = 0; i <= 4; i++) // thử 4 lần
                 if (weblogin.Address.Contains("cskh.evnspc.vn/TaiKhoan/DangNhap"))
                 {
@@ -108,6 +110,30 @@ namespace Tamphan_WorkingBCMBP_WF
                 {
                     break; // đăng nhập thành công, thoát vòng lặp
                 }
+            // tới đây là đã đăng nhập thành công rồi
+
+            //click vào nút xem hóa đơn
+            weblogin.ExecuteScriptAsync("document.querySelector('a.invoice-btn.view-btn.cursor').click();");
+            // chờ 8s để view file thông báo lên
+            await Task.Delay(8000);
+            //click vào nút tải hóa đơn
+            //weblogin.ExecuteScriptAsync("document.getElementById('baseSvg').click();");
+            //weblogin.ExecuteScriptAsync("document.querySelector('cr-iconset-svg-icon_').click();");
+
+            //            weblogin.ExecuteScriptAsync(@"
+            //    var icons = document.querySelectorAll('cr-icon');
+            //    for(var i=0; i<icons.length; i++){
+            //        var icon = icons[i];
+            //        if(icon.shadowRoot){
+            //            var svg = icon.shadowRoot.querySelector('svg');
+            //            if(svg && svg.getAttribute('viewBox') === '0 -960 960 960'){
+            //                icon.click(); // click cr-icon
+            //                break;
+            //            }
+            //        }
+            //    }
+            //");
+
         }
     }
 }

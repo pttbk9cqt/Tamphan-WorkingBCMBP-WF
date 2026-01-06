@@ -131,7 +131,7 @@ namespace Tamphan_WorkingBCMBP_WF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(804, 411);
             this.Controls.Add(this.panel_account_lẻ);
             this.Controls.Add(this.EVNSPC);
             this.Controls.Add(this.btn_account_riêng_lẻ);

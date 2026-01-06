@@ -1,14 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using ClosedXML.Excel;
-using System.IO;
 using Tamphan_WorkingBCMBP_WF.Models;
 using Tamphan_WorkingBCMBP_WF.Services;
 
@@ -64,10 +55,8 @@ namespace Tamphan_WorkingBCMBP_WF
             //    $"Pass: {acc.Password}");
 
             // tiếp tục xử lý login bên dưới
-            FormEVNSPC_login_account_riêng_lẻ frmwebdienluc = new FormEVNSPC_login_account_riêng_lẻ(maKH);
+            EVNSPC_WEB_LOGIN frmwebdienluc = new EVNSPC_WEB_LOGIN(maKH);
             frmwebdienluc.Show();
         }
-
-
     }
 }

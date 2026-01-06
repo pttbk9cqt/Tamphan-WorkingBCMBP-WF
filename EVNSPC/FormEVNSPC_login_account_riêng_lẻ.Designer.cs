@@ -1,6 +1,6 @@
 ﻿namespace Tamphan_WorkingBCMBP_WF
 {
-    partial class FormEVNSPC
+    partial class FormEVNSPC_login_account_riêng_lẻ
     {
         /// <summary>
         /// Required designer variable.
@@ -36,16 +36,16 @@
             this.panelBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelBrowser.Location = new System.Drawing.Point(0, 0);
             this.panelBrowser.Name = "panelBrowser";
-            this.panelBrowser.Size = new System.Drawing.Size(1273, 629);
+            this.panelBrowser.Size = new System.Drawing.Size(1145, 661);
             this.panelBrowser.TabIndex = 0;
             // 
-            // FormEVNSPC
+            // FormEVNSPC_login_account_riêng_lẻ
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1273, 629);
+            this.ClientSize = new System.Drawing.Size(1145, 661);
             this.Controls.Add(this.panelBrowser);
-            this.Name = "FormEVNSPC";
+            this.Name = "FormEVNSPC_login_account_riêng_lẻ";
             this.Text = "FormEVNSPC";
             this.ResumeLayout(false);
 

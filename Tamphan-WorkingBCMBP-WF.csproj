@@ -98,11 +98,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormEVNSPC.cs">
+    <Compile Include="EVNSPC\FormEVNSPC_login_account_riêng_lẻ.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormEVNSPC.Designer.cs">
-      <DependentUpon>FormEVNSPC.cs</DependentUpon>
+    <Compile Include="EVNSPC\FormEVNSPC_login_account_riêng_lẻ.Designer.cs">
+      <DependentUpon>FormEVNSPC_login_account_riêng_lẻ.cs</DependentUpon>
     </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
@@ -112,8 +112,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormEVNSPC.resx">
-      <DependentUpon>FormEVNSPC.cs</DependentUpon>
+    <EmbeddedResource Include="EVNSPC\FormEVNSPC_login_account_riêng_lẻ.resx">
+      <DependentUpon>FormEVNSPC_login_account_riêng_lẻ.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>

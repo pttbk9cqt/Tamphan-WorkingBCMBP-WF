@@ -25,6 +25,7 @@ namespace Tamphan_WorkingBCMBP_WF
     {
         private ChromiumWebBrowser browser;
         private string _maKH;
+        private CaptchaHelper _captchaHelper;
 
         public FormEVNSPC_login_account_riêng_lẻ(string maKH)
         {
@@ -37,10 +38,11 @@ namespace Tamphan_WorkingBCMBP_WF
 
             browser = new ChromiumWebBrowser("https://cskh.evnspc.vn/TaiKhoan/DangNhap?previousLink=/TraCuu/HoaDonTienDien");
             browser.Dock = DockStyle.Fill;
-            browser.FrameLoadEnd += Browser_FrameLoadEndAsync; // No change needed here, just ensure the handler is 'void'
+            browser.FrameLoadEnd += Browser_FrameLoadEndAsync;
             this.WindowState = FormWindowState.Maximized;
             panelBrowser.Controls.Add(browser);
             _maKH = maKH;
+            _captchaHelper = new CaptchaHelper(browser); // tạo helper
         }
 
         private async void Browser_FrameLoadEndAsync(object sender, FrameLoadEndEventArgs e)
@@ -75,7 +77,7 @@ namespace Tamphan_WorkingBCMBP_WF
             await Task.Delay(700);
 
             // GỌI AUTO CAPTCHA TẠI ĐÂY
-            await AutoFillCaptchaAsync();
+            await _captchaHelper.AutoFillCaptchaAsync();
             // ĐẾN ĐÂY LÀ ĐÃ ĐIỀN XONG CAPTCHA VÀO TRANG WEB
 
             await Task.Delay(700);
@@ -86,121 +88,25 @@ namespace Tamphan_WorkingBCMBP_WF
             //Nếu captcha sai thì phải làm lại từ đầu
             browser.ExecuteScriptAsync("RefreshCaptcha();");
             // GỌI AUTO CAPTCHA TẠI ĐÂY
-            await AutoFillCaptchaAsync();
+            await _captchaHelper.AutoFillCaptchaAsync();
             await Task.Delay(700);
             browser.ExecuteScriptAsync("document.getElementById('btnDangNhap').click();");
 
 
         }
 
-        // đoạn dưới đây sẽ lấy ảnh captcha ra
-        private async Task<CaptchaRect> GetCaptchaRectAsync()
-        {
-            var jsCode = @"
-            (function () {
-                var img = document.getElementById('imgCaptcha');
-                if (!img) return null;
-
-                var rect = img.getBoundingClientRect();
-                return {
-                    x: rect.left,
-                    y: rect.top,
-                    width: rect.width,
-                    height: rect.height,
-                    devicePixelRatio: window.devicePixelRatio
-                };
-            })();
-            ";
-
-            var response = await browser.EvaluateScriptAsync(jsCode);
-
-            if (!response.Success || response.Result == null)
-                return null;
-
-            return JsonConvert.DeserializeObject<CaptchaRect>(
-                JsonConvert.SerializeObject(response.Result)
-            );
-        }
-
-        private async Task<Bitmap> CaptureBrowserAsync()
-        {
-            // CaptureScreenshotAsync returns a byte[] (PNG format), so convert it to Bitmap
-            byte[] pngBytes = await browser.CaptureScreenshotAsync();
-            using (var ms = new MemoryStream(pngBytes))
-            {
-                return new Bitmap(ms);
-            }
-        }
-
-
-        private Bitmap CropCaptcha(Bitmap fullImage, CaptchaRect rect)
-        {
-            float scale = (float)rect.devicePixelRatio;
-
-            Rectangle cropRect = new Rectangle(
-                (int)(rect.x * scale),
-                (int)(rect.y * scale),
-                (int)(rect.width * scale),
-                (int)(rect.height * scale)
-            );
-
-            return fullImage.Clone(cropRect, fullImage.PixelFormat);
-        }
-
-
-        // đoạn này chỉ làm đúng 1 việc: trả về text captcha
-        private async Task<string> SolveCaptchaAsync()
-        {
-            var rect = await GetCaptchaRectAsync();
-            if (rect == null)
-                return null;
-
-            Bitmap fullPage = await CaptureBrowserAsync();
-            Bitmap captcha = CropCaptcha(fullPage, rect);
-
-            captcha.Save("captcha.png"); // debug nếu cần
-
-            var ocr = new CaptchaOcrService();
-            string text = ocr.ReadCaptcha(captcha);
-
-            return text;
-        }
-
-
-        //đoạn code điền captcha sau khi đã xử lý hoàn chỉnh vào web
-        private async Task AutoFillCaptchaAsync()
-        {
-            string captchaText = await SolveCaptchaAsync();
-            if (string.IsNullOrEmpty(captchaText))
-                return;
-
-            string js = $@"
-            (function(){{
-                var el = document.querySelector('input[placeholder=""Nhập chính xác nội dung ở trên.""]');
-                if(!el) return 'NOT_FOUND';
-
-                el.focus();
-                el.value = '{captchaText}';
-                el.dispatchEvent(new Event('input', {{ bubbles: true }}));
-                el.dispatchEvent(new Event('change', {{ bubbles: true }}));
-                return 'OK';
-            }})();
-            ";
-
-            var result = await browser.EvaluateScriptAsync(js);
-        }
+      
 
         //code nút test captcha để check thủ công
         private async void btn_TestCaptcha_Click(object sender, EventArgs e)
         {
-            string text = await SolveCaptchaAsync();
+            string text = await _captchaHelper.SolveCaptchaAsync();
 
             if (string.IsNullOrEmpty(text))
             {
                 MessageBox.Show("Không đọc được captcha");
                 return;
             }
-
             MessageBox.Show("OCR đọc được:\n" + text);
         }
     }

@@ -1,6 +1,8 @@
 ﻿using CefSharp;
 using CefSharp.WinForms;
+using DocumentFormat.OpenXml.Drawing.ChartDrawing;
 using System;
+using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tamphan_WorkingBCMBP_WF.Models;
@@ -12,12 +14,17 @@ namespace Tamphan_WorkingBCMBP_WF
     {
         private string _maKH;
         private CaptchaHelper _captchaHelper;
+        string kyHoaDon = "2025-01";
         public EVNSPC_WEB_LOGIN(string maKH)
         {
             InitializeComponent();
             Control.CheckForIllegalCrossThreadCalls = false;
             _maKH = maKH;
             this.WindowState = FormWindowState.Maximized;
+            this.MouseDown += (s, e) =>
+            {
+                MessageBox.Show($"Click at {e.X},{e.Y}");
+            };
             try
             {
                 InitBrowser();
@@ -28,6 +35,10 @@ namespace Tamphan_WorkingBCMBP_WF
 
                 MessageBox.Show("Lỗi khởi tạo trình duyệt: " + ex.Message);
             }
+        }
+        string BuildPdfName()
+        {
+            return _maKH + "_" + kyHoaDon + ".pdf";
         }
         private void InitBrowser()
         {
@@ -46,6 +57,16 @@ namespace Tamphan_WorkingBCMBP_WF
                 }
                 weblogin.FrameLoadEnd += Browser_FrameLoadEndAsync;
                 string url = "https://cskh.evnspc.vn/TaiKhoan/DangNhap?previousLink=/TraCuu/HoaDonTienDien";
+                //weblogin.DownloadHandler = new DownloadHandler();
+                var downloadHandler = new BlobPdfDownloadHandler(
+                                                    @"D:\hoadon",
+                                                    BuildPdfName
+                                                                );
+                downloadHandler.PdfDownloaded += delegate (string path)
+                {
+                    Console.WriteLine("PDF saved: " + path);
+                };
+                weblogin.DownloadHandler = downloadHandler;
                 weblogin.Load(url);
             }
         }
@@ -114,9 +135,18 @@ namespace Tamphan_WorkingBCMBP_WF
 
             //click vào nút xem hóa đơn
             weblogin.ExecuteScriptAsync("document.querySelector('a.invoice-btn.view-btn.cursor').click();");
+            //
+            //auto trigger pdf view and auto download
+
             // chờ 8s để view file thông báo lên
-            await Task.Delay(8000);
+            await Task.Delay(15000);
+            //auto trigger pdf view and auto download
             //click vào nút tải hóa đơn
+            int X = 1350;//Convert.ToInt32(weblogin.Width * 0.711);
+            int Y = 140;//Convert.ToInt32(weblogin.Height * 0.139);
+            weblogin.GetBrowser().GetHost().SendMouseClickEvent(X, Y, MouseButtonType.Left, false, 1, CefEventFlags.None);
+            await Task.Delay(150);
+            weblogin.GetBrowser().GetHost().SendMouseClickEvent(X, Y, MouseButtonType.Left, true, 1, CefEventFlags.None);
             //weblogin.ExecuteScriptAsync("document.getElementById('baseSvg').click();");
             //weblogin.ExecuteScriptAsync("document.querySelector('cr-iconset-svg-icon_').click();");
 
@@ -134,6 +164,16 @@ namespace Tamphan_WorkingBCMBP_WF
             //    }
             //");
 
+        }
+
+        private void weblogin_MouseUp(object sender, MouseEventArgs e)
+        {
+            MessageBox.Show($"MouseUp at ({e.X}, {e.Y})" );
+        }
+
+        private void weblogin_MouseClick(object sender, MouseEventArgs e)
+        {
+            MessageBox.Show($"MouseClick at ({e.X}, {e.Y})");
         }
     }
 }

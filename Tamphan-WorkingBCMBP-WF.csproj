@@ -149,6 +149,7 @@
     <Compile Include="Models\AccountEVN.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BlobPdfDownloadHandler.cs" />
     <Compile Include="Services\CaptchaHelper.cs" />
     <Compile Include="Services\ExcelAccountService.cs" />
     <Content Include="Hotkey.txt" />

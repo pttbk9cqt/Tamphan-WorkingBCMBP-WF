@@ -34,11 +34,11 @@
             // weblogin
             // 
             this.weblogin.ActivateBrowserOnCreation = false;
-            this.weblogin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.weblogin.Location = new System.Drawing.Point(0, 0);
             this.weblogin.Name = "weblogin";
-            this.weblogin.Size = new System.Drawing.Size(800, 450);
+            this.weblogin.Size = new System.Drawing.Size(1900, 1000);
             this.weblogin.TabIndex = 0;
+            this.weblogin.MouseClick += new System.Windows.Forms.MouseEventHandler(this.weblogin_MouseClick);
             // 
             // EVNSPC_WEB_LOGIN
             // 

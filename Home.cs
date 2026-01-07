@@ -47,7 +47,6 @@ namespace Tamphan_WorkingBCMBP_WF
                 textBox_password.Text = acc.Password;
             }
 
-
             //MessageBox.Show(
             //    $"ID: {acc.Id}\n" +
             //    $"Mục đích sử dụng: {acc.MucDichSuDung}\n" +

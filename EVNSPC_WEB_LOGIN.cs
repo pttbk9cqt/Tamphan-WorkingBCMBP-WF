@@ -14,12 +14,14 @@ namespace Tamphan_WorkingBCMBP_WF
     {
         private string _maKH;
         private CaptchaHelper _captchaHelper;
-        string kyHoaDon = "2025-01";
+        string kyHoaDon = "01.2026";
+
         public EVNSPC_WEB_LOGIN(string maKH)
         {
             InitializeComponent();
             Control.CheckForIllegalCrossThreadCalls = false;
             _maKH = maKH;
+  
             this.WindowState = FormWindowState.Maximized;
             this.MouseDown += (s, e) =>
             {
@@ -36,9 +38,13 @@ namespace Tamphan_WorkingBCMBP_WF
                 MessageBox.Show("Lỗi khởi tạo trình duyệt: " + ex.Message);
             }
         }
-        string BuildPdfName()
+        string BuildPdfName(string maKH)
         {
-            return _maKH + "_" + kyHoaDon + ".pdf";
+            _maKH = maKH;
+            ExcelAccountService service = new ExcelAccountService();
+            AccountEVN acc = service.GetAccount(_maKH);
+            //MessageBox.Show("Đang lưu file cho mã KH: " + acc.MucDichSuDung);
+            return "Thông báo tiền điện tháng " + kyHoaDon + "_" + acc.MucDichSuDung +"_" +_maKH + ".pdf";
         }
         private void InitBrowser()
         {
@@ -59,9 +65,7 @@ namespace Tamphan_WorkingBCMBP_WF
                 string url = "https://cskh.evnspc.vn/TaiKhoan/DangNhap?previousLink=/TraCuu/HoaDonTienDien";
                 //weblogin.DownloadHandler = new DownloadHandler();
                 var downloadHandler = new BlobPdfDownloadHandler(
-                                                    @"D:\hoadon",
-                                                    BuildPdfName
-                                                                );
+                                                    @"E:\Điện\Đóng tiền điện\hoadon", () => BuildPdfName(_maKH));
                 downloadHandler.PdfDownloaded += delegate (string path)
                 {
                     Console.WriteLine("PDF saved: " + path);
@@ -109,11 +113,11 @@ namespace Tamphan_WorkingBCMBP_WF
             //Ghi lại địa chỉ trang web hiện tại
             string currentUrl = weblogin.Address;
 
-            await Task.Delay(700);
+            await Task.Delay(2000);
             // Tiếp đó là bấm nút đăng nhập
             weblogin.ExecuteScriptAsync("document.getElementById('btnDangNhap').click();");
 
-            await Task.Delay(2000); // chờ load trang sau khi đăng nhập
+            await Task.Delay(1000); // chờ load trang sau khi đăng nhập
 
             //nếu bị lỗi captcha hoặc đăng nhập không thành công thì thử lại
             for (int i = 0; i <= 4; i++) // thử 4 lần
@@ -123,7 +127,7 @@ namespace Tamphan_WorkingBCMBP_WF
                     await Task.Delay(1000); // chờ load lại trang
                     weblogin.ExecuteScriptAsync(fill_maKH_pass_Script);
                     await _captchaHelper.AutoFillCaptchaAsync();
-                    await Task.Delay(1000);
+                    await Task.Delay(2000);
                     weblogin.ExecuteScriptAsync("document.getElementById('btnDangNhap').click();");
                     await Task.Delay(2000);
                 }
@@ -132,14 +136,14 @@ namespace Tamphan_WorkingBCMBP_WF
                     break; // đăng nhập thành công, thoát vòng lặp
                 }
             // tới đây là đã đăng nhập thành công rồi
-
+            MessageBox.Show("ID:" + acc.Id + " mã KH:" + acc.MaKH + " "+acc.MucDichSuDung);
             //click vào nút xem hóa đơn
             weblogin.ExecuteScriptAsync("document.querySelector('a.invoice-btn.view-btn.cursor').click();");
             //
             //auto trigger pdf view and auto download
 
             // chờ 8s để view file thông báo lên
-            await Task.Delay(15000);
+            await Task.Delay(8000);
             //auto trigger pdf view and auto download
             //click vào nút tải hóa đơn
             int X = 1350;//Convert.ToInt32(weblogin.Width * 0.711);
@@ -147,22 +151,6 @@ namespace Tamphan_WorkingBCMBP_WF
             weblogin.GetBrowser().GetHost().SendMouseClickEvent(X, Y, MouseButtonType.Left, false, 1, CefEventFlags.None);
             await Task.Delay(150);
             weblogin.GetBrowser().GetHost().SendMouseClickEvent(X, Y, MouseButtonType.Left, true, 1, CefEventFlags.None);
-            //weblogin.ExecuteScriptAsync("document.getElementById('baseSvg').click();");
-            //weblogin.ExecuteScriptAsync("document.querySelector('cr-iconset-svg-icon_').click();");
-
-            //            weblogin.ExecuteScriptAsync(@"
-            //    var icons = document.querySelectorAll('cr-icon');
-            //    for(var i=0; i<icons.length; i++){
-            //        var icon = icons[i];
-            //        if(icon.shadowRoot){
-            //            var svg = icon.shadowRoot.querySelector('svg');
-            //            if(svg && svg.getAttribute('viewBox') === '0 -960 960 960'){
-            //                icon.click(); // click cr-icon
-            //                break;
-            //            }
-            //        }
-            //    }
-            //");
 
         }
 

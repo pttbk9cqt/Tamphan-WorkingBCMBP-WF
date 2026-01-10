@@ -39,6 +39,7 @@ namespace Tamphan_WorkingBCMBP_WF
             this.label2 = new System.Windows.Forms.Label();
             this.textBox_nhập_mã_khách_hàng = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_login_download_no_UI = new System.Windows.Forms.Button();
             this.panel_account_lẻ.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,7 +84,6 @@ namespace Tamphan_WorkingBCMBP_WF
             this.panel_account_lẻ.Name = "panel_account_lẻ";
             this.panel_account_lẻ.Size = new System.Drawing.Size(260, 58);
             this.panel_account_lẻ.TabIndex = 4;
-            this.panel_account_lẻ.Visible = false;
             // 
             // button_Login_account_riêng_lẻ
             // 
@@ -127,11 +127,22 @@ namespace Tamphan_WorkingBCMBP_WF
             this.label1.TabIndex = 0;
             this.label1.Text = "Nhập mã KH";
             // 
+            // btn_login_download_no_UI
+            // 
+            this.btn_login_download_no_UI.Location = new System.Drawing.Point(492, 177);
+            this.btn_login_download_no_UI.Name = "btn_login_download_no_UI";
+            this.btn_login_download_no_UI.Size = new System.Drawing.Size(156, 37);
+            this.btn_login_download_no_UI.TabIndex = 5;
+            this.btn_login_download_no_UI.Text = "Anh Khánh - Special";
+            this.btn_login_download_no_UI.UseVisualStyleBackColor = true;
+            this.btn_login_download_no_UI.Click += new System.EventHandler(this.btn_login_download_no_UI_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(804, 411);
+            this.Controls.Add(this.btn_login_download_no_UI);
             this.Controls.Add(this.panel_account_lẻ);
             this.Controls.Add(this.EVNSPC);
             this.Controls.Add(this.btn_account_riêng_lẻ);
@@ -157,6 +168,7 @@ namespace Tamphan_WorkingBCMBP_WF
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox_password;
         private System.Windows.Forms.Button button_Login_account_riêng_lẻ;
+        private System.Windows.Forms.Button btn_login_download_no_UI;
     }
 }
 

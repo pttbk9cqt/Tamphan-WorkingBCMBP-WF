@@ -134,6 +134,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EVNSPC_WEB_Hidden.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EVNSPC_WEB_Hidden.Designer.cs">
+      <DependentUpon>EVNSPC_WEB_Hidden.cs</DependentUpon>
+    </Compile>
     <Compile Include="EVNSPC_WEB_LOGIN.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +159,9 @@
     <Compile Include="Services\CaptchaHelper.cs" />
     <Compile Include="Services\ExcelAccountService.cs" />
     <Content Include="Hotkey.txt" />
+    <EmbeddedResource Include="EVNSPC_WEB_Hidden.resx">
+      <DependentUpon>EVNSPC_WEB_Hidden.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EVNSPC_WEB_LOGIN.resx">
       <DependentUpon>EVNSPC_WEB_LOGIN.cs</DependentUpon>
     </EmbeddedResource>

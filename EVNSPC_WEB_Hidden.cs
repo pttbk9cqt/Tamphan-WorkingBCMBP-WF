@@ -2,7 +2,12 @@
 using CefSharp.WinForms;
 using DocumentFormat.OpenXml.Drawing.ChartDrawing;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tamphan_WorkingBCMBP_WF.Models;
@@ -10,18 +15,17 @@ using Tamphan_WorkingBCMBP_WF.Services;
 
 namespace Tamphan_WorkingBCMBP_WF
 {
-    public partial class EVNSPC_WEB_LOGIN : Form
+    public partial class EVNSPC_WEB_Hidden : Form
     {
-        private string _maKH;
-        private CaptchaHelper _captchaHelper;
-        string kyHoaDon = "12.2025";
-
-        public EVNSPC_WEB_LOGIN(string maKH)
+        private string _maKH_Hidden;
+        private CaptchaHelper _captchaHelper_Hidden;
+        string kyHoaDon_Hidden = "12.2025";
+        public EVNSPC_WEB_Hidden(string maKH_no_UI)
         {
             InitializeComponent();
             Control.CheckForIllegalCrossThreadCalls = false;
-            _maKH = maKH;
-  
+            _maKH_Hidden = maKH_no_UI;
+
             this.WindowState = FormWindowState.Maximized;
             this.MouseDown += (s, e) =>
             {
@@ -30,7 +34,7 @@ namespace Tamphan_WorkingBCMBP_WF
             try
             {
                 InitBrowser();
-                _captchaHelper = new CaptchaHelper(weblogin); // tạo helper
+                _captchaHelper_Hidden = new CaptchaHelper(webhidden); // tạo helper
             }
             catch (Exception ex)
             {
@@ -38,13 +42,13 @@ namespace Tamphan_WorkingBCMBP_WF
                 MessageBox.Show("Lỗi khởi tạo trình duyệt: " + ex.Message);
             }
         }
-        string BuildPdfName(string maKH)
+        string BuildPdfName_Hidden(string maKH_no_UI)
         {
-            _maKH = maKH;
-            ExcelAccountService service = new ExcelAccountService();
-            AccountEVN acc = service.GetAccount(_maKH);
+            _maKH_Hidden = maKH_no_UI;
+            ExcelAccountService service_Hidden = new ExcelAccountService();
+            AccountEVN acc_Hidden = service_Hidden.GetAccount(_maKH_Hidden);
             //MessageBox.Show("Đang lưu file cho mã KH: " + acc.MucDichSuDung);
-            return "Thông báo tiền điện tháng " + kyHoaDon + "_" + acc.MucDichSuDung +"_" +_maKH + ".pdf";
+            return "Thông báo tiền điện tháng " + kyHoaDon_Hidden + "_" + acc_Hidden.MucDichSuDung + "_" + _maKH_Hidden + ".pdf";
         }
         private void InitBrowser()
         {
@@ -61,27 +65,28 @@ namespace Tamphan_WorkingBCMBP_WF
                     settings.BrowserSubprocessPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "CefSharp.BrowserSubprocess.exe");
                     Cef.Initialize(settings);
                 }
-                weblogin.FrameLoadEnd += Browser_FrameLoadEndAsync;
+                webhidden.FrameLoadEnd += WebBrowser_Hidden_FrameLoadEnd;
                 string url = "https://cskh.evnspc.vn/TaiKhoan/DangNhap?previousLink=/TraCuu/HoaDonTienDien";
                 //weblogin.DownloadHandler = new DownloadHandler();
                 var downloadHandler = new BlobPdfDownloadHandler(
-                                                    @"E:\Điện\Đóng tiền điện\hoadon", () => BuildPdfName(_maKH));
+                                                    @"E:\Điện\Đóng tiền điện\hoadon", () => BuildPdfName_Hidden(_maKH_Hidden));
                 downloadHandler.PdfDownloaded += delegate (string path)
                 {
                     Console.WriteLine("PDF saved: " + path);
                 };
-                weblogin.DownloadHandler = downloadHandler;
-                weblogin.Load(url);
+                webhidden.DownloadHandler = downloadHandler;
+                webhidden.Load(url);
             }
         }
-        private async void Browser_FrameLoadEndAsync(object sender, FrameLoadEndEventArgs e)
+
+        private async void WebBrowser_Hidden_FrameLoadEnd(object sender, FrameLoadEndEventArgs e)
         {
             if (!e.Frame.IsMain)
                 return;
             if (!e.Url.Contains("cskh.evnspc.vn/TaiKhoan/DangNhap"))
                 return;
             ExcelAccountService service = new ExcelAccountService();
-            AccountEVN acc = service.GetAccount(_maKH);
+            AccountEVN acc = service.GetAccount(_maKH_Hidden);
 
             if (acc == null)
                 return;
@@ -100,36 +105,36 @@ namespace Tamphan_WorkingBCMBP_WF
                 }}
             }})();
             ";
-            weblogin.ExecuteScriptAsync(fill_maKH_pass_Script);
+            webhidden.ExecuteScriptAsync(fill_maKH_pass_Script);
             //tới đây là đã tự điền mã KH và pass
 
             // đợi captcha render
             await Task.Delay(500);
 
             // GỌI AUTO CAPTCHA TẠI ĐÂY
-            await _captchaHelper.AutoFillCaptchaAsync();
+            await _captchaHelper_Hidden.AutoFillCaptchaAsync();
             // ĐẾN ĐÂY LÀ ĐÃ ĐIỀN XONG CAPTCHA VÀO TRANG WEB
 
             //Ghi lại địa chỉ trang web hiện tại
-            string currentUrl = weblogin.Address;
+            string currentUrl = webhidden.Address;
 
             await Task.Delay(700);
             // Tiếp đó là bấm nút đăng nhập
-            weblogin.ExecuteScriptAsync("document.getElementById('btnDangNhap').click();");
+            webhidden.ExecuteScriptAsync("document.getElementById('btnDangNhap').click();");
 
             await Task.Delay(700); // chờ load trang sau khi đăng nhập
 
             //nếu bị lỗi captcha hoặc đăng nhập không thành công thì thử lại
             for (int i = 0; i <= 4; i++) // thử 4 lần
-                if (weblogin.Address.Contains("cskh.evnspc.vn/TaiKhoan/DangNhap"))
+                if (webhidden.Address.Contains("cskh.evnspc.vn/TaiKhoan/DangNhap"))
                 {
-                    weblogin.Reload();
+                    webhidden.Reload();
                     await Task.Delay(1000); // chờ load lại trang
-                    weblogin.ExecuteScriptAsync(fill_maKH_pass_Script);
-                    await _captchaHelper.AutoFillCaptchaAsync();
+                    webhidden.ExecuteScriptAsync(fill_maKH_pass_Script);
+                    await _captchaHelper_Hidden.AutoFillCaptchaAsync();
                     await Task.Delay(2000);
-                    MessageBox.Show("ID:" + acc.Id + " mã KH:" + acc.MaKH + " " + acc.MucDichSuDung);
-                    weblogin.ExecuteScriptAsync("document.getElementById('btnDangNhap').click();");
+                    //MessageBox.Show("ID:" + acc.Id + " mã KH:" + acc.MaKH + " " + acc.MucDichSuDung);
+                    webhidden.ExecuteScriptAsync("document.getElementById('btnDangNhap').click();");
                     await Task.Delay(2000);
                 }
                 else
@@ -138,41 +143,30 @@ namespace Tamphan_WorkingBCMBP_WF
                 }
             // tới đây là đã đăng nhập thành công rồi
 
+            //Bấm vào nút xác nhận như kiểu tài khoản đăng nhập mới, còn không có thì thôi kệ
+            webhidden.ExecuteScriptAsync("document.getElementById('btnXacNhan').click();");
+            await Task.Delay(1000); // chờ load trang sau khi bấm xác nhận
+            //Bấm nút kết thúc để vào trang tra cứu hóa đơn
+            webhidden.ExecuteScriptAsync("document.getElementById('btnKetThuc').click();");
+            await Task.Delay(2000); // chờ load trang sau khi bấm xác nhận
+
             //Nếu chưa nhấn OK thì vẫn dừng ở đây, và chưa chạy dòng code ở dưới đâu
             //click vào nút xem hóa đơn
-            weblogin.ExecuteScriptAsync("document.querySelector('a.invoice-btn.view-btn.cursor').click();");
+            webhidden.ExecuteScriptAsync("document.querySelector('a.invoice-btn.view-btn.cursor').click();");
             //
             //auto trigger pdf view and auto download
 
             // chờ 15s để chắc chắn view file thông báo lên
-            await Task.Delay(15000);
+            await Task.Delay(5000);
             //auto trigger pdf view and auto download
             //click vào nút tải hóa đơn
             int X = 1350;//Convert.ToInt32(weblogin.Width * 0.711); tính ngược lại ra 1899.7
             int Y = 140;//Convert.ToInt32(weblogin.Height * 0.139);tính ngược lại ra 1007.2
-            weblogin.GetBrowser().GetHost().SendMouseClickEvent(X, Y, MouseButtonType.Left, false, 1, CefEventFlags.None);
+            webhidden.GetBrowser().GetHost().SendMouseClickEvent(X, Y, MouseButtonType.Left, false, 1, CefEventFlags.None);
             await Task.Delay(150);
-            weblogin.GetBrowser().GetHost().SendMouseClickEvent(X, Y, MouseButtonType.Left, true, 1, CefEventFlags.None);
-
-        }
-
-        private void weblogin_MouseUp(object sender, MouseEventArgs e)
-        {
-            MessageBox.Show($"MouseUp at ({e.X}, {e.Y})" );
-        }
-
-        private void weblogin_MouseClick(object sender, MouseEventArgs e)
-        {
-            MessageBox.Show($"MouseClick at ({e.X}, {e.Y})");
-        }
-
-        private async void btn_download_thu_cong_Click(object sender, EventArgs e)
-        {
-            int X = 1350;//Convert.ToInt32(weblogin.Width * 0.711);
-            int Y = 140;//Convert.ToInt32(weblogin.Height * 0.139);
-            weblogin.GetBrowser().GetHost().SendMouseClickEvent(X, Y, MouseButtonType.Left, false, 1, CefEventFlags.None);
-            await Task.Delay(150);
-            weblogin.GetBrowser().GetHost().SendMouseClickEvent(X, Y, MouseButtonType.Left, true, 1, CefEventFlags.None);
+            webhidden.GetBrowser().GetHost().SendMouseClickEvent(X, Y, MouseButtonType.Left, true, 1, CefEventFlags.None);
+            await Task.Delay(5000);
+            Application.Exit();
         }
 
 

@@ -91,5 +91,14 @@ namespace Tamphan_WorkingBCMBP_WF
             EVNSPC_WEB_Hidden frmwebdienluc_no_UI = new EVNSPC_WEB_Hidden(maKH_no_UI);
             frmwebdienluc_no_UI.Show();
         }
+
+        private void btn_login_eof_Click(object sender, EventArgs e)
+        {
+            string username = textBox_Eof_Username.Text.Trim();
+            string password = textBox_Eof_Password.Text.Trim();
+            EofficeBecamexBinhphuoc frmEoffice = new EofficeBecamexBinhphuoc(username, password);
+            frmEoffice.Show();
+        }
+
     }
 }

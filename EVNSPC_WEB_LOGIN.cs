@@ -34,7 +34,6 @@ namespace Tamphan_WorkingBCMBP_WF
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("Lỗi khởi tạo trình duyệt: " + ex.Message);
             }
         }

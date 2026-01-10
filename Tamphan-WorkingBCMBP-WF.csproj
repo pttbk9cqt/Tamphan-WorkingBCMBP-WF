@@ -134,6 +134,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EofficeBecamexBinhphuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EofficeBecamexBinhphuoc.Designer.cs">
+      <DependentUpon>EofficeBecamexBinhphuoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="EVNSPC_WEB_Hidden.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +165,9 @@
     <Compile Include="Services\CaptchaHelper.cs" />
     <Compile Include="Services\ExcelAccountService.cs" />
     <Content Include="Hotkey.txt" />
+    <EmbeddedResource Include="EofficeBecamexBinhphuoc.resx">
+      <DependentUpon>EofficeBecamexBinhphuoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EVNSPC_WEB_Hidden.resx">
       <DependentUpon>EVNSPC_WEB_Hidden.cs</DependentUpon>
     </EmbeddedResource>

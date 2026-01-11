@@ -30,7 +30,6 @@ namespace Tamphan_WorkingBCMBP_WF
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnHopdongThoathuan = new System.Windows.Forms.Button();
             this.btn_account_riêng_lẻ = new System.Windows.Forms.Button();
             this.EVNSPC = new System.Windows.Forms.Label();
             this.panel_account_lẻ = new System.Windows.Forms.Panel();
@@ -42,25 +41,21 @@ namespace Tamphan_WorkingBCMBP_WF
             this.btn_login_download_no_UI = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btn_login_eof = new System.Windows.Forms.Button();
-            this.btn_login_Tamphan = new System.Windows.Forms.Button();
-            this.textBox_Eof_Username = new System.Windows.Forms.TextBox();
             this.textBox_Eof_Password = new System.Windows.Forms.TextBox();
+            this.textBox_Eof_Username = new System.Windows.Forms.TextBox();
+            this.btn_login_eof = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btn_login_Tamphan = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnTestWord = new System.Windows.Forms.Button();
+            this.btn_process_waiting = new System.Windows.Forms.Button();
+            this.btn_calendar = new System.Windows.Forms.Button();
+            this.Btn_new_1506 = new System.Windows.Forms.Button();
             this.panel_account_lẻ.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnHopdongThoathuan
-            // 
-            this.btnHopdongThoathuan.Location = new System.Drawing.Point(27, 180);
-            this.btnHopdongThoathuan.Name = "btnHopdongThoathuan";
-            this.btnHopdongThoathuan.Size = new System.Drawing.Size(147, 40);
-            this.btnHopdongThoathuan.TabIndex = 0;
-            this.btnHopdongThoathuan.Text = "Thỏa thuận - Hợp tác";
-            this.btnHopdongThoathuan.UseVisualStyleBackColor = true;
-            this.btnHopdongThoathuan.Click += new System.EventHandler(this.btnHopdongThoathuan_Click);
             // 
             // btn_account_riêng_lẻ
             // 
@@ -70,7 +65,7 @@ namespace Tamphan_WorkingBCMBP_WF
             this.btn_account_riêng_lẻ.TabIndex = 1;
             this.btn_account_riêng_lẻ.Text = "Đăng nhập account riêng lẻ";
             this.btn_account_riêng_lẻ.UseVisualStyleBackColor = true;
-            this.btn_account_riêng_lẻ.Click += new System.EventHandler(this.btn_account_riêng_lẻ_Click);
+            this.btn_account_riêng_lẻ.Click += new System.EventHandler(this.Btn_account_riêng_lẻ_Click);
             // 
             // EVNSPC
             // 
@@ -102,7 +97,7 @@ namespace Tamphan_WorkingBCMBP_WF
             this.button_Login_account_riêng_lẻ.TabIndex = 4;
             this.button_Login_account_riêng_lẻ.Text = "Login";
             this.button_Login_account_riêng_lẻ.UseVisualStyleBackColor = true;
-            this.button_Login_account_riêng_lẻ.Click += new System.EventHandler(this.button_Login_account_riêng_lẻ_Click);
+            this.button_Login_account_riêng_lẻ.Click += new System.EventHandler(this.Btn_Login_account_riêng_lẻ_Click);
             // 
             // textBox_password
             // 
@@ -144,7 +139,7 @@ namespace Tamphan_WorkingBCMBP_WF
             this.btn_login_download_no_UI.TabIndex = 5;
             this.btn_login_download_no_UI.Text = "Anh Khánh - Special";
             this.btn_login_download_no_UI.UseVisualStyleBackColor = true;
-            this.btn_login_download_no_UI.Click += new System.EventHandler(this.btn_login_download_no_UI_Click);
+            this.btn_login_download_no_UI.Click += new System.EventHandler(this.Btn_login_download_no_UI_Click);
             // 
             // label3
             // 
@@ -160,23 +155,37 @@ namespace Tamphan_WorkingBCMBP_WF
             // 
             this.panel1.Controls.Add(this.textBox_Eof_Password);
             this.panel1.Controls.Add(this.textBox_Eof_Username);
-            this.panel1.Controls.Add(this.btn_login_Tamphan);
             this.panel1.Controls.Add(this.btn_login_eof);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Location = new System.Drawing.Point(31, 55);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(297, 99);
+            this.panel1.Size = new System.Drawing.Size(297, 81);
             this.panel1.TabIndex = 8;
             // 
-            // label4
+            // textBox_Eof_Password
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 17);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Name";
+            this.textBox_Eof_Password.Location = new System.Drawing.Point(49, 38);
+            this.textBox_Eof_Password.Name = "textBox_Eof_Password";
+            this.textBox_Eof_Password.Size = new System.Drawing.Size(154, 20);
+            this.textBox_Eof_Password.TabIndex = 12;
+            // 
+            // textBox_Eof_Username
+            // 
+            this.textBox_Eof_Username.Location = new System.Drawing.Point(49, 12);
+            this.textBox_Eof_Username.Name = "textBox_Eof_Username";
+            this.textBox_Eof_Username.Size = new System.Drawing.Size(234, 20);
+            this.textBox_Eof_Username.TabIndex = 11;
+            // 
+            // btn_login_eof
+            // 
+            this.btn_login_eof.Location = new System.Drawing.Point(209, 38);
+            this.btn_login_eof.Name = "btn_login_eof";
+            this.btn_login_eof.Size = new System.Drawing.Size(75, 23);
+            this.btn_login_eof.TabIndex = 9;
+            this.btn_login_eof.Text = "Login";
+            this.btn_login_eof.UseVisualStyleBackColor = true;
+            this.btn_login_eof.Click += new System.EventHandler(this.Btn_login_eof_Click);
             // 
             // label5
             // 
@@ -187,58 +196,96 @@ namespace Tamphan_WorkingBCMBP_WF
             this.label5.TabIndex = 1;
             this.label5.Text = "Pass";
             // 
-            // btn_login_eof
+            // label4
             // 
-            this.btn_login_eof.Location = new System.Drawing.Point(209, 38);
-            this.btn_login_eof.Name = "btn_login_eof";
-            this.btn_login_eof.Size = new System.Drawing.Size(75, 23);
-            this.btn_login_eof.TabIndex = 9;
-            this.btn_login_eof.Text = "Login";
-            this.btn_login_eof.UseVisualStyleBackColor = true;
-            this.btn_login_eof.Click += new System.EventHandler(this.btn_login_eof_Click);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 17);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Name";
             // 
             // btn_login_Tamphan
             // 
-            this.btn_login_Tamphan.Location = new System.Drawing.Point(49, 64);
+            this.btn_login_Tamphan.Location = new System.Drawing.Point(11, 7);
             this.btn_login_Tamphan.Name = "btn_login_Tamphan";
             this.btn_login_Tamphan.Size = new System.Drawing.Size(75, 23);
             this.btn_login_Tamphan.TabIndex = 10;
             this.btn_login_Tamphan.Text = "Tamphan";
             this.btn_login_Tamphan.UseVisualStyleBackColor = true;
+            this.btn_login_Tamphan.Click += new System.EventHandler(this.Btn_login_Tamphan_Click);
             // 
-            // textBox_Eof_Username
+            // panel2
             // 
-            this.textBox_Eof_Username.Location = new System.Drawing.Point(49, 12);
-            this.textBox_Eof_Username.Name = "textBox_Eof_Username";
-            this.textBox_Eof_Username.Size = new System.Drawing.Size(234, 20);
-            this.textBox_Eof_Username.TabIndex = 11;
+            this.panel2.Controls.Add(this.Btn_new_1506);
+            this.panel2.Controls.Add(this.btnTestWord);
+            this.panel2.Controls.Add(this.btn_process_waiting);
+            this.panel2.Controls.Add(this.btn_calendar);
+            this.panel2.Controls.Add(this.btn_login_Tamphan);
+            this.panel2.Location = new System.Drawing.Point(31, 169);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(297, 143);
+            this.panel2.TabIndex = 9;
             // 
-            // textBox_Eof_Password
+            // btnTestWord
             // 
-            this.textBox_Eof_Password.Location = new System.Drawing.Point(49, 38);
-            this.textBox_Eof_Password.Name = "textBox__Eof_Password";
-            this.textBox_Eof_Password.Size = new System.Drawing.Size(154, 20);
-            this.textBox_Eof_Password.TabIndex = 12;
-
+            this.btnTestWord.Location = new System.Drawing.Point(11, 75);
+            this.btnTestWord.Name = "btnTestWord";
+            this.btnTestWord.Size = new System.Drawing.Size(75, 23);
+            this.btnTestWord.TabIndex = 13;
+            this.btnTestWord.Text = "Testword";
+            this.btnTestWord.UseVisualStyleBackColor = true;
+            this.btnTestWord.Click += new System.EventHandler(this.BtnTestWord_Click);
+            // 
+            // btn_process_waiting
+            // 
+            this.btn_process_waiting.Location = new System.Drawing.Point(120, 30);
+            this.btn_process_waiting.Name = "btn_process_waiting";
+            this.btn_process_waiting.Size = new System.Drawing.Size(136, 30);
+            this.btn_process_waiting.TabIndex = 12;
+            this.btn_process_waiting.Text = "Quy trình chờ phê duyệt";
+            this.btn_process_waiting.UseVisualStyleBackColor = true;
+            this.btn_process_waiting.Click += new System.EventHandler(this.Btn_process_waiting_Click);
+            // 
+            // btn_calendar
+            // 
+            this.btn_calendar.Location = new System.Drawing.Point(11, 37);
+            this.btn_calendar.Name = "btn_calendar";
+            this.btn_calendar.Size = new System.Drawing.Size(75, 23);
+            this.btn_calendar.TabIndex = 11;
+            this.btn_calendar.Text = "Lịch";
+            this.btn_calendar.UseVisualStyleBackColor = true;
+            this.btn_calendar.Click += new System.EventHandler(this.Btn_calendar_Click);
+            // 
+            // Btn_new_1506
+            // 
+            this.Btn_new_1506.Location = new System.Drawing.Point(102, 75);
+            this.Btn_new_1506.Name = "Btn_new_1506";
+            this.Btn_new_1506.Size = new System.Drawing.Size(75, 23);
+            this.Btn_new_1506.TabIndex = 14;
+            this.Btn_new_1506.Text = "15-06 new";
+            this.Btn_new_1506.UseVisualStyleBackColor = true;
+            this.Btn_new_1506.Click += new System.EventHandler(this.Btn_new_1506_Click);
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(804, 411);
+            this.ClientSize = new System.Drawing.Size(789, 438);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btn_login_download_no_UI);
             this.Controls.Add(this.panel_account_lẻ);
             this.Controls.Add(this.EVNSPC);
             this.Controls.Add(this.btn_account_riêng_lẻ);
-            this.Controls.Add(this.btnHopdongThoathuan);
             this.Name = "Home";
             this.Text = "Tamphan";
             this.panel_account_lẻ.ResumeLayout(false);
             this.panel_account_lẻ.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,7 +294,6 @@ namespace Tamphan_WorkingBCMBP_WF
 
         #endregion
 
-        private System.Windows.Forms.Button btnHopdongThoathuan;
         private System.Windows.Forms.Button btn_account_riêng_lẻ;
         private System.Windows.Forms.Label EVNSPC;
         private System.Windows.Forms.Panel panel_account_lẻ;
@@ -265,6 +311,11 @@ namespace Tamphan_WorkingBCMBP_WF
         private System.Windows.Forms.Button btn_login_Tamphan;
         private System.Windows.Forms.TextBox textBox_Eof_Username;
         private System.Windows.Forms.TextBox textBox_Eof_Password;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btn_calendar;
+        private System.Windows.Forms.Button btn_process_waiting;
+        private System.Windows.Forms.Button btnTestWord;
+        private System.Windows.Forms.Button Btn_new_1506;
     }
 }
 

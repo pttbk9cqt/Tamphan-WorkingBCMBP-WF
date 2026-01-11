@@ -50,8 +50,6 @@
         }
 
         #endregion
-
-        private CefSharp.WinForms.ChromiumWebBrowser WebBrowser_Hidden;
         private CefSharp.WinForms.ChromiumWebBrowser webhidden;
     }
 }

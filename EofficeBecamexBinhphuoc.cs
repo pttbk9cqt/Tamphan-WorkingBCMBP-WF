@@ -19,13 +19,15 @@ namespace Tamphan_WorkingBCMBP_WF
     {
         public string username_eof;
         public string password_eof;
+        public string url_eof;
 
-        public EofficeBecamexBinhphuoc(string username, string password)
+        public EofficeBecamexBinhphuoc(string username, string password, string url)
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
             username_eof = username;
             password_eof = password;
+            url_eof = url;
             try
             {
                 if (Cef.IsInitialized != true)
@@ -35,7 +37,7 @@ namespace Tamphan_WorkingBCMBP_WF
                     Cef.Initialize(settings);
                 }
                 chromiumWebBrowser_Eoffice.FrameLoadEnd += Browser_FrameLoadEnd;
-                chromiumWebBrowser_Eoffice.Load("https://login.becamexbinhphuoc.com.vn/adfs/ls?wa=wsignin1.0&wtrealm=urn%3aeofficebecamexbinhphuoc&wctx=https%3a%2f%2feoffice.becamexbinhphuoc.com.vn");
+                chromiumWebBrowser_Eoffice.Load(url);
             }
             catch (Exception ex)
             {
@@ -60,7 +62,24 @@ namespace Tamphan_WorkingBCMBP_WF
             }})();
             ";
                 chromiumWebBrowser_Eoffice.ExecuteScriptAsync(logininfo);
-            }
+            //xong bước này là điền username và pass
+
+            //tới bước này là tick vào checkbox (cho phép đăng nhập tự động)
+            chromiumWebBrowser_Eoffice.ExecuteScriptAsync(@"
+            const checkbox = document.querySelector('#kmsiInput');
+            checkbox && !checkbox.checked && checkbox.click();
+            ");
+
+            //tới bước này là tick vào checkbox (cho phép đăng nhập tự động)
+            chromiumWebBrowser_Eoffice.ExecuteScriptAsync(@"
+            const checkbox = document.querySelector('#kmsiInput');
+            checkbox && !checkbox.checked && checkbox.click();
+            ");
+
+            //tiếp theo là bấm nút đăng nhập
+            chromiumWebBrowser_Eoffice.ExecuteScriptAsync("document.getElementById('submitButton').click();");
+
+        }
     }
        
     

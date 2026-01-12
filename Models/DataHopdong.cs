@@ -15,27 +15,30 @@ namespace Tamphan_WorkingBCMBP_WF.Models
         public string HangMuc { get; set; }
         public string DiaDiem { get; set; }
 
-        // Nhà thầu
-        public string DonViThiCong { get; set; }
-        public string DiaChiDVTC { get; set; }
-        public string SdtDVTC { get; set; }
-        public string EmailDVTC { get; set; }
-        public string MSTDVTC { get; set; }
-        public string STKDVTC { get; set; }
-        public string NguoiDaiDienDVTC { get; set; }
-        public string ChucVuDVTC { get; set; }
+        // Nhà cung cấp
+        public string NCC { get; set; }
+        public string DiaChiNCC { get; set; }
+        public string SdtNCC { get; set; }
+        public string EmailNCC { get; set; }
+        public string MSTNCC { get; set; }
+        public string STKNCC { get; set; }
+        public string DaiDienNCC { get; set; }
+        public string ChucVuNCC { get; set; }
 
-        public decimal GiaTri { get; set; }
-        public string LyDoChonNhaCungCap { get; set; }
 
-        // Thời gian
+        //Quyết định lựa chọn NCC
+        public string CanCu { get; set; }
+        public string NguyenNhanTrinhKy { get; set; }
+
+
+        // Nội dung hợp đồng
+
+        public string GiaTri { get; set; }
+        public string LyDoChonNCC { get; set; }
         public string ThoiGianThucHien { get; set; }     // vd: "120 ngày"
+        public string TienDoVaThoiGianThanhToan { get; set; }
         public string ThoiGianBaoHanh { get; set; }      // vd: "12 tháng"
-        public DateTime HieuLucHopDong { get; set; }
-
-        // Thanh toán & điều khoản
-        public string HinhThucThanhToan { get; set; }
-        public string DieuKhoanKhac { get; set; }
+        public string HieuLucHopDong { get; set; }
 
     }
 }

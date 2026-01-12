@@ -140,14 +140,12 @@ namespace Tamphan_WorkingBCMBP_WF
                 CongTrinh = "Công trình B",
                 HangMuc = "Hạng mục C",
                 DiaDiem = "Bình Phước",
-                DonViThiCong = "Công ty XYZ",
-                GiaTri = 1500000000,
-                LyDoChonNhaCungCap = "Đủ năng lực, giá hợp lý",
+                NCC = "Công ty XYZ",
+                GiaTri = "",
+                LyDoChonNCC = "Đủ năng lực, giá hợp lý",
                 ThoiGianThucHien = "120 ngày",
                 ThoiGianBaoHanh = "12 tháng",
-                HinhThucThanhToan = "Chuyển khoản",
-                HieuLucHopDong = DateTime.Today,
-                DieuKhoanKhac = "Theo quy định hiện hành"
+                HieuLucHopDong = "",
             };
 
             var map = new Dictionary<string, string>
@@ -157,14 +155,12 @@ namespace Tamphan_WorkingBCMBP_WF
                 ["{{CONG_TRINH}}"] = model.CongTrinh,
                 ["{{HANG_MUC}}"] = model.HangMuc,
                 ["{{DIA_DIEM}}"] = model.DiaDiem,
-                ["{{DON_VI_THI_CONG}}"] = model.DonViThiCong,
-                ["{{GIA_TRI}}"] = model.GiaTri.ToString("N0") + " VNĐ",
-                ["{{LY_DO_CHON_NCC}}"] = model.LyDoChonNhaCungCap,
+                ["{{DON_VI_THI_CONG}}"] = model.NCC,
+                ["{{GIA_TRI}}"] = model.GiaTri + " VNĐ",
+                ["{{LY_DO_CHON_NCC}}"] = model.LyDoChonNCC,
                 ["{{THOI_GIAN_THUC_HIEN}}"] = model.ThoiGianThucHien,
                 ["{{THOI_GIAN_BAO_HANH}}"] = model.ThoiGianBaoHanh,
-                ["{{HINH_THUC_THANH_TOAN}}"] = model.HinhThucThanhToan,
-                ["{{HIEU_LUC_HOP_DONG}}"] = model.HieuLucHopDong.ToString("dd/MM/yyyy"),
-                ["{{DIEU_KHOAN_KHAC}}"] = model.DieuKhoanKhac
+                ["{{HIEU_LUC_HOP_DONG}}"] = model.HieuLucHopDong,
             };
 
             var outputDir = "Output";

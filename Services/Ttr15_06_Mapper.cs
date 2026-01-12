@@ -13,19 +13,27 @@ namespace Tamphan_WorkingBCMBP_WF.Services
         {
             return new Dictionary<string, string>
             {
-                ["{{TIEU_DE}}"] = model.TieuDe,
-                ["{{DU_AN}}"] = model.DuAn,
-                ["{{CONG_TRINH}}"] = model.CongTrinh,
-                ["{{HANG_MUC}}"] = model.HangMuc,
-                ["{{DIA_DIEM}}"] = model.DiaDiem,
-                ["{{DON_VI_THI_CONG}}"] = model.DonViThiCong,
-                ["{{GIA_TRI}}"] = model.GiaTri.ToString("N0") + " VNĐ",
-                ["{{LY_DO_CHON_NCC}}"] = model.LyDoChonNhaCungCap,
+                ["{{TIEUDE}}"] = model.TieuDe,
+                ["{{DUAN}}"] = model.DuAn,
+                ["{{CONGTRINH}}"] = model.CongTrinh,
+                ["{{HANGMUC}}"] = model.HangMuc,
+                ["{{DIADIEM}}"] = model.DiaDiem,
+                ["{{NCC}}"] = model.NCC,
+                ["{{DIACHI_NCC}}"] = model.DiaChiNCC,
+                ["{{SDT_NCC}}"] = model.SdtNCC,
+                ["{{EMAIL_NCC}}"] = model.EmailNCC,
+                ["{{MST_NCC}}"] = model.MSTNCC,
+                ["{{STK_NCC}}"] = model.STKNCC,
+                ["{{DAIDIEN_NCC}}"] = model.DaiDienNCC,
+                ["{{CHUC_NCC}}"] = model.ChucVuNCC,
+                ["{{LYDOCHON_NCC}}"] = model.LyDoChonNCC,
+                ["{{CANCU}}"] = model.CanCu,
+                ["{{NGUYENNHANTRINHKY}}"] = model.NguyenNhanTrinhKy,
+                ["{{GIATRI}}"] = model.GiaTri + " VNĐ",
                 ["{{THOI_GIAN_THUC_HIEN}}"] = model.ThoiGianThucHien,
+                ["{{TIENDOVATHOIGIANTHANHTOAN}}"] = model.TienDoVaThoiGianThanhToan,
                 ["{{THOI_GIAN_BAO_HANH}}"] = model.ThoiGianBaoHanh,
-                ["{{HINH_THUC_THANH_TOAN}}"] = model.HinhThucThanhToan,
-                ["{{HIEU_LUC_HOP_DONG}}"] = model.HieuLucHopDong.ToString("dd/MM/yyyy"),
-                ["{{DIEU_KHOAN_KHAC}}"] = model.DieuKhoanKhac
+                ["{{HIEU_LUC_HOP_DONG}}"] = model.HieuLucHopDong,
             };
         }
     }

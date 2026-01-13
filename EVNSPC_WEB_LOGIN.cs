@@ -119,7 +119,7 @@ namespace Tamphan_WorkingBCMBP_WF
             await Task.Delay(700); // chờ load trang sau khi đăng nhập
 
             //nếu bị lỗi captcha hoặc đăng nhập không thành công thì thử lại
-            for (int i = 0; i <= 4; i++) // thử 4 lần
+            for (int i = 0; i <= 3; i++) // thử 3 lần
                 if (weblogin.Address.Contains("cskh.evnspc.vn/TaiKhoan/DangNhap"))
                 {
                     weblogin.Reload();

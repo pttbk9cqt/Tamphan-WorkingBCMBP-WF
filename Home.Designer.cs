@@ -48,11 +48,10 @@ namespace Tamphan_WorkingBCMBP_WF
             this.label4 = new System.Windows.Forms.Label();
             this.btn_login_Tamphan = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Btn_BTS = new System.Windows.Forms.Button();
             this.Btn_new_1506 = new System.Windows.Forms.Button();
-            this.btnTestWord = new System.Windows.Forms.Button();
             this.btn_process_waiting = new System.Windows.Forms.Button();
             this.btn_calendar = new System.Windows.Forms.Button();
-            this.Btn_BTS = new System.Windows.Forms.Button();
             this.panel_account_lẻ.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -220,7 +219,6 @@ namespace Tamphan_WorkingBCMBP_WF
             // 
             this.panel2.Controls.Add(this.Btn_BTS);
             this.panel2.Controls.Add(this.Btn_new_1506);
-            this.panel2.Controls.Add(this.btnTestWord);
             this.panel2.Controls.Add(this.btn_process_waiting);
             this.panel2.Controls.Add(this.btn_calendar);
             this.panel2.Controls.Add(this.btn_login_Tamphan);
@@ -229,25 +227,25 @@ namespace Tamphan_WorkingBCMBP_WF
             this.panel2.Size = new System.Drawing.Size(297, 143);
             this.panel2.TabIndex = 9;
             // 
+            // Btn_BTS
+            // 
+            this.Btn_BTS.Location = new System.Drawing.Point(103, 75);
+            this.Btn_BTS.Name = "Btn_BTS";
+            this.Btn_BTS.Size = new System.Drawing.Size(75, 23);
+            this.Btn_BTS.TabIndex = 15;
+            this.Btn_BTS.Text = "BTS";
+            this.Btn_BTS.UseVisualStyleBackColor = true;
+            this.Btn_BTS.Click += new System.EventHandler(this.Btn_BTS_Click);
+            // 
             // Btn_new_1506
             // 
-            this.Btn_new_1506.Location = new System.Drawing.Point(102, 75);
+            this.Btn_new_1506.Location = new System.Drawing.Point(11, 75);
             this.Btn_new_1506.Name = "Btn_new_1506";
             this.Btn_new_1506.Size = new System.Drawing.Size(75, 23);
             this.Btn_new_1506.TabIndex = 14;
             this.Btn_new_1506.Text = "15-06 new";
             this.Btn_new_1506.UseVisualStyleBackColor = true;
             this.Btn_new_1506.Click += new System.EventHandler(this.Btn_new_1506_Click);
-            // 
-            // btnTestWord
-            // 
-            this.btnTestWord.Location = new System.Drawing.Point(11, 75);
-            this.btnTestWord.Name = "btnTestWord";
-            this.btnTestWord.Size = new System.Drawing.Size(75, 23);
-            this.btnTestWord.TabIndex = 13;
-            this.btnTestWord.Text = "Testword";
-            this.btnTestWord.UseVisualStyleBackColor = true;
-            this.btnTestWord.Click += new System.EventHandler(this.BtnTestWord_Click);
             // 
             // btn_process_waiting
             // 
@@ -268,16 +266,6 @@ namespace Tamphan_WorkingBCMBP_WF
             this.btn_calendar.Text = "Lịch";
             this.btn_calendar.UseVisualStyleBackColor = true;
             this.btn_calendar.Click += new System.EventHandler(this.Btn_calendar_Click);
-            // 
-            // Btn_BTS
-            // 
-            this.Btn_BTS.Location = new System.Drawing.Point(11, 104);
-            this.Btn_BTS.Name = "Btn_BTS";
-            this.Btn_BTS.Size = new System.Drawing.Size(75, 23);
-            this.Btn_BTS.TabIndex = 15;
-            this.Btn_BTS.Text = "BTS";
-            this.Btn_BTS.UseVisualStyleBackColor = true;
-            this.Btn_BTS.Click += new System.EventHandler(this.Btn_BTS_Click);
             // 
             // Home
             // 
@@ -326,7 +314,6 @@ namespace Tamphan_WorkingBCMBP_WF
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btn_calendar;
         private System.Windows.Forms.Button btn_process_waiting;
-        private System.Windows.Forms.Button btnTestWord;
         private System.Windows.Forms.Button Btn_new_1506;
         private System.Windows.Forms.Button Btn_BTS;
     }

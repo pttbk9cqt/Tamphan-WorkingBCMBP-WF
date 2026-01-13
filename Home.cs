@@ -131,50 +131,6 @@ namespace Tamphan_WorkingBCMBP_WF
             frmEoffice.Show();
         }
 
-        private void BtnTestWord_Click(object sender, EventArgs e)
-        {
-            var model = new DataHopdong
-            {
-                TieuDe = "TỜ TRÌNH PHÊ DUYỆT HỢP ĐỒNG",
-                DuAn = "Dự án A",
-                CongTrinh = "Công trình B",
-                HangMuc = "Hạng mục C",
-                DiaDiem = "Bình Phước",
-                NCC = "Công ty XYZ",
-                GiaTri = "",
-                LyDoChonNCC = "Đủ năng lực, giá hợp lý",
-                ThoiGianThucHien = "120 ngày",
-                ThoiGianBaoHanh = "12 tháng",
-                HieuLucHopDong = "",
-            };
-
-            var map = new Dictionary<string, string>
-            {
-                ["{{TIEU_DE}}"] = model.TieuDe,
-                ["{{DU_AN}}"] = model.DuAn,
-                ["{{CONG_TRINH}}"] = model.CongTrinh,
-                ["{{HANG_MUC}}"] = model.HangMuc,
-                ["{{DIA_DIEM}}"] = model.DiaDiem,
-                ["{{DON_VI_THI_CONG}}"] = model.NCC,
-                ["{{GIA_TRI}}"] = model.GiaTri + " VNĐ",
-                ["{{LY_DO_CHON_NCC}}"] = model.LyDoChonNCC,
-                ["{{THOI_GIAN_THUC_HIEN}}"] = model.ThoiGianThucHien,
-                ["{{THOI_GIAN_BAO_HANH}}"] = model.ThoiGianBaoHanh,
-                ["{{HIEU_LUC_HOP_DONG}}"] = model.HieuLucHopDong,
-            };
-
-            var outputDir = "Output";
-            Directory.CreateDirectory(outputDir);
-
-            BuildWordService.Build(
-                @"Templates\HopDong_15-06_Template.docx",
-                @"Output\HopDong_15-06_Test.docx",
-                map
-            );
-
-            MessageBox.Show("Tạo Word xong!");
-        }
-
         private void Btn_new_1506_Click(object sender, EventArgs e)
         {
             Input1506 frm = new Input1506();

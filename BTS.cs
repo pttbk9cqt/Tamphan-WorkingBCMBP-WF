@@ -80,20 +80,15 @@ namespace Tamphan_WorkingBCMBP_WF
                 string.IsNullOrWhiteSpace(TextBox_BTS_L32.Text) &&
                 string.IsNullOrWhiteSpace(TextBox_BTS_L41.Text) &&
                 string.IsNullOrWhiteSpace(TextBox_BTS_L42.Text);
-
             if (!allEmpty)
                 return; // có ít nhất 1 ô đã có dữ liệu → không làm gì
-
             // 2. Lấy dữ liệu từ DataGridView (4x2)
             TextBox_BTS_L11.Text = DataGridView_BTS_ToaDo.Rows[0].Cells[0].Value?.ToString() ?? "";
             TextBox_BTS_L12.Text = DataGridView_BTS_ToaDo.Rows[0].Cells[1].Value?.ToString() ?? "";
-
             TextBox_BTS_L21.Text = DataGridView_BTS_ToaDo.Rows[1].Cells[0].Value?.ToString() ?? "";
             TextBox_BTS_L22.Text = DataGridView_BTS_ToaDo.Rows[1].Cells[1].Value?.ToString() ?? "";
-
             TextBox_BTS_L31.Text = DataGridView_BTS_ToaDo.Rows[2].Cells[0].Value?.ToString() ?? "";
             TextBox_BTS_L32.Text = DataGridView_BTS_ToaDo.Rows[2].Cells[1].Value?.ToString() ?? "";
-
             TextBox_BTS_L41.Text = DataGridView_BTS_ToaDo.Rows[3].Cells[0].Value?.ToString() ?? "";
             TextBox_BTS_L42.Text = DataGridView_BTS_ToaDo.Rows[3].Cells[1].Value?.ToString() ?? "";
         }
@@ -128,11 +123,9 @@ namespace Tamphan_WorkingBCMBP_WF
             //BuildWordService.Build(@"Templates\BTS\BM-15-06 TỜ TRÌNH XIN CHỦ TRƯƠNG BTS - Templates.docx", @"Output\BM-15-06 TỜ TRÌNH XIN CHỦ TRƯƠNG BTS - Build.docx", map);
             string outputPath1507 = $@"Output\BM-15-07 Tờ trình ký hợp đồng - {suffix}.docx";
             BuildWordService.Build(@"Templates\BTS\BM-15-07 TỜ TRÌNH KÝ HỢP ĐỒNG BTS - Templates.docx", outputPath1507, map);
-
             string outputPathThoaThuan = $@"Output\BIÊN BẢN THỎA THUẬN - {suffix}.docx";
             BuildWordService.Build(@"Templates\BTS\BIÊN BẢN THỎA THUẬN BTS - Templates.docx", outputPathThoaThuan, map);
             MessageBox.Show("Done!");
         }
-
     }
 }

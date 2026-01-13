@@ -96,9 +96,7 @@ namespace Tamphan_WorkingBCMBP_WF.Services
             Bitmap captcha = CropCaptcha(fullPage, rect);
 
             captcha.Save("captcha.png"); // debug nếu cần
-
-            var ocr = new CaptchaOcrService();
-            string text = ocr.ReadCaptcha(captcha);
+            string text = _ocrService.ReadCaptcha(captcha);
 
             return text;
         }

@@ -123,9 +123,14 @@ namespace Tamphan_WorkingBCMBP_WF
             
             Directory.CreateDirectory("Output");
             string suffix = TextBox_BTS_NameAddFileBuild.Text.Trim();
-            string outputPath = $@"Output\BM-15-06 TỜ TRÌNH XIN CHỦ TRƯƠNG BTS - {suffix}.docx";
-            BuildWordService.Build(@"Templates\BTS\BM-15-06 TỜ TRÌNH XIN CHỦ TRƯƠNG BTS - Templates.docx",outputPath, map);
+            string outputPath1506 = $@"Output\BM-15-06 Tờ trình xin chủ trương - {suffix}.docx";
+            BuildWordService.Build(@"Templates\BTS\BM-15-06 TỜ TRÌNH XIN CHỦ TRƯƠNG BTS - Templates.docx",outputPath1506, map);
             //BuildWordService.Build(@"Templates\BTS\BM-15-06 TỜ TRÌNH XIN CHỦ TRƯƠNG BTS - Templates.docx", @"Output\BM-15-06 TỜ TRÌNH XIN CHỦ TRƯƠNG BTS - Build.docx", map);
+            string outputPath1507 = $@"Output\BM-15-07 Tờ trình ký hợp đồng - {suffix}.docx";
+            BuildWordService.Build(@"Templates\BTS\BM-15-07 TỜ TRÌNH KÝ HỢP ĐỒNG BTS - Templates.docx", outputPath1507, map);
+
+            string outputPathThoaThuan = $@"Output\BIÊN BẢN THỎA THUẬN - {suffix}.docx";
+            BuildWordService.Build(@"Templates\BTS\BIÊN BẢN THỎA THUẬN BTS - Templates.docx", outputPathThoaThuan, map);
             MessageBox.Show("Done!");
         }
 

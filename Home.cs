@@ -180,5 +180,11 @@ namespace Tamphan_WorkingBCMBP_WF
             Input1506 frm = new Input1506();
             frm.Show();
         }
+
+        private void Btn_BTS_Click(object sender, EventArgs e)
+        {
+            BTS frm = new BTS();
+            frm.Show();
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Tamphan_WorkingBCMBP_WF
 {
-    partial class Input1506V1
+    partial class Input1506
     {
         /// <summary>
         /// Required designer variable.
@@ -685,14 +685,14 @@
             this.label16.TabIndex = 32;
             this.label16.Text = "2. Nguyên nhân trình ký";
             // 
-            // Input1506V1
+            // Input1506
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.Controls.Add(this.Panel_Input1506);
-            this.Name = "Input1506V1";
-            this.Text = "Input1506V1";
+            this.Name = "Input1506";
+            this.Text = "Input1506";
             this.Load += new System.EventHandler(this.Input1506_Load);
             this.Panel_Input1506.ResumeLayout(false);
             this.Panel_Input1506.PerformLayout();

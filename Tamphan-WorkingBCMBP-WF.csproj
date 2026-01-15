@@ -140,6 +140,12 @@
     <Compile Include="BTS.Designer.cs">
       <DependentUpon>BTS.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cre1506.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cre1506.Designer.cs">
+      <DependentUpon>Cre1506.cs</DependentUpon>
+    </Compile>
     <Compile Include="EofficeBecamexBinhphuoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +190,9 @@
     <Content Include="Hotkey.txt" />
     <EmbeddedResource Include="BTS.resx">
       <DependentUpon>BTS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cre1506.resx">
+      <DependentUpon>Cre1506.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EofficeBecamexBinhphuoc.resx">
       <DependentUpon>EofficeBecamexBinhphuoc.cs</DependentUpon>

@@ -15,9 +15,9 @@ using Tamphan_WorkingBCMBP_WF.Services;
 
 namespace Tamphan_WorkingBCMBP_WF
 {
-    public partial class Input1506V1 : Form
+    public partial class Input1506 : Form
     {
-        public Input1506V1()
+        public Input1506()
         {
             InitializeComponent();
         }
@@ -75,14 +75,14 @@ namespace Tamphan_WorkingBCMBP_WF
                 ["{{NOIDUNGTRINHKY}}"] = RichTextBox_Nguyennhantrinhky.Text.Trim(),
             };
 
-            Directory.CreateDirectory("Output");
-            string suffix = TextBox_NameAddFileBuild.Text.Trim();
-            string outputPath1506 = $@"Output\BM-15-06 Tờ trình xin chủ trương - {suffix}.docx";
-            BuildWordService.Build(@"Templates\Contract\BM-15-06 TỜ TRÌNH XIN CHỦ TRƯƠNG - Templates.docx", outputPath1506, map);
-            string outputPath1507 = $@"Output\BM-15-07 Tờ trình ký hợp đồng - {suffix}.docx";
-            BuildWordService.Build(@"Templates\Contract\BM-15-07 TỜ TRÌNH KÝ HỢP ĐỒNG - Templates.docx", outputPath1507, map);
-            string outputPathHopDong = $@"Output\HỢP ĐỒNG THI CÔNG - {suffix}.docx";
-            BuildWordService.Build(@"Templates\Contract\HỢP ĐỒNG THI CÔNG - Templates.docx", outputPathHopDong, map);
+            //Directory.CreateDirectory("Output");
+            //string suffix = TextBox_NameAddFileBuild.Text.Trim();
+            //string outputPath1506 = $@"Output\BM-15-06 Tờ trình xin chủ trương - {suffix}.docx";
+            //BuildWordService.Build(@"Templates\Contract\BM-15-06 TỜ TRÌNH XIN CHỦ TRƯƠNG - Templates.docx", outputPath1506, map);
+            //string outputPath1507 = $@"Output\BM-15-07 Tờ trình ký hợp đồng - {suffix}.docx";
+            //BuildWordService.Build(@"Templates\Contract\BM-15-07 TỜ TRÌNH KÝ HỢP ĐỒNG - Templates.docx", outputPath1507, map);
+            //string outputPathHopDong = $@"Output\HỢP ĐỒNG THI CÔNG - {suffix}.docx";
+            //BuildWordService.Build(@"Templates\Contract\HỢP ĐỒNG THI CÔNG - Templates.docx", outputPathHopDong, map);
             MessageBox.Show("Done!");
         }
     }

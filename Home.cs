@@ -15,12 +15,6 @@ namespace Tamphan_WorkingBCMBP_WF
             InitializeComponent();
         }
 
-        private void Btn1506(object sender, EventArgs e)
-        {
-
-        }
-
-
         private void Btn_account_riêng_lẻ_Click(object sender, EventArgs e)
         {
             panel_account_lẻ.Visible = !panel_account_lẻ.Visible;
@@ -131,15 +125,17 @@ namespace Tamphan_WorkingBCMBP_WF
             frmEoffice.Show();
         }
 
-        private void Btn_new_1506_Click(object sender, EventArgs e)
-        {
-            Input1506V1 frm = new Input1506();
-            frm.Show();
-        }
-
         private void Btn_BTS_Click(object sender, EventArgs e)
         {
             BTS frm = new BTS();
+            frm.Show();
+        }
+        private void Btn_new_1506_Click(object sender, EventArgs e)
+        {
+            string url = "https://eoffice.becamexbinhphuoc.com.vn/workflow/SitePages/NewWorkflow.aspx?mode=1&ListID=589dfff1-f412-41fd-8824-c48a2bf66309";
+            string username = "phanthanhtam";
+            string password = "Mocungcunganhcungnhat@bcm26";
+            Cre1506 frm = new Cre1506(username, password, url);
             frm.Show();
         }
     }

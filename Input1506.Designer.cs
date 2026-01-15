@@ -84,6 +84,8 @@
             this.label17 = new System.Windows.Forms.Label();
             this.RichTextBox_Nguyennhantrinhky = new System.Windows.Forms.RichTextBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.TextBox_NameAddFileBuild = new System.Windows.Forms.TextBox();
             this.Panel_Input1506.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -355,6 +357,8 @@
             // Panel_Input1506
             // 
             this.Panel_Input1506.AutoScroll = true;
+            this.Panel_Input1506.Controls.Add(this.TextBox_NameAddFileBuild);
+            this.Panel_Input1506.Controls.Add(this.label28);
             this.Panel_Input1506.Controls.Add(this.ComboBox_NCC);
             this.Panel_Input1506.Controls.Add(this.Btn_Build);
             this.Panel_Input1506.Controls.Add(this.TextBox_Nam);
@@ -665,6 +669,22 @@
             this.label16.TabIndex = 32;
             this.label16.Text = "2. Nguyên nhân trình ký";
             // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(1131, 28);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(74, 15);
+            this.label28.TabIndex = 61;
+            this.label28.Text = "Tên đuôi file";
+            // 
+            // TextBox_NameAddFileBuild
+            // 
+            this.TextBox_NameAddFileBuild.Location = new System.Drawing.Point(1211, 21);
+            this.TextBox_NameAddFileBuild.Name = "TextBox_NameAddFileBuild";
+            this.TextBox_NameAddFileBuild.Size = new System.Drawing.Size(287, 22);
+            this.TextBox_NameAddFileBuild.TabIndex = 62;
+            // 
             // Input1506
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -738,5 +758,7 @@
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Button Btn_Build;
         private System.Windows.Forms.ComboBox ComboBox_NCC;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox TextBox_NameAddFileBuild;
     }
 }

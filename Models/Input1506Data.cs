@@ -6,15 +6,19 @@ using System.Threading.Tasks;
 
 namespace Tamphan_WorkingBCMBP_WF.Models
 {
-    internal class DataHopdong
+    internal class Input1506Data
     {
-        // Thông tin chung
+        // Số tờ trình và ngày tháng
+        public string SoTTr { get; set; }
+        public string Day { get; set; }
+        public string Month { get; set; }
+        public string Year { get; set; }
+        //Thông tin dự án
         public string TieuDe { get; set; }
         public string DuAn { get; set; }
         public string CongTrinh { get; set; }
         public string HangMuc { get; set; }
         public string DiaDiem { get; set; }
-
         // Nhà cung cấp
         public string NCC { get; set; }
         public string DiaChiNCC { get; set; }

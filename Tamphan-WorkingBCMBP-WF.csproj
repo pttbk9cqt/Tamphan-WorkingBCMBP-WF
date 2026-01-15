@@ -173,7 +173,7 @@
     <Compile Include="Models\AccountEVN.cs" />
     <Compile Include="Models\ContentData.cs" />
     <Compile Include="Models\DataBTS.cs" />
-    <Compile Include="Models\DataHopdong.cs" />
+    <Compile Include="Models\Input1506Data.cs" />
     <Compile Include="Models\NCC.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -181,7 +181,6 @@
     <Compile Include="Services\CaptchaHelper.cs" />
     <Compile Include="Services\ExcelAccountService.cs" />
     <Compile Include="Services\BuildWordService.cs" />
-    <Compile Include="Services\Ttr15_06_Mapper.cs" />
     <Content Include="Hotkey.txt" />
     <EmbeddedResource Include="BTS.resx">
       <DependentUpon>BTS.cs</DependentUpon>
@@ -238,6 +237,9 @@
     <Content Include="Templates\BTS\BIÊN BẢN THỎA THUẬN BTS - Templates.docx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\Contract\BM-15-06 TỜ TRÌNH XIN CHỦ TRƯƠNG - Templates.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Tessdata\eng.traineddata">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -245,9 +247,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Templates\Contract\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -20,3 +20,10 @@
     "ChucVu": "Giám đốc"
   }
 ]
+// đây là json dạng Array, bắt đầu bằng [], gồm nhiều json dạng Object {} dùng cho mục đích danh sách, ComboBox / ListBox / DataGridView
+// Cách đọc:var nccList = JsonConvert.DeserializeObject<List<NCC>>(File.ReadAllText("Data\\Supplier.json"));
+//hoặc cách an toàn hơn dùng:
+// var nccList = JsonConvert.DeserializeObject<List<NCC>>(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "Supplier.json"))
+//Cách dùng
+//ComboBox_NCC.DataSource = nccList;
+//ComboBox_NCC.DisplayMember = "TenNCC";

@@ -63,6 +63,7 @@ namespace Tamphan_WorkingBCMBP_WF
                 weblogin.FrameLoadEnd += Browser_FrameLoadEndAsync;
                 string url = "https://cskh.evnspc.vn/TaiKhoan/DangNhap?previousLink=/TraCuu/HoaDonTienDien";
                 //weblogin.DownloadHandler = new DownloadHandler();
+                MousePositionHelper.Start(this);
                 var downloadHandler = new BlobPdfDownloadHandler(
                                                     @"E:\Điện\Đóng tiền điện\hoadon", () => BuildPdfName(_maKH));
                 downloadHandler.PdfDownloaded += delegate (string path)

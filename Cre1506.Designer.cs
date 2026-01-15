@@ -50,6 +50,7 @@
             this.ChromiumWebBrowser_Cre1506.Name = "ChromiumWebBrowser_Cre1506";
             this.ChromiumWebBrowser_Cre1506.Size = new System.Drawing.Size(1904, 1041);
             this.ChromiumWebBrowser_Cre1506.TabIndex = 0;
+
             // 
             // Cre1506
             // 

@@ -1,4 +1,4 @@
-﻿using CefSharp;
+﻿  using CefSharp;
 using CefSharp.WinForms;
 using System;
 using System.Collections.Generic;
@@ -10,6 +10,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tamphan_WorkingBCMBP_WF.Services;
 
 namespace Tamphan_WorkingBCMBP_WF
 {
@@ -25,15 +26,9 @@ namespace Tamphan_WorkingBCMBP_WF
             username_eof = username;
             password_eof = password;
             url_eof = url;
-
-            //if (Cef.IsInitialized != true)
-            //{
-            //    CefSettings settings = new CefSettings();
-            //    settings.BrowserSubprocessPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "CefSharp.BrowserSubprocess.exe");
-            //    Cef.Initialize(settings);
-            //}
+            MousePositionHelper.Start(this);  //đây là hàm lấy tọa độ con trỏ chuột
+            //dưới đây là phần khởi tạo của CefSharp
             var settings = new CefSettings() { BrowserSubprocessPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "CefSharp.BrowserSubprocess.exe") };
-            
             ChromiumWebBrowser_Cre1506.FrameLoadEnd += Browser_FrameLoadEnd;
             ChromiumWebBrowser_Cre1506.Load(url);
         }

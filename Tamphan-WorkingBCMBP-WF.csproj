@@ -187,6 +187,7 @@
     <Compile Include="Services\CaptchaHelper.cs" />
     <Compile Include="Services\ExcelAccountService.cs" />
     <Compile Include="Services\BuildWordService.cs" />
+    <Compile Include="Services\MousePositionHelper.cs" />
     <Content Include="Hotkey.txt" />
     <EmbeddedResource Include="BTS.resx">
       <DependentUpon>BTS.cs</DependentUpon>

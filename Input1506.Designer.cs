@@ -1,6 +1,6 @@
 ﻿namespace Tamphan_WorkingBCMBP_WF
 {
-    partial class Input1506
+    partial class Input1506V1
     {
         /// <summary>
         /// Required designer variable.
@@ -57,6 +57,8 @@
             this.label15 = new System.Windows.Forms.Label();
             this.RichTextBox_CanCu = new System.Windows.Forms.RichTextBox();
             this.Panel_Input1506 = new System.Windows.Forms.Panel();
+            this.TextBox_NameAddFileBuild = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
             this.ComboBox_NCC = new System.Windows.Forms.ComboBox();
             this.Btn_Build = new System.Windows.Forms.Button();
             this.TextBox_Nam = new System.Windows.Forms.TextBox();
@@ -84,8 +86,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.RichTextBox_Nguyennhantrinhky = new System.Windows.Forms.RichTextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.TextBox_NameAddFileBuild = new System.Windows.Forms.TextBox();
             this.Panel_Input1506.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -350,7 +350,7 @@
             this.RichTextBox_CanCu.Location = new System.Drawing.Point(31, 519);
             this.RichTextBox_CanCu.Name = "RichTextBox_CanCu";
             this.RichTextBox_CanCu.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.RichTextBox_CanCu.Size = new System.Drawing.Size(1810, 158);
+            this.RichTextBox_CanCu.Size = new System.Drawing.Size(1810, 123);
             this.RichTextBox_CanCu.TabIndex = 30;
             this.RichTextBox_CanCu.Text = "";
             // 
@@ -420,6 +420,22 @@
             this.Panel_Input1506.Name = "Panel_Input1506";
             this.Panel_Input1506.Size = new System.Drawing.Size(1904, 1041);
             this.Panel_Input1506.TabIndex = 31;
+            // 
+            // TextBox_NameAddFileBuild
+            // 
+            this.TextBox_NameAddFileBuild.Location = new System.Drawing.Point(1211, 21);
+            this.TextBox_NameAddFileBuild.Name = "TextBox_NameAddFileBuild";
+            this.TextBox_NameAddFileBuild.Size = new System.Drawing.Size(287, 22);
+            this.TextBox_NameAddFileBuild.TabIndex = 62;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(1131, 28);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(74, 15);
+            this.label28.TabIndex = 61;
+            this.label28.Text = "Tên đuôi file";
             // 
             // ComboBox_NCC
             // 
@@ -653,46 +669,30 @@
             // RichTextBox_Nguyennhantrinhky
             // 
             this.RichTextBox_Nguyennhantrinhky.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RichTextBox_Nguyennhantrinhky.Location = new System.Drawing.Point(32, 723);
+            this.RichTextBox_Nguyennhantrinhky.Location = new System.Drawing.Point(32, 678);
             this.RichTextBox_Nguyennhantrinhky.Name = "RichTextBox_Nguyennhantrinhky";
             this.RichTextBox_Nguyennhantrinhky.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.RichTextBox_Nguyennhantrinhky.Size = new System.Drawing.Size(1810, 832);
+            this.RichTextBox_Nguyennhantrinhky.Size = new System.Drawing.Size(1810, 300);
             this.RichTextBox_Nguyennhantrinhky.TabIndex = 32;
             this.RichTextBox_Nguyennhantrinhky.Text = "";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(30, 695);
+            this.label16.Location = new System.Drawing.Point(30, 654);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(136, 15);
             this.label16.TabIndex = 32;
             this.label16.Text = "2. Nguyên nhân trình ký";
             // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(1131, 28);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(74, 15);
-            this.label28.TabIndex = 61;
-            this.label28.Text = "Tên đuôi file";
-            // 
-            // TextBox_NameAddFileBuild
-            // 
-            this.TextBox_NameAddFileBuild.Location = new System.Drawing.Point(1211, 21);
-            this.TextBox_NameAddFileBuild.Name = "TextBox_NameAddFileBuild";
-            this.TextBox_NameAddFileBuild.Size = new System.Drawing.Size(287, 22);
-            this.TextBox_NameAddFileBuild.TabIndex = 62;
-            // 
-            // Input1506
+            // Input1506V1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.Controls.Add(this.Panel_Input1506);
-            this.Name = "Input1506";
-            this.Text = "Input1506";
+            this.Name = "Input1506V1";
+            this.Text = "Input1506V1";
             this.Load += new System.EventHandler(this.Input1506_Load);
             this.Panel_Input1506.ResumeLayout(false);
             this.Panel_Input1506.PerformLayout();

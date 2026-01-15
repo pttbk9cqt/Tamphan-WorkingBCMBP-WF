@@ -133,7 +133,7 @@ namespace Tamphan_WorkingBCMBP_WF
 
         private void Btn_new_1506_Click(object sender, EventArgs e)
         {
-            Input1506 frm = new Input1506();
+            Input1506V1 frm = new Input1506();
             frm.Show();
         }
 

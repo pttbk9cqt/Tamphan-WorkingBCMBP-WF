@@ -207,7 +207,7 @@ namespace Tamphan_WorkingBCMBP_WF
             // 
             // btn_login_Tamphan
             // 
-            this.btn_login_Tamphan.Location = new System.Drawing.Point(11, 7);
+            this.btn_login_Tamphan.Location = new System.Drawing.Point(30, 7);
             this.btn_login_Tamphan.Name = "btn_login_Tamphan";
             this.btn_login_Tamphan.Size = new System.Drawing.Size(75, 23);
             this.btn_login_Tamphan.TabIndex = 10;
@@ -229,7 +229,7 @@ namespace Tamphan_WorkingBCMBP_WF
             // 
             // Btn_BTS
             // 
-            this.Btn_BTS.Location = new System.Drawing.Point(103, 75);
+            this.Btn_BTS.Location = new System.Drawing.Point(163, 43);
             this.Btn_BTS.Name = "Btn_BTS";
             this.Btn_BTS.Size = new System.Drawing.Size(75, 23);
             this.Btn_BTS.TabIndex = 15;
@@ -239,7 +239,7 @@ namespace Tamphan_WorkingBCMBP_WF
             // 
             // Btn_new_1506
             // 
-            this.Btn_new_1506.Location = new System.Drawing.Point(11, 75);
+            this.Btn_new_1506.Location = new System.Drawing.Point(30, 78);
             this.Btn_new_1506.Name = "Btn_new_1506";
             this.Btn_new_1506.Size = new System.Drawing.Size(75, 23);
             this.Btn_new_1506.TabIndex = 14;
@@ -249,7 +249,7 @@ namespace Tamphan_WorkingBCMBP_WF
             // 
             // btn_process_waiting
             // 
-            this.btn_process_waiting.Location = new System.Drawing.Point(120, 30);
+            this.btn_process_waiting.Location = new System.Drawing.Point(142, 7);
             this.btn_process_waiting.Name = "btn_process_waiting";
             this.btn_process_waiting.Size = new System.Drawing.Size(136, 30);
             this.btn_process_waiting.TabIndex = 12;
@@ -259,7 +259,7 @@ namespace Tamphan_WorkingBCMBP_WF
             // 
             // btn_calendar
             // 
-            this.btn_calendar.Location = new System.Drawing.Point(11, 37);
+            this.btn_calendar.Location = new System.Drawing.Point(30, 42);
             this.btn_calendar.Name = "btn_calendar";
             this.btn_calendar.Size = new System.Drawing.Size(75, 23);
             this.btn_calendar.TabIndex = 11;

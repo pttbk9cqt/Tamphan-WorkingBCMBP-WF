@@ -1,10 +1,12 @@
-﻿  using CefSharp;
+﻿using CefSharp;
 using CefSharp.WinForms;
+using DocumentFormat.OpenXml.Wordprocessing;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
@@ -52,11 +54,50 @@ namespace Tamphan_WorkingBCMBP_WF
             //tới bước này là tick vào checkbox (cho phép đăng nhập tự động)
             ChromiumWebBrowser_Cre1506.ExecuteScriptAsync(@"const checkbox = document.querySelector('#kmsiInput');
             checkbox && !checkbox.checked && checkbox.click();");
-            //tới bước này là tick vào checkbox (cho phép đăng nhập tự động)
-            ChromiumWebBrowser_Cre1506.ExecuteScriptAsync(@"const checkbox = document.querySelector('#kmsiInput');
-            checkbox && !checkbox.checked && checkbox.click();");
             //tiếp theo là bấm nút đăng nhập
             ChromiumWebBrowser_Cre1506.ExecuteScriptAsync("document.getElementById('submitButton').click();");
+        }
+
+        private async void Btn_Build_Cre1506_Click(object sender, EventArgs e)
+        {
+
+            string TieuDe = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Tiêu đề']"")?.value.trim())()")).Result?.ToString();
+            string DuAn = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Dự án']"")?.value.trim())()")).Result?.ToString();
+            string CongTrinh = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Công trình']"")?.value.trim())()")).Result?.ToString();
+            string HangMuc = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Hạng mục']"")?.value.trim())()")).Result?.ToString();
+            string CongTy1 = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Công ty 1']"")?.value.trim())()")).Result?.ToString();
+            string CongTy2 = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Công ty 2']"")?.value.trim())()")).Result?.ToString();
+            string CongTy3 = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Công ty 3']"")?.value.trim())()")).Result?.ToString();
+            string NCC = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Nhà cung cấp được chọn']"")?.value.trim())()")).Result?.ToString();
+            // ở trên đã chạy ok hết rồi, tới bước lấy lý do chọn nhà cung cấp, bước này tuất code
+            ////////////////////////////////////////////////////////////////////////////////////////////////
+            string LyDoChonNCC = ChromiumWebBrowser_Cre1506.EvaluateScriptAsync<string>(@"[document.querySelectorAll(""iframe"")][0][1].contentDocument.body.innerText;").Result;
+
+            MessageBox.Show(LyDoChonNCC);
+
+            var map = new Dictionary<string, string>
+            {
+                ["{{SOTTR}}"] = TextBox_BTS_SoTTr1506.Text.Trim(),
+                ["{{DAY}}"] = TextBox_BTS_Ngay.Text.Trim(),
+                ["{{MONTH}}"] = TextBox_BTS_Thang.Text.Trim(),
+                ["{{YEAR}}"] = TextBox_BTS_Nam.Text.Trim(),
+                ["{{DUAN}}"] = DuAn,
+                ["{{CONGTRINH}}"] = CongTrinh,
+                ["{{HANGMUC}}"] = HangMuc,
+                ["{{DIADIEM}}"] = "Phường Chơn Thành, tỉnh Đồng Nai",
+                ["{{LYDOCHONNCC}}"] = LyDoChonNCC,
+            };
+            ///////////////////////////////////////////////////////////////////////////////////////////////////
+            // ở dưới là bước build word
+            //Directory.CreateDirectory("Output");
+            //string suffix = TextBox_NameAddFileBuild.Text.Trim();
+            //string outputPath1506 = $@"Output\BM-15-06 Tờ trình xin chủ trương - {suffix}.docx";
+            //BuildWordService.Build(@"Templates\Contract\BM-15-06 TỜ TRÌNH XIN CHỦ TRƯƠNG - Templates.docx", outputPath1506, map);
+            //string outputPath1507 = $@"Output\BM-15-07 Tờ trình ký hợp đồng - {suffix}.docx";
+            //BuildWordService.Build(@"Templates\Contract\BM-15-07 TỜ TRÌNH KÝ HỢP ĐỒNG - Templates.docx", outputPath1507, map);
+            //string outputPathHopDong = $@"Output\HỢP ĐỒNG THI CÔNG - {suffix}.docx";
+            //BuildWordService.Build(@"Templates\Contract\HỢP ĐỒNG THI CÔNG - Templates.docx", outputPathHopDong, map);
+            MessageBox.Show("Done!");
         }
     }
 

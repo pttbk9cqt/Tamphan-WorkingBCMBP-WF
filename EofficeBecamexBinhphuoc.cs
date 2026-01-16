@@ -45,9 +45,9 @@ namespace Tamphan_WorkingBCMBP_WF
             }
         }
 
-            private void Browser_FrameLoadEnd(object sender, FrameLoadEndEventArgs e)
-            {
-                string logininfo = $@"
+        private void Browser_FrameLoadEnd(object sender, FrameLoadEndEventArgs e)
+        {
+            string logininfo = $@"
             (function() 
             {{
                 let userInput = document.querySelector('input[placeholder=""Tên người dùng""]');
@@ -59,28 +59,13 @@ namespace Tamphan_WorkingBCMBP_WF
                     passInput.value = '{password_eof}';
                     passInput.dispatchEvent(new Event('input', {{ bubbles: true }}));
                 }}
-            }})();
-            ";
-                chromiumWebBrowser_Eoffice.ExecuteScriptAsync(logininfo);
-            //xong bước này là điền username và pass
-
+            }})();";
+            chromiumWebBrowser_Eoffice.ExecuteScriptAsync(logininfo);//xong bước này là điền username và pass
             //tới bước này là tick vào checkbox (cho phép đăng nhập tự động)
-            chromiumWebBrowser_Eoffice.ExecuteScriptAsync(@"
-            const checkbox = document.querySelector('#kmsiInput');
-            checkbox && !checkbox.checked && checkbox.click();
-            ");
-
-            //tới bước này là tick vào checkbox (cho phép đăng nhập tự động)
-            chromiumWebBrowser_Eoffice.ExecuteScriptAsync(@"
-            const checkbox = document.querySelector('#kmsiInput');
-            checkbox && !checkbox.checked && checkbox.click();
-            ");
-
+            chromiumWebBrowser_Eoffice.ExecuteScriptAsync(@"const checkbox = document.querySelector('#kmsiInput');
+            checkbox && !checkbox.checked && checkbox.click();");
             //tiếp theo là bấm nút đăng nhập
             chromiumWebBrowser_Eoffice.ExecuteScriptAsync("document.getElementById('submitButton').click();");
-
         }
     }
-       
-    
 }

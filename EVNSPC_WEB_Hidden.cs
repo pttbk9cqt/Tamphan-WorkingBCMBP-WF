@@ -48,7 +48,7 @@ namespace Tamphan_WorkingBCMBP_WF
             ExcelAccountService service_Hidden = new ExcelAccountService();
             AccountEVN acc_Hidden = service_Hidden.GetAccount(_maKH_Hidden);
             //MessageBox.Show("Đang lưu file cho mã KH: " + acc.MucDichSuDung);
-            return "Thông báo tiền điện tháng " + kyHoaDon_Hidden + "_" + acc_Hidden.MucDichSuDung + "_" + _maKH_Hidden + ".pdf";
+            return acc_Hidden.MucDichSuDung + "_" + "Thông báo tiền điện tháng " + kyHoaDon_Hidden + "_" +  _maKH_Hidden + ".pdf";
         }
         private void InitBrowser()
         {
@@ -142,20 +142,17 @@ namespace Tamphan_WorkingBCMBP_WF
                     break; // đăng nhập thành công, thoát vòng lặp
                 }
             // tới đây là đã đăng nhập thành công rồi
-
             //Bấm vào nút xác nhận như kiểu tài khoản đăng nhập mới, còn không có thì thôi kệ
             webhidden.ExecuteScriptAsync("document.getElementById('btnXacNhan').click();");
             await Task.Delay(1000); // chờ load trang sau khi bấm xác nhận
             //Bấm nút kết thúc để vào trang tra cứu hóa đơn
             webhidden.ExecuteScriptAsync("document.getElementById('btnKetThuc').click();");
             await Task.Delay(2000); // chờ load trang sau khi bấm xác nhận
-
             //Nếu chưa nhấn OK thì vẫn dừng ở đây, và chưa chạy dòng code ở dưới đâu
             //click vào nút xem hóa đơn
             webhidden.ExecuteScriptAsync("document.querySelector('a.invoice-btn.view-btn.cursor').click();");
             //
             //auto trigger pdf view and auto download
-
             // chờ 15s để chắc chắn view file thông báo lên
             await Task.Delay(5000);
             //auto trigger pdf view and auto download
@@ -168,7 +165,5 @@ namespace Tamphan_WorkingBCMBP_WF
             await Task.Delay(5000);
             Application.Exit();
         }
-
-
     }
 }

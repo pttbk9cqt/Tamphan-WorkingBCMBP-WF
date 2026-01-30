@@ -21,12 +21,9 @@ namespace Tamphan_WorkingBCMBP_WF
             InitializeComponent();
             Control.CheckForIllegalCrossThreadCalls = false;
             _maKH = maKH;
-  
+
             this.WindowState = FormWindowState.Maximized;
-            this.MouseDown += (s, e) =>
-            {
-                MessageBox.Show($"Click at {e.X},{e.Y}");
-            };
+            this.MouseDown += (s, e) => { MessageBox.Show($"Click at {e.X},{e.Y}"); };
             try
             {
                 InitBrowser();
@@ -42,8 +39,7 @@ namespace Tamphan_WorkingBCMBP_WF
             _maKH = maKH;
             ExcelAccountService service = new ExcelAccountService();
             AccountEVN acc = service.GetAccount(_maKH);
-            //MessageBox.Show("Đang lưu file cho mã KH: " + acc.MucDichSuDung);
-            return "Thông báo tiền điện tháng " + kyHoaDon + "_" + acc.MucDichSuDung +"_" +_maKH + ".pdf";
+            return acc.MucDichSuDung + "_" + "Thông báo tiền điện tháng " + kyHoaDon + "_" + _maKH + ".pdf";
         }
         private void InitBrowser()
         {
@@ -56,20 +52,14 @@ namespace Tamphan_WorkingBCMBP_WF
                 if (Cef.IsInitialized != true)
                 {
                     CefSettings settings = new CefSettings();
-                    //settings.ChromeRuntime = true;
                     settings.BrowserSubprocessPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "CefSharp.BrowserSubprocess.exe");
                     Cef.Initialize(settings);
                 }
                 weblogin.FrameLoadEnd += Browser_FrameLoadEndAsync;
                 string url = "https://cskh.evnspc.vn/TaiKhoan/DangNhap?previousLink=/TraCuu/HoaDonTienDien";
-                //weblogin.DownloadHandler = new DownloadHandler();
                 MousePositionHelper.Start(this);
-                var downloadHandler = new BlobPdfDownloadHandler(
-                                                    @"E:\Điện\Đóng tiền điện\hoadon", () => BuildPdfName(_maKH));
-                downloadHandler.PdfDownloaded += delegate (string path)
-                {
-                    Console.WriteLine("PDF saved: " + path);
-                };
+                var downloadHandler = new BlobPdfDownloadHandler(@"E:\Điện\Đóng tiền điện\ThongBaoVaHoaDonDien", () => BuildPdfName(_maKH));
+                downloadHandler.PdfDownloaded += delegate (string path) { Console.WriteLine("PDF saved: " + path); };
                 weblogin.DownloadHandler = downloadHandler;
                 weblogin.Load(url);
             }
@@ -148,8 +138,8 @@ namespace Tamphan_WorkingBCMBP_WF
             await Task.Delay(15000);
             //auto trigger pdf view and auto download
             //click vào nút tải hóa đơn
-            int X = 1350;//Convert.ToInt32(weblogin.Width * 0.711); tính ngược lại ra 1899.7
-            int Y = 140;//Convert.ToInt32(weblogin.Height * 0.139);tính ngược lại ra 1007.2
+            int X = 1355;//Convert.ToInt32(weblogin.Width * 0.711); tính ngược lại ra 1899.7
+            int Y = 165;//Convert.ToInt32(weblogin.Height * 0.139);tính ngược lại ra 1007.2
             weblogin.GetBrowser().GetHost().SendMouseClickEvent(X, Y, MouseButtonType.Left, false, 1, CefEventFlags.None);
             await Task.Delay(150);
             weblogin.GetBrowser().GetHost().SendMouseClickEvent(X, Y, MouseButtonType.Left, true, 1, CefEventFlags.None);
@@ -158,7 +148,7 @@ namespace Tamphan_WorkingBCMBP_WF
 
         private void weblogin_MouseUp(object sender, MouseEventArgs e)
         {
-            MessageBox.Show($"MouseUp at ({e.X}, {e.Y})" );
+            MessageBox.Show($"MouseUp at ({e.X}, {e.Y})");
         }
 
         private void weblogin_MouseClick(object sender, MouseEventArgs e)
@@ -166,15 +156,16 @@ namespace Tamphan_WorkingBCMBP_WF
             MessageBox.Show($"MouseClick at ({e.X}, {e.Y})");
         }
 
-        private async void btn_download_thu_cong_Click(object sender, EventArgs e)
+        private async void btn_download_thong_bao_thu_cong_Click(object sender, EventArgs e)
         {
-            int X = 1350;//Convert.ToInt32(weblogin.Width * 0.711);
-            int Y = 140;//Convert.ToInt32(weblogin.Height * 0.139);
+            //int X = 1350;//Convert.ToInt32(weblogin.Width * 0.711);
+            //int Y = 140;//Convert.ToInt32(weblogin.Height * 0.139);
+            int X = 1355;
+            int Y = 165;
             weblogin.GetBrowser().GetHost().SendMouseClickEvent(X, Y, MouseButtonType.Left, false, 1, CefEventFlags.None);
             await Task.Delay(150);
             weblogin.GetBrowser().GetHost().SendMouseClickEvent(X, Y, MouseButtonType.Left, true, 1, CefEventFlags.None);
         }
-
 
     }
 }

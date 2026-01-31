@@ -118,7 +118,7 @@ namespace Tamphan_WorkingBCMBP_WF
                     weblogin.ExecuteScriptAsync(fill_maKH_pass_Script);
                     await _captchaHelper.AutoFillCaptchaAsync();
                     await Task.Delay(2000);
-                    MessageBox.Show("ID:" + acc.Id + " mã KH:" + acc.MaKH + " " + acc.MucDichSuDung);
+                    //MessageBox.Show("ID:" + acc.Id + " mã KH:" + acc.MaKH + " " + acc.MucDichSuDung);
                     weblogin.ExecuteScriptAsync("document.getElementById('btnDangNhap').click();");
                     await Task.Delay(2000);
                 }
@@ -135,11 +135,13 @@ namespace Tamphan_WorkingBCMBP_WF
             //auto trigger pdf view and auto download
 
             // chờ 15s để chắc chắn view file thông báo lên
-            await Task.Delay(15000);
+            await Task.Delay(5000);
             //auto trigger pdf view and auto download
             //click vào nút tải hóa đơn
-            int X = 1355;//Convert.ToInt32(weblogin.Width * 0.711); tính ngược lại ra 1899.7
-            int Y = 165;//Convert.ToInt32(weblogin.Height * 0.139);tính ngược lại ra 1007.2
+            int X = 1350;
+            int Y = 140;
+            //int X = 1355;//Convert.ToInt32(weblogin.Width * 0.711); tính ngược lại ra 1899.7
+            //int Y = 165;//Convert.ToInt32(weblogin.Height * 0.139);tính ngược lại ra 1007.2
             weblogin.GetBrowser().GetHost().SendMouseClickEvent(X, Y, MouseButtonType.Left, false, 1, CefEventFlags.None);
             await Task.Delay(150);
             weblogin.GetBrowser().GetHost().SendMouseClickEvent(X, Y, MouseButtonType.Left, true, 1, CefEventFlags.None);
@@ -158,10 +160,10 @@ namespace Tamphan_WorkingBCMBP_WF
 
         private async void btn_download_thong_bao_thu_cong_Click(object sender, EventArgs e)
         {
-            //int X = 1350;//Convert.ToInt32(weblogin.Width * 0.711);
-            //int Y = 140;//Convert.ToInt32(weblogin.Height * 0.139);
-            int X = 1355;
-            int Y = 165;
+            int X = 1350;//Convert.ToInt32(weblogin.Width * 0.711);
+            int Y = 140;//Convert.ToInt32(weblogin.Height * 0.139);
+            //int X = 1355;
+            //int Y = 165;
             weblogin.GetBrowser().GetHost().SendMouseClickEvent(X, Y, MouseButtonType.Left, false, 1, CefEventFlags.None);
             await Task.Delay(150);
             weblogin.GetBrowser().GetHost().SendMouseClickEvent(X, Y, MouseButtonType.Left, true, 1, CefEventFlags.None);

@@ -19,7 +19,7 @@ namespace Tamphan_WorkingBCMBP_WF.Services
 
                 for (int row = 2; row <= 1000; row++)
                 {
-                    string maKHExcel = ws.Cell(row, "C").GetString().Trim();
+                    string maKHExcel = ws.Cell(row, "B").GetString().Trim();
 
                     if (maKHExcel == maKH)
                     {
@@ -27,8 +27,8 @@ namespace Tamphan_WorkingBCMBP_WF.Services
                         {
                             Id = ws.Cell(row, "A").GetString(),
                             MaKH = maKHExcel,
-                            MucDichSuDung = ws.Cell(row, "D").GetString(),
-                            Password = ws.Cell(row, "M").GetString()
+                            MucDichSuDung = ws.Cell(row, "C").GetString(),
+                            Password = ws.Cell(row, "E").GetString()
                         };
                     }
                 }

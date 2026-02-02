@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Tamphan_WorkingBCMBP_WF.Services
 {
-    public class BlobPdfDownloadHandler: IDownloadHandler
+    public class BlobPdfDownloadHandler : IDownloadHandler
     {
         private readonly string _targetFolder;
         private readonly Func<string> _buildFileName;
@@ -27,21 +27,14 @@ namespace Tamphan_WorkingBCMBP_WF.Services
                 Directory.CreateDirectory(_targetFolder);
         }
 
-        public bool OnBeforeDownload(
-            IWebBrowser chromiumWebBrowser,
-            IBrowser browser,
-            DownloadItem downloadItem,
-            IBeforeDownloadCallback callback)
+        public bool OnBeforeDownload(IWebBrowser chromiumWebBrowser, IBrowser browser, DownloadItem downloadItem, IBeforeDownloadCallback callback)
         {
             if (callback == null)
                 return false;
             if (callback.IsDisposed)
                 return false;
 
-            string tempPath = Path.Combine(
-                _targetFolder,
-                downloadItem.SuggestedFileName
-            );
+            string tempPath = Path.Combine(_targetFolder, downloadItem.SuggestedFileName);
 
             _activeDownloads[downloadItem.Id] = true;
 
@@ -52,11 +45,7 @@ namespace Tamphan_WorkingBCMBP_WF.Services
             return true;
         }
 
-        public void OnDownloadUpdated(
-            IWebBrowser chromiumWebBrowser,
-            IBrowser browser,
-            DownloadItem downloadItem,
-            IDownloadItemCallback callback)
+        public void OnDownloadUpdated(IWebBrowser chromiumWebBrowser,IBrowser browser,DownloadItem downloadItem,IDownloadItemCallback callback)
         {
             bool active;
             if (!_activeDownloads.TryGetValue(downloadItem.Id, out active))

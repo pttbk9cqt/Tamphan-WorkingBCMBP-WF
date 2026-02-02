@@ -52,6 +52,7 @@ namespace Tamphan_WorkingBCMBP_WF
             this.Btn_new_1506 = new System.Windows.Forms.Button();
             this.btn_process_waiting = new System.Windows.Forms.Button();
             this.btn_calendar = new System.Windows.Forms.Button();
+            this.btn_evn_download = new System.Windows.Forms.Button();
             this.panel_account_lẻ.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -133,9 +134,9 @@ namespace Tamphan_WorkingBCMBP_WF
             // 
             // btn_login_download_no_UI
             // 
-            this.btn_login_download_no_UI.Location = new System.Drawing.Point(492, 169);
+            this.btn_login_download_no_UI.Location = new System.Drawing.Point(492, 160);
             this.btn_login_download_no_UI.Name = "btn_login_download_no_UI";
-            this.btn_login_download_no_UI.Size = new System.Drawing.Size(156, 37);
+            this.btn_login_download_no_UI.Size = new System.Drawing.Size(197, 28);
             this.btn_login_download_no_UI.TabIndex = 5;
             this.btn_login_download_no_UI.Text = "Anh Khánh - Special";
             this.btn_login_download_no_UI.UseVisualStyleBackColor = true;
@@ -267,11 +268,22 @@ namespace Tamphan_WorkingBCMBP_WF
             this.btn_calendar.UseVisualStyleBackColor = true;
             this.btn_calendar.Click += new System.EventHandler(this.Btn_calendar_Click);
             // 
+            // btn_evn_download
+            // 
+            this.btn_evn_download.Location = new System.Drawing.Point(492, 194);
+            this.btn_evn_download.Name = "btn_evn_download";
+            this.btn_evn_download.Size = new System.Drawing.Size(129, 23);
+            this.btn_evn_download.TabIndex = 10;
+            this.btn_evn_download.Text = "Download thông báo";
+            this.btn_evn_download.UseVisualStyleBackColor = true;
+            this.btn_evn_download.Click += new System.EventHandler(this.btn_evn_download_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(789, 438);
+            this.Controls.Add(this.btn_evn_download);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label3);
@@ -316,6 +328,7 @@ namespace Tamphan_WorkingBCMBP_WF
         private System.Windows.Forms.Button btn_process_waiting;
         private System.Windows.Forms.Button Btn_new_1506;
         private System.Windows.Forms.Button Btn_BTS;
+        private System.Windows.Forms.Button btn_evn_download;
     }
 }
 

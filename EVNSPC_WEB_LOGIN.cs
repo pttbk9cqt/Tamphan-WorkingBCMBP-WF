@@ -78,7 +78,7 @@ namespace Tamphan_WorkingBCMBP_WF
             weblogin.ExecuteScriptAsync(fill_maKH_pass_Script);//tới đây là đã tự điền mã KH và pass
             await Task.Delay(500);
             await _captchaHelper.AutoFillCaptchaAsync();// ĐẾN ĐÂY LÀ ĐÃ ĐIỀN XONG CAPTCHA VÀO TRANG WEB
-            await Task.Delay(1200);
+            await Task.Delay(8000);
             weblogin.ExecuteScriptAsync("document.getElementById('btnDangNhap').click();");// Tiếp đó là bấm nút đăng nhập
             await Task.Delay(1200); // chờ load trang sau khi đăng nhập
 

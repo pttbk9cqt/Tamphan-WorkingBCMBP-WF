@@ -30,7 +30,6 @@ namespace Tamphan_WorkingBCMBP_WF
                 maKH = "PB010500" + maKH;
                 textBox_nhập_mã_khách_hàng.Text = maKH;
             }
-
             ExcelAccountService service = new ExcelAccountService();
             AccountEVN acc = service.GetAccount(maKH);
             if (acc == null)
@@ -43,13 +42,11 @@ namespace Tamphan_WorkingBCMBP_WF
             {
                 textBox_password.Text = acc.Password;
             }
-
             //MessageBox.Show(
             //    $"ID: {acc.Id}\n" +
             //    $"Mục đích sử dụng: {acc.MucDichSuDung}\n" +
             //    $"Tên đăng nhập: {acc.MaKH}\n" +
             //    $"Pass: {acc.Password}");
-
             // tiếp tục xử lý login bên dưới
             EVNSPC_WEB_LOGIN frmwebdienluc = new EVNSPC_WEB_LOGIN(maKH);
             frmwebdienluc.Show();
@@ -57,38 +54,50 @@ namespace Tamphan_WorkingBCMBP_WF
 
         private void Btn_login_download_no_UI_Click(object sender, EventArgs e)
         {
-            string maKH_no_UI = textBox_nhập_mã_khách_hàng.Text.Trim();
-            //Kiểm tra mã khách hàng
-            if (maKH_no_UI.Length == 5 && !maKH_no_UI.StartsWith("PB010500"))
+            string maKH = textBox_nhập_mã_khách_hàng.Text.Trim();
+            if (maKH.Length == 5 && !maKH.StartsWith("PB010500"))
             {
-                maKH_no_UI = "PB010500" + maKH_no_UI;
-                textBox_nhập_mã_khách_hàng.Text = maKH_no_UI;
+                maKH = "PB010500" + maKH;
+                textBox_nhập_mã_khách_hàng.Text = maKH;
             }
-
             ExcelAccountService service_no_UI = new ExcelAccountService();
-            AccountEVN acc_no_UI = service_no_UI.GetAccount(maKH_no_UI);
+            AccountEVN acc_no_UI = service_no_UI.GetAccount(maKH);
             if (acc_no_UI == null)
             {
                 MessageBox.Show("Mã khách hàng không tồn tại trong file excel");
                 return;
             }
-
             if (string.IsNullOrWhiteSpace(textBox_password.Text) || textBox_password.Text != acc_no_UI.Password)
             {
                 textBox_password.Text = acc_no_UI.Password;
             }
-
-            //MessageBox.Show(
-            //    $"ID: {acc_no_UI.Id}\n" +
-            //    $"Mục đích sử dụng: {acc_no_UI.MucDichSuDung}\n" +
-            //    $"Tên đăng nhập: {acc_no_UI.MaKH}\n" +
-            //    $"Pass: {acc_no_UI.Password}");
-
-            // tiếp tục xử lý login bên dưới
-            EVNSPC_WEB_Hidden frmwebdienluc_no_UI = new EVNSPC_WEB_Hidden(maKH_no_UI);
+            EVNSPC_WEB_Hidden frmwebdienluc_no_UI = new EVNSPC_WEB_Hidden(maKH);
             frmwebdienluc_no_UI.Show();
         }
 
+        private void btn_evn_download_Click(object sender, EventArgs e)
+        {
+            string maKH = textBox_nhập_mã_khách_hàng.Text.Trim();
+            if (maKH.Length == 5 && !maKH.StartsWith("PB010500"))
+            {
+                maKH = "PB010500" + maKH;
+                textBox_nhập_mã_khách_hàng.Text = maKH;
+            }
+            ExcelAccountService service = new ExcelAccountService();
+            AccountEVN acc = service.GetAccount(maKH);
+            if (acc == null)
+            {
+                MessageBox.Show("Mã khách hàng không tồn tại trong file excel");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(textBox_password.Text) || textBox_password.Text != acc.Password)
+            {
+                textBox_password.Text = acc.Password;
+            }
+            EVNSPC_DownloadThongbao frmwebdienluc_download = new EVNSPC_DownloadThongbao(maKH);
+            frmwebdienluc_download.Show();
+        }
         private void Btn_login_eof_Click(object sender, EventArgs e)
         {
             string url = "https://login.becamexbinhphuoc.com.vn/adfs/ls?wa=wsignin1.0&wtrealm=urn%3aeofficebecamexbinhphuoc&wctx=https%3a%2f%2feoffice.becamexbinhphuoc.com.vn";
@@ -138,5 +147,7 @@ namespace Tamphan_WorkingBCMBP_WF
             Cre1506 frm = new Cre1506(username, password, url);
             frm.Show();
         }
+
+
     }
 }

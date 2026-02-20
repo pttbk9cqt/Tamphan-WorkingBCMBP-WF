@@ -111,7 +111,7 @@ namespace Tamphan_WorkingBCMBP_WF
         {
             string url = "https://login.becamexbinhphuoc.com.vn/adfs/ls?wa=wsignin1.0&wtrealm=urn%3aeofficebecamexbinhphuoc&wctx=https%3a%2f%2feoffice.becamexbinhphuoc.com.vn";
             string username = "phanthanhtam";
-            string password = "Mocungcunganhcungnhat@bcm26";
+            string password = "Mocungcung@99";
             EofficeBecamexBinhphuoc frmEoffice = new EofficeBecamexBinhphuoc(username, password, url);
             frmEoffice.Show();
         }
@@ -120,7 +120,7 @@ namespace Tamphan_WorkingBCMBP_WF
         {
             string url = "https://eofficeao.becamexbinhphuoc.com.vn/lich?dep=427";
             string username = "phanthanhtam";
-            string password = "Mocungcunganhcungnhat@bcm26";
+            string password = "Mocungcung@99";
             EofficeBecamexBinhphuoc frmEoffice = new EofficeBecamexBinhphuoc(username, password, url);
             frmEoffice.Show();
         }
@@ -129,7 +129,7 @@ namespace Tamphan_WorkingBCMBP_WF
         {
             string url = "https://eoffice.becamexbinhphuoc.com.vn/workflow/SitePages/Workflow-follow.aspx";
             string username = "phanthanhtam";
-            string password = "Mocungcunganhcungnhat@bcm26";
+            string password = "Mocungcung@99";
             EofficeBecamexBinhphuoc frmEoffice = new EofficeBecamexBinhphuoc(username, password, url);
             frmEoffice.Show();
         }
@@ -143,7 +143,7 @@ namespace Tamphan_WorkingBCMBP_WF
         {
             string url = "https://eoffice.becamexbinhphuoc.com.vn/workflow/SitePages/NewWorkflow.aspx?mode=1&ListID=589dfff1-f412-41fd-8824-c48a2bf66309";
             string username = "phanthanhtam";
-            string password = "Mocungcunganhcungnhat@bcm26";
+            string password = "Mocungcung@99";
             Cre1506 frm = new Cre1506(username, password, url);
             frm.Show();
         }

@@ -1,5 +1,6 @@
 ﻿using CefSharp;
 using CefSharp.WinForms;
+using DocumentFormat.OpenXml.Spreadsheet;
 using DocumentFormat.OpenXml.Wordprocessing;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tamphan_WorkingBCMBP_WF.Services;
+using static FieldBindingManager;
 
 namespace Tamphan_WorkingBCMBP_WF
 {
@@ -21,6 +23,9 @@ namespace Tamphan_WorkingBCMBP_WF
         public string username_eof;
         public string password_eof;
         public string url_eof;
+        private FieldBindingManager _bindingManager;
+        private bool _isLoggedIn = false;
+
         public Cre1506(string username, string password, string url)
         {
             InitializeComponent();
@@ -30,45 +35,85 @@ namespace Tamphan_WorkingBCMBP_WF
             url_eof = url;
             MousePositionHelper.Start(this);  //đây là hàm lấy tọa độ con trỏ chuột
             //dưới đây là phần khởi tạo của CefSharp
-            var settings = new CefSettings() { BrowserSubprocessPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "CefSharp.BrowserSubprocess.exe") };
+            //var settings = new CefSettings() { BrowserSubprocessPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "CefSharp.BrowserSubprocess.exe") };
             ChromiumWebBrowser_Cre1506.FrameLoadEnd += Browser_FrameLoadEnd;
-            ChromiumWebBrowser_Cre1506.Load(url);
+            ChromiumWebBrowser_Cre1506.IsBrowserInitializedChanged += Browser_IsBrowserInitializedChanged;    // thêm Devtools cho trình duyệt
+            ChromiumWebBrowser_Cre1506.Load(url_eof);
         }
 
-        private void Browser_FrameLoadEnd(object sender, FrameLoadEndEventArgs e)
+
+        // Mở DevTools khi browser init xong
+        private void Browser_IsBrowserInitializedChanged(object sender, EventArgs e)
         {
-            string logininfo = $@"
-            (function() 
-            {{
-                let userInput = document.querySelector('input[placeholder=""Tên người dùng""]');
-                let passInput = document.querySelector('input[placeholder=""Mật khẩu""]');
-                if (userInput && passInput) 
-                {{
-                    userInput.value = '{username_eof}';
-                    userInput.dispatchEvent(new Event('input', {{ bubbles: true }}));
-                    passInput.value = '{password_eof}';
-                    passInput.dispatchEvent(new Event('input', {{ bubbles: true }}));
-                }}
-            }})();";
-            ChromiumWebBrowser_Cre1506.ExecuteScriptAsync(logininfo);//xong bước này là điền username và pass
-            //tới bước này là tick vào checkbox (cho phép đăng nhập tự động)
-            ChromiumWebBrowser_Cre1506.ExecuteScriptAsync(@"const checkbox = document.querySelector('#kmsiInput');
-            checkbox && !checkbox.checked && checkbox.click();");
-            //tiếp theo là bấm nút đăng nhập
-            ChromiumWebBrowser_Cre1506.ExecuteScriptAsync("document.getElementById('submitButton').click();");
+            if (ChromiumWebBrowser_Cre1506.IsBrowserInitialized)
+            {
+                this.Invoke(new Action(() =>{ChromiumWebBrowser_Cre1506.ShowDevTools();}));
+            }
         }
+        private async void Browser_FrameLoadEnd(object sender, FrameLoadEndEventArgs e)
+        {
+            if (!e.Frame.IsMain) 
+                return;
+
+            var url = e.Url;
+            // Nếu đang ở trang login
+            if (!_isLoggedIn && url.Contains("login"))
+            {
+                string logininfo = $@"
+                (function() 
+                {{
+                    let userInput = document.querySelector('input[placeholder=""Tên người dùng""]');
+                    let passInput = document.querySelector('input[placeholder=""Mật khẩu""]');
+                    if (userInput && passInput) 
+                    {{
+                        userInput.value = '{username_eof}'; 
+                        userInput.dispatchEvent(new Event('input', {{ bubbles: true }}));
+                        passInput.value = '{password_eof}'; 
+                        passInput.dispatchEvent(new Event('input', {{ bubbles: true }}));
+                    }}
+                }})();";
+                ChromiumWebBrowser_Cre1506.ExecuteScriptAsync(logininfo);
+                ChromiumWebBrowser_Cre1506.ExecuteScriptAsync(@"const checkbox = document.querySelector('#kmsiInput'); checkbox && !checkbox.checked && checkbox.click();");
+                ChromiumWebBrowser_Cre1506.ExecuteScriptAsync("document.getElementById('submitButton').click();");
+                return;
+            }
+
+            // ================= SAU LOGIN =================
+            if (!_isLoggedIn)
+            {
+                _isLoggedIn = true;
+
+                var fieldMap = new Dictionary<string, ListBox>
+                    {
+                        { "Dự án", listBoxDuAn },
+                        { "Công trình", listBoxCongTrinh },
+                        { "Hạng mục", listBoxHangMuc }
+                    };
+
+                _bindingManager = new FieldBindingManager( ChromiumWebBrowser_Cre1506, PanelCre1506, fieldMap );
+
+                // ĐĂNG KÝ BRIDGE TRƯỚC
+                ChromiumWebBrowser_Cre1506.JavascriptObjectRepository.ResolveObject += (s, ev) =>
+                { if (ev.ObjectName == "bridge")
+                        {
+                            ev.ObjectRepository.Register("bridge", new FieldBindingManager.JsBridge(_bindingManager), isAsync: true);
+                        }
+                };
+                await _bindingManager.InjectFocusListenerAsync();
+            }
+        }
+
 
         private async void Btn_Build_Cre1506_Click(object sender, EventArgs e)
         {
-
-            string TieuDe = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Tiêu đề']"")?.value.trim())()")).Result?.ToString();
-            string DuAn = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Dự án']"")?.value.trim())()")).Result?.ToString();
-            string CongTrinh = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Công trình']"")?.value.trim())()")).Result?.ToString();
-            string HangMuc = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Hạng mục']"")?.value.trim())()")).Result?.ToString();
-            string CongTy1 = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Công ty 1']"")?.value.trim())()")).Result?.ToString();
-            string CongTy2 = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Công ty 2']"")?.value.trim())()")).Result?.ToString();
-            string CongTy3 = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Công ty 3']"")?.value.trim())()")).Result?.ToString();
-            string NCC = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Nhà cung cấp được chọn']"")?.value.trim())()")).Result?.ToString();
+        string TieuDe = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Tiêu đề']"")?.value.trim())()")).Result?.ToString();
+        string DuAn = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Dự án']"")?.value.trim())()")).Result?.ToString();
+        string CongTrinh =(await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Công trình']"")?.value.trim())()")).Result?.ToString();
+        string HangMuc = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Hạng mục']"")?.value.trim())()")).Result?.ToString();
+        string CongTy1 = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Công ty 1']"")?.value.trim())()")).Result?.ToString();
+        string CongTy2 = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Công ty 2']"")?.value.trim())()")).Result?.ToString();
+        string CongTy3 = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Công ty 3']"")?.value.trim())()")).Result?.ToString();
+        string NCC = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Nhà cung cấp được chọn']"")?.value.trim())()")).Result?.ToString();
             // ở trên đã chạy ok hết rồi, tới bước lấy lý do chọn nhà cung cấp, bước này tuất code
             ////////////////////////////////////////////////////////////////////////////////////////////////
             string LyDoChonNCC = ChromiumWebBrowser_Cre1506.EvaluateScriptAsync<string>(@"[document.querySelectorAll(""iframe"")][0][1].contentDocument.body.innerText;").Result;

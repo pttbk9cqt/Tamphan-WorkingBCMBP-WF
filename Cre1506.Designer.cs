@@ -29,6 +29,16 @@
         private void InitializeComponent()
         {
             this.Panel_Cre1506 = new System.Windows.Forms.Panel();
+            this.PanelCre1506 = new System.Windows.Forms.Panel();
+            this.listBoxNCC = new System.Windows.Forms.ListBox();
+            this.listBoxDiaDiem = new System.Windows.Forms.ListBox();
+            this.listBoxHangMuc = new System.Windows.Forms.ListBox();
+            this.listBoxCongTrinh = new System.Windows.Forms.ListBox();
+            this.listBoxDuAn = new System.Windows.Forms.ListBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.TextBox_BTS_SoTTr1506 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.TextBox_BTS_Ngay = new System.Windows.Forms.TextBox();
             this.TextBox_BTS_Nam = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -37,15 +47,13 @@
             this.Btn_Build_Cre1506 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.ChromiumWebBrowser_Cre1506 = new CefSharp.WinForms.ChromiumWebBrowser();
-            this.TextBox_BTS_Ngay = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.TextBox_BTS_SoTTr1506 = new System.Windows.Forms.TextBox();
             this.Panel_Cre1506.SuspendLayout();
+            this.PanelCre1506.SuspendLayout();
             this.SuspendLayout();
             // 
             // Panel_Cre1506
             // 
+            this.Panel_Cre1506.Controls.Add(this.PanelCre1506);
             this.Panel_Cre1506.Controls.Add(this.label5);
             this.Panel_Cre1506.Controls.Add(this.TextBox_BTS_SoTTr1506);
             this.Panel_Cre1506.Controls.Add(this.label2);
@@ -63,6 +71,118 @@
             this.Panel_Cre1506.Name = "Panel_Cre1506";
             this.Panel_Cre1506.Size = new System.Drawing.Size(1904, 1041);
             this.Panel_Cre1506.TabIndex = 0;
+            // 
+            // PanelCre1506
+            // 
+            this.PanelCre1506.Controls.Add(this.listBoxNCC);
+            this.PanelCre1506.Controls.Add(this.listBoxDiaDiem);
+            this.PanelCre1506.Controls.Add(this.listBoxHangMuc);
+            this.PanelCre1506.Controls.Add(this.listBoxCongTrinh);
+            this.PanelCre1506.Controls.Add(this.listBoxDuAn);
+            this.PanelCre1506.Location = new System.Drawing.Point(4, 700);
+            this.PanelCre1506.Name = "PanelCre1506";
+            this.PanelCre1506.Size = new System.Drawing.Size(234, 306);
+            this.PanelCre1506.TabIndex = 16;
+            // 
+            // listBoxNCC
+            // 
+            this.listBoxNCC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxNCC.FormattingEnabled = true;
+            this.listBoxNCC.Items.AddRange(new object[] {
+            "Công ty Cổ phần Điện lực Becamex Bình Phước (BBPJSC)"});
+            this.listBoxNCC.Location = new System.Drawing.Point(0, 0);
+            this.listBoxNCC.Name = "listBoxNCC";
+            this.listBoxNCC.Size = new System.Drawing.Size(234, 306);
+            this.listBoxNCC.TabIndex = 4;
+            this.listBoxNCC.Visible = false;
+            // 
+            // listBoxDiaDiem
+            // 
+            this.listBoxDiaDiem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxDiaDiem.FormattingEnabled = true;
+            this.listBoxDiaDiem.Items.AddRange(new object[] {
+            "Phường Chơn Thành, tỉnh Đồng Nai"});
+            this.listBoxDiaDiem.Location = new System.Drawing.Point(0, 0);
+            this.listBoxDiaDiem.Name = "listBoxDiaDiem";
+            this.listBoxDiaDiem.Size = new System.Drawing.Size(234, 306);
+            this.listBoxDiaDiem.TabIndex = 3;
+            this.listBoxDiaDiem.Visible = false;
+            // 
+            // listBoxHangMuc
+            // 
+            this.listBoxHangMuc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxHangMuc.FormattingEnabled = true;
+            this.listBoxHangMuc.Location = new System.Drawing.Point(0, 0);
+            this.listBoxHangMuc.Name = "listBoxHangMuc";
+            this.listBoxHangMuc.Size = new System.Drawing.Size(234, 306);
+            this.listBoxHangMuc.TabIndex = 2;
+            this.listBoxHangMuc.Visible = false;
+            // 
+            // listBoxCongTrinh
+            // 
+            this.listBoxCongTrinh.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxCongTrinh.FormattingEnabled = true;
+            this.listBoxCongTrinh.Items.AddRange(new object[] {
+            "Khu Công nghiệp và Dân cư Becamex - Bình Phước",
+            "Khu Công nghiệp Becamex - Bình Phước",
+            "Khu Dân cư Ấp 4B",
+            "Khu Tái định cư - Dân cư Ấp 1",
+            "Khu Dân cư Ấp 4"});
+            this.listBoxCongTrinh.Location = new System.Drawing.Point(0, 0);
+            this.listBoxCongTrinh.Name = "listBoxCongTrinh";
+            this.listBoxCongTrinh.Size = new System.Drawing.Size(234, 306);
+            this.listBoxCongTrinh.TabIndex = 1;
+            this.listBoxCongTrinh.Visible = false;
+            // 
+            // listBoxDuAn
+            // 
+            this.listBoxDuAn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxDuAn.FormattingEnabled = true;
+            this.listBoxDuAn.Items.AddRange(new object[] {
+            "Khu Công nghiệp và Dân cư Becamex - Bình Phước",
+            "Khu Công nghiệp Becamex - Bình Phước",
+            "Khu Dân cư Ấp 4B",
+            "Khu Tái định cư - Dân cư Ấp 1",
+            "Khu Dân cư Ấp 4"});
+            this.listBoxDuAn.Location = new System.Drawing.Point(0, 0);
+            this.listBoxDuAn.Name = "listBoxDuAn";
+            this.listBoxDuAn.Size = new System.Drawing.Size(234, 306);
+            this.listBoxDuAn.TabIndex = 0;
+            this.listBoxDuAn.Visible = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(1201, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(36, 13);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Số Ttr";
+            // 
+            // TextBox_BTS_SoTTr1506
+            // 
+            this.TextBox_BTS_SoTTr1506.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextBox_BTS_SoTTr1506.Location = new System.Drawing.Point(1243, 5);
+            this.TextBox_BTS_SoTTr1506.Name = "TextBox_BTS_SoTTr1506";
+            this.TextBox_BTS_SoTTr1506.Size = new System.Drawing.Size(46, 20);
+            this.TextBox_BTS_SoTTr1506.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1295, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(32, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Ngày";
+            // 
+            // TextBox_BTS_Ngay
+            // 
+            this.TextBox_BTS_Ngay.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextBox_BTS_Ngay.Location = new System.Drawing.Point(1330, 4);
+            this.TextBox_BTS_Ngay.Name = "TextBox_BTS_Ngay";
+            this.TextBox_BTS_Ngay.Size = new System.Drawing.Size(46, 20);
+            this.TextBox_BTS_Ngay.TabIndex = 11;
             // 
             // TextBox_BTS_Nam
             // 
@@ -135,40 +255,6 @@
             this.ChromiumWebBrowser_Cre1506.Size = new System.Drawing.Size(1904, 1041);
             this.ChromiumWebBrowser_Cre1506.TabIndex = 0;
             // 
-            // TextBox_BTS_Ngay
-            // 
-            this.TextBox_BTS_Ngay.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBox_BTS_Ngay.Location = new System.Drawing.Point(1330, 4);
-            this.TextBox_BTS_Ngay.Name = "TextBox_BTS_Ngay";
-            this.TextBox_BTS_Ngay.Size = new System.Drawing.Size(46, 20);
-            this.TextBox_BTS_Ngay.TabIndex = 11;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1201, 9);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(36, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Số Ttr";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1295, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Ngày";
-            // 
-            // TextBox_BTS_SoTTr1506
-            // 
-            this.TextBox_BTS_SoTTr1506.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBox_BTS_SoTTr1506.Location = new System.Drawing.Point(1243, 5);
-            this.TextBox_BTS_SoTTr1506.Name = "TextBox_BTS_SoTTr1506";
-            this.TextBox_BTS_SoTTr1506.Size = new System.Drawing.Size(46, 20);
-            this.TextBox_BTS_SoTTr1506.TabIndex = 9;
-            // 
             // Cre1506
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -179,6 +265,7 @@
             this.Text = "Cre1506";
             this.Panel_Cre1506.ResumeLayout(false);
             this.Panel_Cre1506.PerformLayout();
+            this.PanelCre1506.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -198,5 +285,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TextBox_BTS_SoTTr1506;
+        private System.Windows.Forms.Panel PanelCre1506;
+        private System.Windows.Forms.ListBox listBoxDuAn;
+        private System.Windows.Forms.ListBox listBoxDiaDiem;
+        private System.Windows.Forms.ListBox listBoxHangMuc;
+        private System.Windows.Forms.ListBox listBoxCongTrinh;
+        private System.Windows.Forms.ListBox listBoxNCC;
     }
 }

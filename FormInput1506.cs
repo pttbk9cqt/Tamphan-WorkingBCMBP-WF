@@ -15,9 +15,9 @@ using Tamphan_WorkingBCMBP_WF.Services;
 
 namespace Tamphan_WorkingBCMBP_WF
 {
-    public partial class Input1506 : Form
+    public partial class FormInput1506 : Form
     {
-        public Input1506()
+        public FormInput1506()
         {
             InitializeComponent();
         }

@@ -30,7 +30,7 @@ namespace Tamphan_WorkingBCMBP_WF
                 maKH = "PB010500" + maKH;
                 textBox_nhập_mã_khách_hàng.Text = maKH;
             }
-            ExcelAccountService service = new ExcelAccountService();
+            ExcelAccountEVNService service = new ExcelAccountEVNService();
             AccountEVN acc = service.GetAccount(maKH);
             if (acc == null)
             {
@@ -60,7 +60,7 @@ namespace Tamphan_WorkingBCMBP_WF
                 maKH = "PB010500" + maKH;
                 textBox_nhập_mã_khách_hàng.Text = maKH;
             }
-            ExcelAccountService service_no_UI = new ExcelAccountService();
+            ExcelAccountEVNService service_no_UI = new ExcelAccountEVNService();
             AccountEVN acc_no_UI = service_no_UI.GetAccount(maKH);
             if (acc_no_UI == null)
             {
@@ -83,7 +83,7 @@ namespace Tamphan_WorkingBCMBP_WF
                 maKH = "PB010500" + maKH;
                 textBox_nhập_mã_khách_hàng.Text = maKH;
             }
-            ExcelAccountService service = new ExcelAccountService();
+            ExcelAccountEVNService service = new ExcelAccountEVNService();
             AccountEVN acc = service.GetAccount(maKH);
             if (acc == null)
             {
@@ -144,7 +144,7 @@ namespace Tamphan_WorkingBCMBP_WF
             string url = "https://eoffice.becamexbinhphuoc.com.vn/workflow/SitePages/NewWorkflow.aspx?mode=1&ListID=589dfff1-f412-41fd-8824-c48a2bf66309";
             string username = "phanthanhtam";
             string password = "Mocungcung@99";
-            Cre1506 frm = new Cre1506(username, password, url);
+            Cre1506 frm = new Cre1506 (username, password, url);
             frm.Show();
         }
 

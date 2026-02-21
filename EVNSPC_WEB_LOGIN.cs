@@ -51,7 +51,7 @@ namespace Tamphan_WorkingBCMBP_WF
             if (_DownloadBtnClicked)
                 return;
 
-            ExcelAccountService service = new ExcelAccountService();
+            ExcelAccountEVNService service = new ExcelAccountEVNService();
             AccountEVN acc = service.GetAccount(_maKH);
 
             if (acc == null)

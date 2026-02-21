@@ -23,7 +23,6 @@ namespace Tamphan_WorkingBCMBP_WF
         public string username_eof;
         public string password_eof;
         public string url_eof;
-        private FieldBindingManager _bindingManager;
         private bool _isLoggedIn = false;
 
         public Cre1506(string username, string password, string url)
@@ -33,30 +32,17 @@ namespace Tamphan_WorkingBCMBP_WF
             username_eof = username;
             password_eof = password;
             url_eof = url;
-            MousePositionHelper.Start(this);  //đây là hàm lấy tọa độ con trỏ chuột
-            //dưới đây là phần khởi tạo của CefSharp
-            //var settings = new CefSettings() { BrowserSubprocessPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "CefSharp.BrowserSubprocess.exe") };
-            ChromiumWebBrowser_Cre1506.FrameLoadEnd += Browser_FrameLoadEnd;
-            ChromiumWebBrowser_Cre1506.IsBrowserInitializedChanged += Browser_IsBrowserInitializedChanged;    // thêm Devtools cho trình duyệt
-            ChromiumWebBrowser_Cre1506.Load(url_eof);
+            MousePositionHelper.Start(this);
+            ChromiumWebBrowserCre1506.FrameLoadEnd += Browser_FrameLoadEnd;
+            ChromiumWebBrowserCre1506.Load(url_eof);
         }
 
-
-        // Mở DevTools khi browser init xong
-        private void Browser_IsBrowserInitializedChanged(object sender, EventArgs e)
-        {
-            if (ChromiumWebBrowser_Cre1506.IsBrowserInitialized)
-            {
-                this.Invoke(new Action(() =>{ChromiumWebBrowser_Cre1506.ShowDevTools();}));
-            }
-        }
         private async void Browser_FrameLoadEnd(object sender, FrameLoadEndEventArgs e)
         {
-            if (!e.Frame.IsMain) 
+            if (!e.Frame.IsMain)
                 return;
 
             var url = e.Url;
-            // Nếu đang ở trang login
             if (!_isLoggedIn && url.Contains("login"))
             {
                 string logininfo = $@"
@@ -72,66 +58,50 @@ namespace Tamphan_WorkingBCMBP_WF
                         passInput.dispatchEvent(new Event('input', {{ bubbles: true }}));
                     }}
                 }})();";
-                ChromiumWebBrowser_Cre1506.ExecuteScriptAsync(logininfo);
-                ChromiumWebBrowser_Cre1506.ExecuteScriptAsync(@"const checkbox = document.querySelector('#kmsiInput'); checkbox && !checkbox.checked && checkbox.click();");
-                ChromiumWebBrowser_Cre1506.ExecuteScriptAsync("document.getElementById('submitButton').click();");
+                ChromiumWebBrowserCre1506.ExecuteScriptAsync(logininfo);
+                ChromiumWebBrowserCre1506.ExecuteScriptAsync(@"const checkbox = document.querySelector('#kmsiInput'); checkbox && !checkbox.checked && checkbox.click();");
+                ChromiumWebBrowserCre1506.ExecuteScriptAsync("document.getElementById('submitButton').click();");
                 return;
             }
 
-            // ================= SAU LOGIN =================
             if (!_isLoggedIn)
             {
                 _isLoggedIn = true;
 
-                var fieldMap = new Dictionary<string, ListBox>
-                    {
-                        { "Dự án", listBoxDuAn },
-                        { "Công trình", listBoxCongTrinh },
-                        { "Hạng mục", listBoxHangMuc }
-                    };
 
-                _bindingManager = new FieldBindingManager( ChromiumWebBrowser_Cre1506, PanelCre1506, fieldMap );
 
-                // ĐĂNG KÝ BRIDGE TRƯỚC
-                ChromiumWebBrowser_Cre1506.JavascriptObjectRepository.ResolveObject += (s, ev) =>
-                { if (ev.ObjectName == "bridge")
-                        {
-                            ev.ObjectRepository.Register("bridge", new FieldBindingManager.JsBridge(_bindingManager), isAsync: true);
-                        }
-                };
-                await _bindingManager.InjectFocusListenerAsync();
             }
         }
 
 
         private async void Btn_Build_Cre1506_Click(object sender, EventArgs e)
         {
-        string TieuDe = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Tiêu đề']"")?.value.trim())()")).Result?.ToString();
-        string DuAn = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Dự án']"")?.value.trim())()")).Result?.ToString();
-        string CongTrinh =(await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Công trình']"")?.value.trim())()")).Result?.ToString();
-        string HangMuc = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Hạng mục']"")?.value.trim())()")).Result?.ToString();
-        string CongTy1 = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Công ty 1']"")?.value.trim())()")).Result?.ToString();
-        string CongTy2 = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Công ty 2']"")?.value.trim())()")).Result?.ToString();
-        string CongTy3 = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Công ty 3']"")?.value.trim())()")).Result?.ToString();
-        string NCC = (await ChromiumWebBrowser_Cre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Nhà cung cấp được chọn']"")?.value.trim())()")).Result?.ToString();
+            string TieuDe = (await ChromiumWebBrowserCre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Tiêu đề']"")?.value.trim())()")).Result?.ToString();
+            string DuAn = (await ChromiumWebBrowserCre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Dự án']"")?.value.trim())()")).Result?.ToString();
+            string CongTrinh = (await ChromiumWebBrowserCre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Công trình']"")?.value.trim())()")).Result?.ToString();
+            string HangMuc = (await ChromiumWebBrowserCre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Hạng mục']"")?.value.trim())()")).Result?.ToString();
+            string CongTy1 = (await ChromiumWebBrowserCre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Công ty 1']"")?.value.trim())()")).Result?.ToString();
+            string CongTy2 = (await ChromiumWebBrowserCre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Công ty 2']"")?.value.trim())()")).Result?.ToString();
+            string CongTy3 = (await ChromiumWebBrowserCre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Công ty 3']"")?.value.trim())()")).Result?.ToString();
+            string NCC = (await ChromiumWebBrowserCre1506.EvaluateScriptAsync(@"(() => document.querySelector(""[name='Nhà cung cấp được chọn']"")?.value.trim())()")).Result?.ToString();
             // ở trên đã chạy ok hết rồi, tới bước lấy lý do chọn nhà cung cấp, bước này tuất code
             ////////////////////////////////////////////////////////////////////////////////////////////////
-            string LyDoChonNCC = ChromiumWebBrowser_Cre1506.EvaluateScriptAsync<string>(@"[document.querySelectorAll(""iframe"")][0][1].contentDocument.body.innerText;").Result;
+            string LyDoChonNCC = ChromiumWebBrowserCre1506.EvaluateScriptAsync<string>(@"[document.querySelectorAll(""iframe"")][0][1].contentDocument.body.innerText;").Result;
 
             MessageBox.Show(LyDoChonNCC);
 
-            var map = new Dictionary<string, string>
-            {
-                ["{{SOTTR}}"] = TextBox_BTS_SoTTr1506.Text.Trim(),
-                ["{{DAY}}"] = TextBox_BTS_Ngay.Text.Trim(),
-                ["{{MONTH}}"] = TextBox_BTS_Thang.Text.Trim(),
-                ["{{YEAR}}"] = TextBox_BTS_Nam.Text.Trim(),
-                ["{{DUAN}}"] = DuAn,
-                ["{{CONGTRINH}}"] = CongTrinh,
-                ["{{HANGMUC}}"] = HangMuc,
-                ["{{DIADIEM}}"] = "Phường Chơn Thành, tỉnh Đồng Nai",
-                ["{{LYDOCHONNCC}}"] = LyDoChonNCC,
-            };
+            //var map = new Dictionary<string, string>
+            //{
+            //    ["{{SOTTR}}"] = TextBox_BTS_SoTTr1506.Text.Trim(),
+            //    ["{{DAY}}"] = TextBox_BTS_Ngay.Text.Trim(),
+            //    ["{{MONTH}}"] = TextBox_BTS_Thang.Text.Trim(),
+            //    ["{{YEAR}}"] = TextBox_BTS_Nam.Text.Trim(),
+            //    ["{{DUAN}}"] = DuAn,
+            //    ["{{CONGTRINH}}"] = CongTrinh,
+            //    ["{{HANGMUC}}"] = HangMuc,
+            //    ["{{DIADIEM}}"] = "Phường Chơn Thành, tỉnh Đồng Nai",
+            //    ["{{LYDOCHONNCC}}"] = LyDoChonNCC,
+            //};
             ///////////////////////////////////////////////////////////////////////////////////////////////////
             // ở dưới là bước build word
             //Directory.CreateDirectory("Output");
@@ -147,4 +117,5 @@ namespace Tamphan_WorkingBCMBP_WF
     }
 
 }
+
 

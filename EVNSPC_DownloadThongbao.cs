@@ -59,7 +59,7 @@ namespace Tamphan_WorkingBCMBP_WF
             if (_DownloadBtnClicked)
                 return;
 
-            ExcelAccountService service = new ExcelAccountService();
+            ExcelAccountEVNService service = new ExcelAccountEVNService();
             AccountEVN acc = service.GetAccount(_maKH);
 
             if (acc == null)
@@ -124,7 +124,7 @@ namespace Tamphan_WorkingBCMBP_WF
         string BuildPdfName(string maKH)
         {
             _maKH = maKH;
-            ExcelAccountService service = new ExcelAccountService();
+            ExcelAccountEVNService service = new ExcelAccountEVNService();
             AccountEVN acc = service.GetAccount(_maKH);
             DateTime.Now.ToString("dd/MM/yyyy");
             return acc.MucDichSuDung + "_" + "Thông báo tiền điện tháng " + kyHoaDon + "_" + _maKH + ".pdf";

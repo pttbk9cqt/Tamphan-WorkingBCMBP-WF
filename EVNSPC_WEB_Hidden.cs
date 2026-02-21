@@ -45,7 +45,7 @@ namespace Tamphan_WorkingBCMBP_WF
         string BuildPdfName_Hidden(string maKH_no_UI)
         {
             _maKH_Hidden = maKH_no_UI;
-            ExcelAccountService service_Hidden = new ExcelAccountService();
+            ExcelAccountEVNService service_Hidden = new ExcelAccountEVNService();
             AccountEVN acc_Hidden = service_Hidden.GetAccount(_maKH_Hidden);
             //MessageBox.Show("Đang lưu file cho mã KH: " + acc.MucDichSuDung);
             return acc_Hidden.MucDichSuDung + "_" + "Thông báo tiền điện tháng " + kyHoaDon_Hidden + "_" +  _maKH_Hidden + ".pdf";
@@ -85,7 +85,7 @@ namespace Tamphan_WorkingBCMBP_WF
                 return;
             if (!e.Url.Contains("cskh.evnspc.vn/TaiKhoan/DangNhap"))
                 return;
-            ExcelAccountService service = new ExcelAccountService();
+            ExcelAccountEVNService service = new ExcelAccountEVNService();
             AccountEVN acc = service.GetAccount(_maKH_Hidden);
 
             if (acc == null)

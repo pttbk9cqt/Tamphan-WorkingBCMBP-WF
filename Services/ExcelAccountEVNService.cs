@@ -4,9 +4,9 @@ using Tamphan_WorkingBCMBP_WF.Models;
 
 namespace Tamphan_WorkingBCMBP_WF.Services
 {
-    internal class ExcelAccountService
+    internal class ExcelAccountEVNService
     {
-        private const string ExcelPath = "AccountEVN-addWF.xlsm";
+        private const string ExcelPath = "Data\\AccountEVN-addWF.xlsm";
 
         public AccountEVN GetAccount(string maKH)
         {

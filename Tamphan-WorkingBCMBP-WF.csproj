@@ -158,24 +158,6 @@
     <Compile Include="EofficeBecamexBinhphuoc.Designer.cs">
       <DependentUpon>EofficeBecamexBinhphuoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="EVNSPC_DownloadThongbao.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EVNSPC_DownloadThongbao.Designer.cs">
-      <DependentUpon>EVNSPC_DownloadThongbao.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EVNSPC_WEB_Hidden.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EVNSPC_WEB_Hidden.Designer.cs">
-      <DependentUpon>EVNSPC_WEB_Hidden.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EVNSPC_WEB_LOGIN.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EVNSPC_WEB_LOGIN.Designer.cs">
-      <DependentUpon>EVNSPC_WEB_LOGIN.cs</DependentUpon>
-    </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,19 +170,14 @@
     <Compile Include="FormInput1506.Designer.cs">
       <DependentUpon>FormInput1506.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountEVN.cs" />
     <Compile Include="Models\ContentData.cs" />
     <Compile Include="Models\DataBTS.cs" />
     <Compile Include="Models\Input1506Data.cs" />
     <Compile Include="Models\NCC.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\BlobPdfDownloadHandler.cs" />
-    <Compile Include="Services\CaptchaHelper.cs" />
     <Compile Include="Services\DevToolsService.cs" />
     <Compile Include="Services\DomAutocompleteService.cs" />
-    <Compile Include="Services\EvnInformationInvoiceService.cs" />
-    <Compile Include="Services\ExcelAccountEVNService.cs" />
     <Compile Include="Services\BuildWordService.cs" />
     <Compile Include="Services\ExcelSuggestionEof.cs" />
     <Compile Include="Services\FieldBindingManager.cs" />
@@ -218,15 +195,6 @@
     <EmbeddedResource Include="EofficeBecamexBinhphuoc.resx">
       <DependentUpon>EofficeBecamexBinhphuoc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EVNSPC_DownloadThongbao.resx">
-      <DependentUpon>EVNSPC_DownloadThongbao.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EVNSPC_WEB_Hidden.resx">
-      <DependentUpon>EVNSPC_WEB_Hidden.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EVNSPC_WEB_LOGIN.resx">
-      <DependentUpon>EVNSPC_WEB_LOGIN.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
@@ -242,9 +210,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Content Include="Data\AccountEVN-addWF.xlsm">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Data\ContentData.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -276,9 +241,6 @@
     <Content Include="Templates\Contract\BM-15-06 TỜ TRÌNH XIN CHỦ TRƯƠNG - Templates.docx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Tessdata\eng.traineddata">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

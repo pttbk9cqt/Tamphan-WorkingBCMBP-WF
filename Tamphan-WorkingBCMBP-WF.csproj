@@ -134,11 +134,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BTS.cs">
+    <Compile Include="frmBTS.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BTS.Designer.cs">
-      <DependentUpon>BTS.cs</DependentUpon>
+    <Compile Include="frmBTS.Designer.cs">
+      <DependentUpon>frmBTS.cs</DependentUpon>
     </Compile>
     <Compile Include="Cre1506.cs">
       <SubType>Form</SubType>
@@ -158,11 +158,11 @@
     <Compile Include="EofficeBecamexBinhphuoc.Designer.cs">
       <DependentUpon>EofficeBecamexBinhphuoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Home.cs">
+    <Compile Include="frmHome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Home.Designer.cs">
-      <DependentUpon>Home.cs</DependentUpon>
+    <Compile Include="frmHome.Designer.cs">
+      <DependentUpon>frmHome.cs</DependentUpon>
     </Compile>
     <Compile Include="FormInput1506.cs">
       <SubType>Form</SubType>
@@ -183,8 +183,8 @@
     <Compile Include="Services\FieldBindingManager.cs" />
     <Compile Include="Services\MousePositionHelper.cs" />
     <Content Include="Hotkey.txt" />
-    <EmbeddedResource Include="BTS.resx">
-      <DependentUpon>BTS.cs</DependentUpon>
+    <EmbeddedResource Include="frmBTS.resx">
+      <DependentUpon>frmBTS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cre1506.resx">
       <DependentUpon>Cre1506.cs</DependentUpon>
@@ -195,8 +195,8 @@
     <EmbeddedResource Include="EofficeBecamexBinhphuoc.resx">
       <DependentUpon>EofficeBecamexBinhphuoc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Home.resx">
-      <DependentUpon>Home.cs</DependentUpon>
+    <EmbeddedResource Include="frmHome.resx">
+      <DependentUpon>frmHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormInput1506.resx">
       <DependentUpon>FormInput1506.cs</DependentUpon>

@@ -2,10 +2,8 @@
 using DocumentFormat.OpenXml.Wordprocessing;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
+using System.Threading;
 
 namespace Tamphan_WorkingBCMBP_WF.Services
 {
@@ -23,18 +21,57 @@ namespace Tamphan_WorkingBCMBP_WF.Services
             if (!File.Exists(templatePath))
                 throw new FileNotFoundException($"Template not found: {templatePath}", templatePath);
 
-            File.Copy(templatePath, outputPath, true);
+            // đổi tên nếu file đã tồn tại (KHÔNG xóa nữa)
+            outputPath = GetUniqueFilePath(outputPath);
 
-            using (var doc = WordprocessingDocument.Open(outputPath, true))
+            File.Copy(templatePath, outputPath);
+
+            // retry mở file để tránh bị lock (Downloads)
+            for (int i = 0; i < 5; i++)
             {
-                ReplaceInPart(doc.MainDocumentPart, data);
+                try
+                {
+                    using (var doc = WordprocessingDocument.Open(outputPath, true))
+                    {
+                        ReplaceInPart(doc.MainDocumentPart, data);
 
-                foreach (var header in doc.MainDocumentPart.HeaderParts)
-                    ReplaceInPart(header, data);
+                        foreach (var header in doc.MainDocumentPart.HeaderParts)
+                            ReplaceInPart(header, data);
 
-                foreach (var footer in doc.MainDocumentPart.FooterParts)
-                    ReplaceInPart(footer, data);
+                        foreach (var footer in doc.MainDocumentPart.FooterParts)
+                            ReplaceInPart(footer, data);
+                    }
+                    break;
+                }
+                catch (IOException)
+                {
+                    if (i == 4) throw;
+                    Thread.Sleep(200);
+                }
             }
+        }
+
+        // hàm tự tạo tên file không trùng
+        private static string GetUniqueFilePath(string path)
+        {
+            if (!File.Exists(path))
+                return path;
+
+            string dir = Path.GetDirectoryName(path);
+            string name = Path.GetFileNameWithoutExtension(path);
+            string ext = Path.GetExtension(path);
+
+            int i = 1;
+            string newPath;
+
+            do
+            {
+                newPath = Path.Combine(dir, $"{name} ({i}){ext}");
+                i++;
+            }
+            while (File.Exists(newPath));
+
+            return newPath;
         }
 
         private static void ReplaceInPart(OpenXmlPart part, Dictionary<string, string> data)

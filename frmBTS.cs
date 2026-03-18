@@ -13,19 +13,21 @@ using Tamphan_WorkingBCMBP_WF.Services;
 
 namespace Tamphan_WorkingBCMBP_WF
 {
-    public partial class BTS : Form
+    public partial class frmBTS : Form
     {
-        public BTS()
+        public frmBTS()
         {
             InitializeComponent();
             DataGridView_BTS_ToaDo.KeyDown += DataGridView_BTS_ToaDo_KeyDown;
+            TextBox_BTS_HangMuc.TextChanged += TextBox_BTS_HangMuc_TextChanged;
         }
         
         private void BTS_Load(object sender, EventArgs e)
         {
             TextBox_BTS_Nam.Text = "2026";
-            TextBox_BTS_HangMuc.Text = "Vị trí đặt trạm phát sóng di động - Trạm BTS ";
+            TextBox_BTS_HangMuc.Text = "Vị trí đặt trạm phát sóng di động BPCxxx (Trạm BTS xxx)";
             ComboBox_BTS_DiaDiem.Text = "Phường Chơn Thành, tỉnh Đồng Nai";
+            //TextBox_BTS_MaTram.Text = "Trạm phát sóng di động BPCxxx (Trạm BTS xxx)";
             //cấu hình DataGridview
             DataGridView_BTS_ToaDo.ColumnCount = 2;
             DataGridView_BTS_ToaDo.RowCount = 4;
@@ -36,6 +38,36 @@ namespace Tamphan_WorkingBCMBP_WF
             DataGridView_BTS_ToaDo.ReadOnly = false;
             DataGridView_BTS_ToaDo.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
             DataGridView_BTS_ToaDo.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+        }
+        private void TextBox_BTS_HangMuc_TextChanged(object sender, EventArgs e)
+        {
+            string input = TextBox_BTS_HangMuc.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                TextBox_BTS_MaTram.Text = "";
+                return;
+            }
+
+            string prefix = "Vị trí đặt ";
+
+            if (input.StartsWith(prefix, StringComparison.OrdinalIgnoreCase))
+            {
+                string result = input.Substring(prefix.Length);
+
+                // viết hoa chữ cái đầu
+                if (!string.IsNullOrEmpty(result))
+                {
+                    result = char.ToUpper(result[0]) + result.Substring(1);
+                }
+
+                TextBox_BTS_MaTram.Text = result;
+            }
+            else
+            {
+                // nếu không đúng format thì giữ nguyên
+                TextBox_BTS_MaTram.Text = input;
+            }
         }
         private void DataGridView_BTS_ToaDo_KeyDown(object sender, KeyEventArgs e)
         {
@@ -115,16 +147,22 @@ namespace Tamphan_WorkingBCMBP_WF
                 ["{{L41}}"] = TextBox_BTS_L41.Text.Trim(),
                 ["{{L42}}"] = TextBox_BTS_L42.Text.Trim(),
             };
-            
-            Directory.CreateDirectory("Output");
+
+            string downloadFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),"Downloads");
+
+            // đảm bảo thư mục tồn tại (thực ra Downloads luôn có, nhưng cứ cho chắc)
+            Directory.CreateDirectory(downloadFolder);
+
             string suffix = TextBox_BTS_NameAddFileBuild.Text.Trim();
-            string outputPath1506 = $@"Output\BM-15-06 Tờ trình xin chủ trương - {suffix}.docx";
-            BuildWordService.Build(@"Templates\BTS\BM-15-06 TỜ TRÌNH XIN CHỦ TRƯƠNG BTS - Templates.docx",outputPath1506, map);
-            //BuildWordService.Build(@"Templates\BTS\BM-15-06 TỜ TRÌNH XIN CHỦ TRƯƠNG BTS - Templates.docx", @"Output\BM-15-06 TỜ TRÌNH XIN CHỦ TRƯƠNG BTS - Build.docx", map);
-            string outputPath1507 = $@"Output\BM-15-07 Tờ trình ký hợp đồng - {suffix}.docx";
+            string outputPath1506 = Path.Combine(downloadFolder,string.IsNullOrWhiteSpace(suffix)? "BM-15-06 TỜ TRÌNH XIN CHỦ TRƯƠNG.docx": $"BM-15-06 TỜ TRÌNH XIN CHỦ TRƯƠNG - {suffix}.docx");
+            BuildWordService.Build(@"Templates\BTS\BM-15-06 TỜ TRÌNH XIN CHỦ TRƯƠNG BTS - Templates.docx", outputPath1506, map);
+
+            string outputPath1507 = Path.Combine(downloadFolder, string.IsNullOrWhiteSpace(suffix)? "BM-15-07 TỜ TRÌNH KÝ HỢP ĐỒNG.docx": $"BM-15-07 TỜ TRÌNH KÝ HỢP ĐỒNG - {suffix}.docx");
             BuildWordService.Build(@"Templates\BTS\BM-15-07 TỜ TRÌNH KÝ HỢP ĐỒNG BTS - Templates.docx", outputPath1507, map);
-            string outputPathThoaThuan = $@"Output\BIÊN BẢN THỎA THUẬN - {suffix}.docx";
+
+            string outputPathThoaThuan = Path.Combine( downloadFolder,string.IsNullOrWhiteSpace(suffix)? "BIÊN BẢN THỎA THUẬN.docx": $"BIÊN BẢN THỎA THUẬN - {suffix}.docx");
             BuildWordService.Build(@"Templates\BTS\BIÊN BẢN THỎA THUẬN BTS - Templates.docx", outputPathThoaThuan, map);
+
             MessageBox.Show("Done!");
         }
     }

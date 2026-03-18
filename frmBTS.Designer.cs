@@ -1,6 +1,6 @@
 ﻿namespace Tamphan_WorkingBCMBP_WF
 {
-    partial class BTS
+    partial class frmBTS
     {
         /// <summary>
         /// Required designer variable.

@@ -157,8 +157,8 @@ namespace Tamphan_WorkingBCMBP_WF
             string outputPath1506 = Path.Combine(downloadFolder,string.IsNullOrWhiteSpace(suffix)? "BM-15-06 TỜ TRÌNH XIN CHỦ TRƯƠNG.docx": $"BM-15-06 TỜ TRÌNH XIN CHỦ TRƯƠNG - {suffix}.docx");
             BuildWordService.Build(@"Templates\BTS\BM-15-06 TỜ TRÌNH XIN CHỦ TRƯƠNG BTS - Templates.docx", outputPath1506, map);
 
-            string outputPath1507 = Path.Combine(downloadFolder, string.IsNullOrWhiteSpace(suffix)? "BM-15-07 TỜ TRÌNH KÝ HỢP ĐỒNG.docx": $"BM-15-07 TỜ TRÌNH KÝ HỢP ĐỒNG - {suffix}.docx");
-            BuildWordService.Build(@"Templates\BTS\BM-15-07 TỜ TRÌNH KÝ HỢP ĐỒNG BTS - Templates.docx", outputPath1507, map);
+            string outputPath1507 = Path.Combine(downloadFolder, string.IsNullOrWhiteSpace(suffix)? "BM-15-07 TỜ TRÌNH KÝ BIÊN BẢN THỎA THUẬN.docx" : $"BM-15-07 TỜ TRÌNH KÝ BIÊN BẢN THỎA THUẬN - {suffix}.docx");
+            BuildWordService.Build(@"Templates\BTS\BM-15-07 TỜ TRÌNH KÝ BIÊN BẢN THỎA THUẬN BTS - Templates.docx", outputPath1507, map);
 
             string outputPathThoaThuan = Path.Combine( downloadFolder,string.IsNullOrWhiteSpace(suffix)? "BIÊN BẢN THỎA THUẬN.docx": $"BIÊN BẢN THỎA THUẬN - {suffix}.docx");
             BuildWordService.Build(@"Templates\BTS\BIÊN BẢN THỎA THUẬN BTS - Templates.docx", outputPathThoaThuan, map);

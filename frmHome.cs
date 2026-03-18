@@ -8,9 +8,9 @@ using Tamphan_WorkingBCMBP_WF.Services;
 
 namespace Tamphan_WorkingBCMBP_WF
 {
-    public partial class Home : Form
+    public partial class frmHome : Form
     {
-        public Home()
+        public frmHome()
         {
             InitializeComponent();
         }
@@ -53,7 +53,7 @@ namespace Tamphan_WorkingBCMBP_WF
 
         private void Btn_BTS_Click(object sender, EventArgs e)
         {
-            BTS frm = new BTS();
+            frmBTS frm = new frmBTS();
             frm.Show();
         }
         private void Btn_new_1506_Click(object sender, EventArgs e)

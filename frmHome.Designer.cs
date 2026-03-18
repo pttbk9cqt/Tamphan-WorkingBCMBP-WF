@@ -2,7 +2,7 @@
 
 namespace Tamphan_WorkingBCMBP_WF
 {
-    partial class Home
+    partial class frmHome
     {
         /// <summary>
         /// Required designer variable.

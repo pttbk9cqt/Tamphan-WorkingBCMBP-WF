@@ -58,11 +58,16 @@ namespace Tamphan_WorkingBCMBP_WF
         }
         private void Btn_new_1506_Click(object sender, EventArgs e)
         {
-            string url = "https://eoffice.becamexbinhphuoc.com.vn/workflow/SitePages/NewWorkflow.aspx?mode=1&ListID=589dfff1-f412-41fd-8824-c48a2bf66309";
-            string username = "phanthanhtam";
-            string password = "Mocungcung@99";
-            Cre1506 frm = new Cre1506 (username, password, url);
-            frm.Show();
+            //string url = "https://eoffice.becamexbinhphuoc.com.vn/workflow/SitePages/NewWorkflow.aspx?mode=1&ListID=589dfff1-f412-41fd-8824-c48a2bf66309";
+            //string username = "phanthanhtam";
+            //string password = "Mocungcung@99";
+            //Cre1506 frm = new Cre1506 (username, password, url);
+            //frm.Show();
+            if (Clipboard.ContainsText())
+            {
+                string text = Clipboard.GetText();
+                MessageBox.Show(text);
+            }
         }
 
 

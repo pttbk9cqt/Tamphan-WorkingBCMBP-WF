@@ -30,12 +30,6 @@ namespace Tamphan_WorkingBCMBP_WF
             url_eof = url;
             try
             {
-                if (Cef.IsInitialized != true)
-                {
-                    CefSettings settings = new CefSettings();
-                    settings.BrowserSubprocessPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "CefSharp.BrowserSubprocess.exe");
-                    Cef.Initialize(settings);
-                }
                 chromiumWebBrowser_Eoffice.FrameLoadEnd += Browser_FrameLoadEnd;
                 chromiumWebBrowser_Eoffice.Load(url);
             }

@@ -1,6 +1,6 @@
 ﻿namespace Tamphan_WorkingBCMBP_WF
 {
-    partial class FormInput1506
+    partial class frmCre1506
     {
         /// <summary>
         /// Required designer variable.

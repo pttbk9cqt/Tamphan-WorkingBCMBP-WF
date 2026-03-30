@@ -140,18 +140,6 @@
     <Compile Include="frmBTS.Designer.cs">
       <DependentUpon>frmBTS.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cre1506.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cre1506.Designer.cs">
-      <DependentUpon>Cre1506.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Cre1506Panel.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cre1506Panel.Designer.cs">
-      <DependentUpon>Cre1506Panel.cs</DependentUpon>
-    </Compile>
     <Compile Include="EofficeBecamexBinhphuoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,11 +152,11 @@
     <Compile Include="frmHome.Designer.cs">
       <DependentUpon>frmHome.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormInput1506.cs">
+    <Compile Include="frmCre1506.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormInput1506.Designer.cs">
-      <DependentUpon>FormInput1506.cs</DependentUpon>
+    <Compile Include="frmCre1506.Designer.cs">
+      <DependentUpon>frmCre1506.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\ContentData.cs" />
     <Compile Include="Models\DataBTS.cs" />
@@ -181,16 +169,9 @@
     <Compile Include="Services\BuildWordService.cs" />
     <Compile Include="Services\ExcelSuggestionEof.cs" />
     <Compile Include="Services\FieldBindingManager.cs" />
-    <Compile Include="Services\MousePositionHelper.cs" />
     <Content Include="Hotkey.txt" />
     <EmbeddedResource Include="frmBTS.resx">
       <DependentUpon>frmBTS.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Cre1506.resx">
-      <DependentUpon>Cre1506.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Cre1506Panel.resx">
-      <DependentUpon>Cre1506Panel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EofficeBecamexBinhphuoc.resx">
       <DependentUpon>EofficeBecamexBinhphuoc.cs</DependentUpon>
@@ -198,8 +179,8 @@
     <EmbeddedResource Include="frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormInput1506.resx">
-      <DependentUpon>FormInput1506.cs</DependentUpon>
+    <EmbeddedResource Include="frmCre1506.resx">
+      <DependentUpon>frmCre1506.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

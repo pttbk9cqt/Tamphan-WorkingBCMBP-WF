@@ -43,6 +43,7 @@ namespace Tamphan_WorkingBCMBP_WF
             this.Btn_new_1506 = new System.Windows.Forms.Button();
             this.btn_process_waiting = new System.Windows.Forms.Button();
             this.btn_calendar = new System.Windows.Forms.Button();
+            this.btnRequestLeave = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -123,6 +124,7 @@ namespace Tamphan_WorkingBCMBP_WF
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnRequestLeave);
             this.panel2.Controls.Add(this.Btn_BTS);
             this.panel2.Controls.Add(this.Btn_new_1506);
             this.panel2.Controls.Add(this.btn_process_waiting);
@@ -173,7 +175,17 @@ namespace Tamphan_WorkingBCMBP_WF
             this.btn_calendar.UseVisualStyleBackColor = true;
             this.btn_calendar.Click += new System.EventHandler(this.Btn_calendar_Click);
             // 
-            // Home
+            // btnRequestLeave
+            // 
+            this.btnRequestLeave.Location = new System.Drawing.Point(142, 78);
+            this.btnRequestLeave.Name = "btnRequestLeave";
+            this.btnRequestLeave.Size = new System.Drawing.Size(136, 23);
+            this.btnRequestLeave.TabIndex = 16;
+            this.btnRequestLeave.Text = "Request Leave";
+            this.btnRequestLeave.UseVisualStyleBackColor = true;
+            this.btnRequestLeave.Click += new System.EventHandler(this.btnRequestLeave_Click);
+            // 
+            // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -181,7 +193,7 @@ namespace Tamphan_WorkingBCMBP_WF
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label3);
-            this.Name = "Home";
+            this.Name = "frmHome";
             this.Text = "Tamphan";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -206,6 +218,7 @@ namespace Tamphan_WorkingBCMBP_WF
         private System.Windows.Forms.Button btn_process_waiting;
         private System.Windows.Forms.Button Btn_new_1506;
         private System.Windows.Forms.Button Btn_BTS;
+        private System.Windows.Forms.Button btnRequestLeave;
     }
 }
 

@@ -23,46 +23,49 @@ namespace Tamphan_WorkingBCMBP_WF
             string url = "https://login.becamexbinhphuoc.com.vn/adfs/ls?wa=wsignin1.0&wtrealm=urn%3aeofficebecamexbinhphuoc&wctx=https%3a%2f%2feoffice.becamexbinhphuoc.com.vn";
             string username = textBox_Eof_Username.Text.Trim();
             string password = textBox_Eof_Password.Text.Trim();
-            EofficeBecamexBinhphuoc frmEoffice = new EofficeBecamexBinhphuoc(username, password, url);
-            frmEoffice.Show();
+            frmMain frmlogin = new frmMain(username, password, url);
+            frmlogin.Show();
         }
 
         private void Btn_login_Tamphan_Click(object sender, EventArgs e)
         {
-            string url = "https://login.becamexbinhphuoc.com.vn/adfs/ls?wa=wsignin1.0&wtrealm=urn%3aeofficebecamexbinhphuoc&wctx=https%3a%2f%2feoffice.becamexbinhphuoc.com.vn";
-            EofficeBecamexBinhphuoc frmEoffice = new EofficeBecamexBinhphuoc(username, password, url);
-            frmEoffice.Show();
+            string urllogin = "https://login.becamexbinhphuoc.com.vn/adfs/ls?wa=wsignin1.0&wtrealm=urn%3aeofficebecamexbinhphuoc&wctx=https%3a%2f%2feoffice.becamexbinhphuoc.com.vn";
+            frmMain frmlogintamphan = new frmMain(username, password, urllogin);
+            frmlogintamphan.Show();
         }
 
         private void Btn_calendar_Click(object sender, EventArgs e)
         {
-            string url = "https://eofficeao.becamexbinhphuoc.com.vn/lich?dep=427";
-            EofficeBecamexBinhphuoc frmEoffice = new EofficeBecamexBinhphuoc(username, password, url);
-            frmEoffice.Show();
+            string urlcalendar = "https://eofficeao.becamexbinhphuoc.com.vn/lich?dep=427";
+            frmMain frmcalendar = new frmMain(username, password, urlcalendar);
+            frmcalendar.Show();
         }
 
         private void Btn_process_waiting_Click(object sender, EventArgs e)
         {
-            string url = "https://eoffice.becamexbinhphuoc.com.vn/workflow/SitePages/Workflow-follow.aspx";
-            EofficeBecamexBinhphuoc frmEoffice = new EofficeBecamexBinhphuoc(username, password, url);
-            frmEoffice.Show();
+            string urlwaitingprogress = "https://eoffice.becamexbinhphuoc.com.vn/workflow/SitePages/Workflow-follow.aspx";
+            frmMain frmwaitingprogress = new frmMain(username, password, urlwaitingprogress);
+            frmwaitingprogress.Show();
         }
 
         private void Btn_BTS_Click(object sender, EventArgs e)
         {
-            frmBTS frm = new frmBTS();
-            frm.Show();
+            frmBTS frmbts = new frmBTS();
+            frmbts.Show();
         }
         private void Btn_new_1506_Click(object sender, EventArgs e)
         {
-            string url = "https://eoffice.becamexbinhphuoc.com.vn/workflow/SitePages/NewWorkflow.aspx?mode=1&ListID=589dfff1-f412-41fd-8824-c48a2bf66309";
-            frmCre1506 frm = new frmCre1506(username, password, url);
-            frm.Show();
-            //if (Clipboard.ContainsText())
-            //{
-            //    string text = Clipboard.GetText();
-            //    MessageBox.Show(text);
-            //}
+            //string url1506 = "https://eoffice.becamexbinhphuoc.com.vn/workflow/SitePages/NewWorkflow.aspx?mode=1&ListID=589dfff1-f412-41fd-8824-c48a2bf66309";
+            frmCre1506 frm1506 = new frmCre1506();
+            frm1506.Show();
+        }
+
+        private void btnRequestLeave_Click(object sender, EventArgs e)
+        {
+            string urlRequestLeave = "https://eoffice.becamexbinhphuoc.com.vn/workflow/SitePages/NewWorkflow.aspx?mode=1&ListID=57f94304-f426-447e-8c76-df5345588a9f";
+            frmRequestLeave frmRequestLeave = new frmRequestLeave(username, password, urlRequestLeave);
+            frmRequestLeave.Show();
         }
     }
+        
 }

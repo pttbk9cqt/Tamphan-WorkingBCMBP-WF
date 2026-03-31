@@ -29,38 +29,38 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.TextBox_BTS_SoTTr1506 = new System.Windows.Forms.TextBox();
-            this.TextBox_BTS_Ngay = new System.Windows.Forms.TextBox();
+            this.txtSoTTr = new System.Windows.Forms.TextBox();
+            this.txtDay = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.TextBox_BTS_Thang = new System.Windows.Forms.TextBox();
+            this.txtMonth = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.TextBox_BTS_Nam = new System.Windows.Forms.TextBox();
+            this.txtYear = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.TextBox_BTS_HangMuc = new System.Windows.Forms.TextBox();
+            this.cboHangMuc = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.ComboBox_BTS_DiaDiem = new System.Windows.Forms.ComboBox();
-            this.ComboBox_BTS_CongTrinh = new System.Windows.Forms.ComboBox();
-            this.ComboBox_BTS_DuAn = new System.Windows.Forms.ComboBox();
+            this.cboDiaDiem = new System.Windows.Forms.ComboBox();
+            this.cboCongTrinh = new System.Windows.Forms.ComboBox();
+            this.cboDuAn = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.TextBox_BTS_L11 = new System.Windows.Forms.TextBox();
-            this.TextBox_BTS_L12 = new System.Windows.Forms.TextBox();
-            this.TextBox_BTS_L22 = new System.Windows.Forms.TextBox();
-            this.TextBox_BTS_L21 = new System.Windows.Forms.TextBox();
-            this.TextBox_BTS_L32 = new System.Windows.Forms.TextBox();
-            this.TextBox_BTS_L31 = new System.Windows.Forms.TextBox();
-            this.TextBox_BTS_L42 = new System.Windows.Forms.TextBox();
-            this.TextBox_BTS_L41 = new System.Windows.Forms.TextBox();
-            this.TextBox_BTS_MaTram = new System.Windows.Forms.TextBox();
+            this.txtL11 = new System.Windows.Forms.TextBox();
+            this.txtL12 = new System.Windows.Forms.TextBox();
+            this.txtL22 = new System.Windows.Forms.TextBox();
+            this.txtL21 = new System.Windows.Forms.TextBox();
+            this.txtL32 = new System.Windows.Forms.TextBox();
+            this.txtL31 = new System.Windows.Forms.TextBox();
+            this.txtL42 = new System.Windows.Forms.TextBox();
+            this.txtL41 = new System.Windows.Forms.TextBox();
+            this.txtMaTram = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.Btn_BTS_Build = new System.Windows.Forms.Button();
-            this.DataGridView_BTS_ToaDo = new System.Windows.Forms.DataGridView();
-            this.Btn_BTS_ExportGridToToado = new System.Windows.Forms.Button();
-            this.TextBox_BTS_NameAddFileBuild = new System.Windows.Forms.TextBox();
+            this.btnBuild = new System.Windows.Forms.Button();
+            this.dgvToaDo = new System.Windows.Forms.DataGridView();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.txtNameAddFileBuild = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridView_BTS_ToaDo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvToaDo)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -72,21 +72,21 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Số tờ trình chủ trương";
             // 
-            // TextBox_BTS_SoTTr1506
+            // txtSoTTr
             // 
-            this.TextBox_BTS_SoTTr1506.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBox_BTS_SoTTr1506.Location = new System.Drawing.Point(140, 22);
-            this.TextBox_BTS_SoTTr1506.Name = "TextBox_BTS_SoTTr1506";
-            this.TextBox_BTS_SoTTr1506.Size = new System.Drawing.Size(100, 20);
-            this.TextBox_BTS_SoTTr1506.TabIndex = 1;
+            this.txtSoTTr.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSoTTr.Location = new System.Drawing.Point(140, 22);
+            this.txtSoTTr.Name = "txtSoTTr";
+            this.txtSoTTr.Size = new System.Drawing.Size(100, 20);
+            this.txtSoTTr.TabIndex = 1;
             // 
-            // TextBox_BTS_Ngay
+            // txtDay
             // 
-            this.TextBox_BTS_Ngay.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBox_BTS_Ngay.Location = new System.Drawing.Point(325, 19);
-            this.TextBox_BTS_Ngay.Name = "TextBox_BTS_Ngay";
-            this.TextBox_BTS_Ngay.Size = new System.Drawing.Size(46, 20);
-            this.TextBox_BTS_Ngay.TabIndex = 3;
+            this.txtDay.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDay.Location = new System.Drawing.Point(325, 19);
+            this.txtDay.Name = "txtDay";
+            this.txtDay.Size = new System.Drawing.Size(46, 20);
+            this.txtDay.TabIndex = 3;
             // 
             // label2
             // 
@@ -97,13 +97,13 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Ngày";
             // 
-            // TextBox_BTS_Thang
+            // txtMonth
             // 
-            this.TextBox_BTS_Thang.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBox_BTS_Thang.Location = new System.Drawing.Point(428, 18);
-            this.TextBox_BTS_Thang.Name = "TextBox_BTS_Thang";
-            this.TextBox_BTS_Thang.Size = new System.Drawing.Size(46, 20);
-            this.TextBox_BTS_Thang.TabIndex = 5;
+            this.txtMonth.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMonth.Location = new System.Drawing.Point(428, 18);
+            this.txtMonth.Name = "txtMonth";
+            this.txtMonth.Size = new System.Drawing.Size(46, 20);
+            this.txtMonth.TabIndex = 5;
             // 
             // label3
             // 
@@ -114,13 +114,13 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Tháng";
             // 
-            // TextBox_BTS_Nam
+            // txtYear
             // 
-            this.TextBox_BTS_Nam.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBox_BTS_Nam.Location = new System.Drawing.Point(535, 17);
-            this.TextBox_BTS_Nam.Name = "TextBox_BTS_Nam";
-            this.TextBox_BTS_Nam.Size = new System.Drawing.Size(46, 20);
-            this.TextBox_BTS_Nam.TabIndex = 7;
+            this.txtYear.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtYear.Location = new System.Drawing.Point(535, 17);
+            this.txtYear.Name = "txtYear";
+            this.txtYear.Size = new System.Drawing.Size(46, 20);
+            this.txtYear.TabIndex = 7;
             // 
             // label4
             // 
@@ -131,13 +131,13 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Năm";
             // 
-            // TextBox_BTS_HangMuc
+            // cboHangMuc
             // 
-            this.TextBox_BTS_HangMuc.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBox_BTS_HangMuc.Location = new System.Drawing.Point(98, 157);
-            this.TextBox_BTS_HangMuc.Name = "TextBox_BTS_HangMuc";
-            this.TextBox_BTS_HangMuc.Size = new System.Drawing.Size(672, 20);
-            this.TextBox_BTS_HangMuc.TabIndex = 16;
+            this.cboHangMuc.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboHangMuc.Location = new System.Drawing.Point(98, 157);
+            this.cboHangMuc.Name = "cboHangMuc";
+            this.cboHangMuc.Size = new System.Drawing.Size(672, 20);
+            this.cboHangMuc.TabIndex = 16;
             // 
             // label5
             // 
@@ -148,22 +148,22 @@
             this.label5.TabIndex = 13;
             this.label5.Text = "Địa điểm";
             // 
-            // ComboBox_BTS_DiaDiem
+            // cboDiaDiem
             // 
-            this.ComboBox_BTS_DiaDiem.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ComboBox_BTS_DiaDiem.FormattingEnabled = true;
-            this.ComboBox_BTS_DiaDiem.Items.AddRange(new object[] {
+            this.cboDiaDiem.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboDiaDiem.FormattingEnabled = true;
+            this.cboDiaDiem.Items.AddRange(new object[] {
             "Phường Chơn Thành, Tỉnh Đồng Nai"});
-            this.ComboBox_BTS_DiaDiem.Location = new System.Drawing.Point(96, 203);
-            this.ComboBox_BTS_DiaDiem.Name = "ComboBox_BTS_DiaDiem";
-            this.ComboBox_BTS_DiaDiem.Size = new System.Drawing.Size(674, 22);
-            this.ComboBox_BTS_DiaDiem.TabIndex = 14;
+            this.cboDiaDiem.Location = new System.Drawing.Point(96, 203);
+            this.cboDiaDiem.Name = "cboDiaDiem";
+            this.cboDiaDiem.Size = new System.Drawing.Size(674, 22);
+            this.cboDiaDiem.TabIndex = 14;
             // 
-            // ComboBox_BTS_CongTrinh
+            // cboCongTrinh
             // 
-            this.ComboBox_BTS_CongTrinh.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ComboBox_BTS_CongTrinh.FormattingEnabled = true;
-            this.ComboBox_BTS_CongTrinh.Items.AddRange(new object[] {
+            this.cboCongTrinh.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboCongTrinh.FormattingEnabled = true;
+            this.cboCongTrinh.Items.AddRange(new object[] {
             "Khu Công nghiệp và Dân cư Becamex - Bình Phước",
             "Khu Công nghiệp - Khu B",
             "Khu Công nghiệp phía Bắc khu A (phía Bắc suối Cái)",
@@ -171,25 +171,25 @@
             "Khu Dân cư Ấp 4B",
             "Khu Tái định cư - Dân cư Ấp 1",
             "Khu Dân cư Ấp 4"});
-            this.ComboBox_BTS_CongTrinh.Location = new System.Drawing.Point(98, 117);
-            this.ComboBox_BTS_CongTrinh.Name = "ComboBox_BTS_CongTrinh";
-            this.ComboBox_BTS_CongTrinh.Size = new System.Drawing.Size(672, 22);
-            this.ComboBox_BTS_CongTrinh.TabIndex = 12;
+            this.cboCongTrinh.Location = new System.Drawing.Point(98, 117);
+            this.cboCongTrinh.Name = "cboCongTrinh";
+            this.cboCongTrinh.Size = new System.Drawing.Size(672, 22);
+            this.cboCongTrinh.TabIndex = 12;
             // 
-            // ComboBox_BTS_DuAn
+            // cboDuAn
             // 
-            this.ComboBox_BTS_DuAn.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ComboBox_BTS_DuAn.FormattingEnabled = true;
-            this.ComboBox_BTS_DuAn.Items.AddRange(new object[] {
+            this.cboDuAn.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboDuAn.FormattingEnabled = true;
+            this.cboDuAn.Items.AddRange(new object[] {
             "Khu Công nghiệp và Dân cư Becamex - Bình Phước",
             "Khu Công nghiệp Becamex - Bình Phước",
             "Khu Dân cư Ấp 4B",
             "Khu Tái định cư - Dân cư Ấp 1",
             "Khu Dân cư Ấp 4"});
-            this.ComboBox_BTS_DuAn.Location = new System.Drawing.Point(98, 75);
-            this.ComboBox_BTS_DuAn.Name = "ComboBox_BTS_DuAn";
-            this.ComboBox_BTS_DuAn.Size = new System.Drawing.Size(672, 22);
-            this.ComboBox_BTS_DuAn.TabIndex = 11;
+            this.cboDuAn.Location = new System.Drawing.Point(98, 75);
+            this.cboDuAn.Name = "cboDuAn";
+            this.cboDuAn.Size = new System.Drawing.Size(672, 22);
+            this.cboDuAn.TabIndex = 11;
             // 
             // label6
             // 
@@ -227,77 +227,77 @@
             this.label9.TabIndex = 17;
             this.label9.Text = "Tọa độ";
             // 
-            // TextBox_BTS_L11
+            // txtL11
             // 
-            this.TextBox_BTS_L11.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBox_BTS_L11.Location = new System.Drawing.Point(100, 299);
-            this.TextBox_BTS_L11.Name = "TextBox_BTS_L11";
-            this.TextBox_BTS_L11.Size = new System.Drawing.Size(196, 29);
-            this.TextBox_BTS_L11.TabIndex = 18;
+            this.txtL11.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtL11.Location = new System.Drawing.Point(100, 299);
+            this.txtL11.Name = "txtL11";
+            this.txtL11.Size = new System.Drawing.Size(196, 29);
+            this.txtL11.TabIndex = 18;
             // 
-            // TextBox_BTS_L12
+            // txtL12
             // 
-            this.TextBox_BTS_L12.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBox_BTS_L12.Location = new System.Drawing.Point(313, 299);
-            this.TextBox_BTS_L12.Name = "TextBox_BTS_L12";
-            this.TextBox_BTS_L12.Size = new System.Drawing.Size(181, 29);
-            this.TextBox_BTS_L12.TabIndex = 19;
+            this.txtL12.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtL12.Location = new System.Drawing.Point(313, 299);
+            this.txtL12.Name = "txtL12";
+            this.txtL12.Size = new System.Drawing.Size(181, 29);
+            this.txtL12.TabIndex = 19;
             // 
-            // TextBox_BTS_L22
+            // txtL22
             // 
-            this.TextBox_BTS_L22.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBox_BTS_L22.Location = new System.Drawing.Point(313, 345);
-            this.TextBox_BTS_L22.Name = "TextBox_BTS_L22";
-            this.TextBox_BTS_L22.Size = new System.Drawing.Size(181, 29);
-            this.TextBox_BTS_L22.TabIndex = 21;
+            this.txtL22.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtL22.Location = new System.Drawing.Point(313, 345);
+            this.txtL22.Name = "txtL22";
+            this.txtL22.Size = new System.Drawing.Size(181, 29);
+            this.txtL22.TabIndex = 21;
             // 
-            // TextBox_BTS_L21
+            // txtL21
             // 
-            this.TextBox_BTS_L21.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBox_BTS_L21.Location = new System.Drawing.Point(100, 345);
-            this.TextBox_BTS_L21.Name = "TextBox_BTS_L21";
-            this.TextBox_BTS_L21.Size = new System.Drawing.Size(196, 29);
-            this.TextBox_BTS_L21.TabIndex = 20;
+            this.txtL21.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtL21.Location = new System.Drawing.Point(100, 345);
+            this.txtL21.Name = "txtL21";
+            this.txtL21.Size = new System.Drawing.Size(196, 29);
+            this.txtL21.TabIndex = 20;
             // 
-            // TextBox_BTS_L32
+            // txtL32
             // 
-            this.TextBox_BTS_L32.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBox_BTS_L32.Location = new System.Drawing.Point(313, 395);
-            this.TextBox_BTS_L32.Name = "TextBox_BTS_L32";
-            this.TextBox_BTS_L32.Size = new System.Drawing.Size(181, 29);
-            this.TextBox_BTS_L32.TabIndex = 23;
+            this.txtL32.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtL32.Location = new System.Drawing.Point(313, 395);
+            this.txtL32.Name = "txtL32";
+            this.txtL32.Size = new System.Drawing.Size(181, 29);
+            this.txtL32.TabIndex = 23;
             // 
-            // TextBox_BTS_L31
+            // txtL31
             // 
-            this.TextBox_BTS_L31.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBox_BTS_L31.Location = new System.Drawing.Point(100, 395);
-            this.TextBox_BTS_L31.Name = "TextBox_BTS_L31";
-            this.TextBox_BTS_L31.Size = new System.Drawing.Size(196, 29);
-            this.TextBox_BTS_L31.TabIndex = 22;
+            this.txtL31.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtL31.Location = new System.Drawing.Point(100, 395);
+            this.txtL31.Name = "txtL31";
+            this.txtL31.Size = new System.Drawing.Size(196, 29);
+            this.txtL31.TabIndex = 22;
             // 
-            // TextBox_BTS_L42
+            // txtL42
             // 
-            this.TextBox_BTS_L42.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBox_BTS_L42.Location = new System.Drawing.Point(313, 444);
-            this.TextBox_BTS_L42.Name = "TextBox_BTS_L42";
-            this.TextBox_BTS_L42.Size = new System.Drawing.Size(181, 29);
-            this.TextBox_BTS_L42.TabIndex = 25;
+            this.txtL42.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtL42.Location = new System.Drawing.Point(313, 444);
+            this.txtL42.Name = "txtL42";
+            this.txtL42.Size = new System.Drawing.Size(181, 29);
+            this.txtL42.TabIndex = 25;
             // 
-            // TextBox_BTS_L41
+            // txtL41
             // 
-            this.TextBox_BTS_L41.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBox_BTS_L41.Location = new System.Drawing.Point(100, 444);
-            this.TextBox_BTS_L41.Name = "TextBox_BTS_L41";
-            this.TextBox_BTS_L41.Size = new System.Drawing.Size(196, 29);
-            this.TextBox_BTS_L41.TabIndex = 24;
+            this.txtL41.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtL41.Location = new System.Drawing.Point(100, 444);
+            this.txtL41.Name = "txtL41";
+            this.txtL41.Size = new System.Drawing.Size(196, 29);
+            this.txtL41.TabIndex = 24;
             // 
-            // TextBox_BTS_MaTram
+            // txtMaTram
             // 
-            this.TextBox_BTS_MaTram.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBox_BTS_MaTram.Location = new System.Drawing.Point(160, 253);
-            this.TextBox_BTS_MaTram.Name = "TextBox_BTS_MaTram";
-            this.TextBox_BTS_MaTram.Size = new System.Drawing.Size(310, 20);
-            this.TextBox_BTS_MaTram.TabIndex = 27;
+            this.txtMaTram.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaTram.Location = new System.Drawing.Point(160, 253);
+            this.txtMaTram.Name = "txtMaTram";
+            this.txtMaTram.Size = new System.Drawing.Size(310, 20);
+            this.txtMaTram.TabIndex = 27;
             // 
             // label10
             // 
@@ -308,43 +308,43 @@
             this.label10.TabIndex = 26;
             this.label10.Text = "Mã trạm";
             // 
-            // Btn_BTS_Build
+            // btnBuild
             // 
-            this.Btn_BTS_Build.Location = new System.Drawing.Point(306, 509);
-            this.Btn_BTS_Build.Name = "Btn_BTS_Build";
-            this.Btn_BTS_Build.Size = new System.Drawing.Size(75, 23);
-            this.Btn_BTS_Build.TabIndex = 28;
-            this.Btn_BTS_Build.Text = "Build";
-            this.Btn_BTS_Build.UseVisualStyleBackColor = true;
-            this.Btn_BTS_Build.Click += new System.EventHandler(this.Btn_BTS_Build_Click);
+            this.btnBuild.Location = new System.Drawing.Point(306, 509);
+            this.btnBuild.Name = "btnBuild";
+            this.btnBuild.Size = new System.Drawing.Size(75, 23);
+            this.btnBuild.TabIndex = 28;
+            this.btnBuild.Text = "Build";
+            this.btnBuild.UseVisualStyleBackColor = true;
+            this.btnBuild.Click += new System.EventHandler(this.Btn_BTS_Build_Click);
             // 
-            // DataGridView_BTS_ToaDo
+            // dgvToaDo
             // 
-            this.DataGridView_BTS_ToaDo.AllowUserToAddRows = false;
-            this.DataGridView_BTS_ToaDo.AllowUserToDeleteRows = false;
-            this.DataGridView_BTS_ToaDo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridView_BTS_ToaDo.Location = new System.Drawing.Point(515, 299);
-            this.DataGridView_BTS_ToaDo.Name = "DataGridView_BTS_ToaDo";
-            this.DataGridView_BTS_ToaDo.Size = new System.Drawing.Size(271, 111);
-            this.DataGridView_BTS_ToaDo.TabIndex = 29;
+            this.dgvToaDo.AllowUserToAddRows = false;
+            this.dgvToaDo.AllowUserToDeleteRows = false;
+            this.dgvToaDo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvToaDo.Location = new System.Drawing.Point(515, 299);
+            this.dgvToaDo.Name = "dgvToaDo";
+            this.dgvToaDo.Size = new System.Drawing.Size(271, 111);
+            this.dgvToaDo.TabIndex = 29;
             // 
-            // Btn_BTS_ExportGridToToado
+            // btnExport
             // 
-            this.Btn_BTS_ExportGridToToado.Location = new System.Drawing.Point(601, 426);
-            this.Btn_BTS_ExportGridToToado.Name = "Btn_BTS_ExportGridToToado";
-            this.Btn_BTS_ExportGridToToado.Size = new System.Drawing.Size(75, 23);
-            this.Btn_BTS_ExportGridToToado.TabIndex = 30;
-            this.Btn_BTS_ExportGridToToado.Text = "Export";
-            this.Btn_BTS_ExportGridToToado.UseVisualStyleBackColor = true;
-            this.Btn_BTS_ExportGridToToado.Click += new System.EventHandler(this.Btn_BTS_ExportGridToToado_Click);
+            this.btnExport.Location = new System.Drawing.Point(601, 426);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(75, 23);
+            this.btnExport.TabIndex = 30;
+            this.btnExport.Text = "Export";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.Btn_BTS_ExportGridToToado_Click);
             // 
-            // TextBox_BTS_NameAddFileBuild
+            // txtNameAddFileBuild
             // 
-            this.TextBox_BTS_NameAddFileBuild.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBox_BTS_NameAddFileBuild.Location = new System.Drawing.Point(557, 253);
-            this.TextBox_BTS_NameAddFileBuild.Name = "TextBox_BTS_NameAddFileBuild";
-            this.TextBox_BTS_NameAddFileBuild.Size = new System.Drawing.Size(185, 20);
-            this.TextBox_BTS_NameAddFileBuild.TabIndex = 32;
+            this.txtNameAddFileBuild.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNameAddFileBuild.Location = new System.Drawing.Point(557, 253);
+            this.txtNameAddFileBuild.Name = "txtNameAddFileBuild";
+            this.txtNameAddFileBuild.Size = new System.Drawing.Size(185, 20);
+            this.txtNameAddFileBuild.TabIndex = 32;
             // 
             // label11
             // 
@@ -355,47 +355,47 @@
             this.label11.TabIndex = 31;
             this.label11.Text = "Đuôi tên";
             // 
-            // BTS
+            // frmBTS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(803, 565);
-            this.Controls.Add(this.TextBox_BTS_NameAddFileBuild);
+            this.Controls.Add(this.txtNameAddFileBuild);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.Btn_BTS_ExportGridToToado);
-            this.Controls.Add(this.DataGridView_BTS_ToaDo);
-            this.Controls.Add(this.Btn_BTS_Build);
-            this.Controls.Add(this.TextBox_BTS_MaTram);
+            this.Controls.Add(this.btnExport);
+            this.Controls.Add(this.dgvToaDo);
+            this.Controls.Add(this.btnBuild);
+            this.Controls.Add(this.txtMaTram);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.TextBox_BTS_L42);
-            this.Controls.Add(this.TextBox_BTS_L41);
-            this.Controls.Add(this.TextBox_BTS_L32);
-            this.Controls.Add(this.TextBox_BTS_L31);
-            this.Controls.Add(this.TextBox_BTS_L22);
-            this.Controls.Add(this.TextBox_BTS_L21);
-            this.Controls.Add(this.TextBox_BTS_L12);
-            this.Controls.Add(this.TextBox_BTS_L11);
+            this.Controls.Add(this.txtL42);
+            this.Controls.Add(this.txtL41);
+            this.Controls.Add(this.txtL32);
+            this.Controls.Add(this.txtL31);
+            this.Controls.Add(this.txtL22);
+            this.Controls.Add(this.txtL21);
+            this.Controls.Add(this.txtL12);
+            this.Controls.Add(this.txtL11);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.TextBox_BTS_HangMuc);
+            this.Controls.Add(this.cboHangMuc);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.ComboBox_BTS_DiaDiem);
-            this.Controls.Add(this.ComboBox_BTS_CongTrinh);
-            this.Controls.Add(this.ComboBox_BTS_DuAn);
+            this.Controls.Add(this.cboDiaDiem);
+            this.Controls.Add(this.cboCongTrinh);
+            this.Controls.Add(this.cboDuAn);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.TextBox_BTS_Nam);
+            this.Controls.Add(this.txtYear);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.TextBox_BTS_Thang);
+            this.Controls.Add(this.txtMonth);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.TextBox_BTS_Ngay);
+            this.Controls.Add(this.txtDay);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.TextBox_BTS_SoTTr1506);
+            this.Controls.Add(this.txtSoTTr);
             this.Controls.Add(this.label1);
-            this.Name = "BTS";
+            this.Name = "frmBTS";
             this.Text = "BTS";
             this.Load += new System.EventHandler(this.BTS_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridView_BTS_ToaDo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvToaDo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,36 +404,36 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox TextBox_BTS_SoTTr1506;
-        private System.Windows.Forms.TextBox TextBox_BTS_Ngay;
+        private System.Windows.Forms.TextBox txtSoTTr;
+        private System.Windows.Forms.TextBox txtDay;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox TextBox_BTS_Thang;
+        private System.Windows.Forms.TextBox txtMonth;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox TextBox_BTS_Nam;
+        private System.Windows.Forms.TextBox txtYear;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox TextBox_BTS_HangMuc;
+        private System.Windows.Forms.TextBox cboHangMuc;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox ComboBox_BTS_DiaDiem;
-        private System.Windows.Forms.ComboBox ComboBox_BTS_CongTrinh;
-        private System.Windows.Forms.ComboBox ComboBox_BTS_DuAn;
+        private System.Windows.Forms.ComboBox cboDiaDiem;
+        private System.Windows.Forms.ComboBox cboCongTrinh;
+        private System.Windows.Forms.ComboBox cboDuAn;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox TextBox_BTS_L11;
-        private System.Windows.Forms.TextBox TextBox_BTS_L12;
-        private System.Windows.Forms.TextBox TextBox_BTS_L22;
-        private System.Windows.Forms.TextBox TextBox_BTS_L21;
-        private System.Windows.Forms.TextBox TextBox_BTS_L32;
-        private System.Windows.Forms.TextBox TextBox_BTS_L31;
-        private System.Windows.Forms.TextBox TextBox_BTS_L42;
-        private System.Windows.Forms.TextBox TextBox_BTS_L41;
-        private System.Windows.Forms.TextBox TextBox_BTS_MaTram;
+        private System.Windows.Forms.TextBox txtL11;
+        private System.Windows.Forms.TextBox txtL12;
+        private System.Windows.Forms.TextBox txtL22;
+        private System.Windows.Forms.TextBox txtL21;
+        private System.Windows.Forms.TextBox txtL32;
+        private System.Windows.Forms.TextBox txtL31;
+        private System.Windows.Forms.TextBox txtL42;
+        private System.Windows.Forms.TextBox txtL41;
+        private System.Windows.Forms.TextBox txtMaTram;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button Btn_BTS_Build;
-        private System.Windows.Forms.DataGridView DataGridView_BTS_ToaDo;
-        private System.Windows.Forms.Button Btn_BTS_ExportGridToToado;
-        private System.Windows.Forms.TextBox TextBox_BTS_NameAddFileBuild;
+        private System.Windows.Forms.Button btnBuild;
+        private System.Windows.Forms.DataGridView dgvToaDo;
+        private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.TextBox txtNameAddFileBuild;
         private System.Windows.Forms.Label label11;
     }
 }

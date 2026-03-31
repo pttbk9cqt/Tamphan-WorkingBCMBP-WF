@@ -140,11 +140,11 @@
     <Compile Include="frmBTS.Designer.cs">
       <DependentUpon>frmBTS.cs</DependentUpon>
     </Compile>
-    <Compile Include="EofficeBecamexBinhphuoc.cs">
+    <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EofficeBecamexBinhphuoc.Designer.cs">
-      <DependentUpon>EofficeBecamexBinhphuoc.cs</DependentUpon>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="frmHome.cs">
       <SubType>Form</SubType>
@@ -157,6 +157,12 @@
     </Compile>
     <Compile Include="frmCre1506.Designer.cs">
       <DependentUpon>frmCre1506.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRequestLeave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRequestLeave.Designer.cs">
+      <DependentUpon>frmRequestLeave.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\ContentData.cs" />
     <Compile Include="Models\DataBTS.cs" />
@@ -173,14 +179,17 @@
     <EmbeddedResource Include="frmBTS.resx">
       <DependentUpon>frmBTS.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EofficeBecamexBinhphuoc.resx">
-      <DependentUpon>EofficeBecamexBinhphuoc.cs</DependentUpon>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCre1506.resx">
       <DependentUpon>frmCre1506.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRequestLeave.resx">
+      <DependentUpon>frmRequestLeave.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -220,6 +229,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Templates\BTS\BM-15-07 TỜ TRÌNH KÝ BIÊN BẢN THỎA THUẬN BTS - Templates.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\BTS\BM-62-12 BIÊN BẢN BÀN GIAO MẶT BẰNG BTS - Templates.docx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

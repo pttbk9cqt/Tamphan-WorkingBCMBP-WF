@@ -457,7 +457,7 @@
             this.Btn_Build.TabIndex = 58;
             this.Btn_Build.Text = "Build";
             this.Btn_Build.UseVisualStyleBackColor = true;
-            this.Btn_Build.Click += new System.EventHandler(this.Btn_Build_Click);
+            //this.Btn_Build.Click += new System.EventHandler(this.Btn_Build_Click);
             // 
             // TextBox_Nam
             // 

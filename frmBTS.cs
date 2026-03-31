@@ -18,34 +18,33 @@ namespace Tamphan_WorkingBCMBP_WF
         public frmBTS()
         {
             InitializeComponent();
-            DataGridView_BTS_ToaDo.KeyDown += DataGridView_BTS_ToaDo_KeyDown;
-            TextBox_BTS_HangMuc.TextChanged += TextBox_BTS_HangMuc_TextChanged;
+            dgvToaDo.KeyDown += DataGridView_BTS_ToaDo_KeyDown;
+            cboHangMuc.TextChanged += TextBox_BTS_HangMuc_TextChanged;
         }
         
         private void BTS_Load(object sender, EventArgs e)
         {
-            TextBox_BTS_Nam.Text = "2026";
-            TextBox_BTS_HangMuc.Text = "Vị trí đặt trạm phát sóng di động BPCxxx (Trạm BTS xxx)";
-            ComboBox_BTS_DiaDiem.Text = "Phường Chơn Thành, tỉnh Đồng Nai";
-            //TextBox_BTS_MaTram.Text = "Trạm phát sóng di động BPCxxx (Trạm BTS xxx)";
+            txtYear.Text = "2026";
+            cboHangMuc.Text = "Vị trí đặt trạm phát sóng di động BPCxxx (Trạm BTS xxx)";
+            cboDiaDiem.Text = "Phường Chơn Thành, tỉnh Đồng Nai";
             //cấu hình DataGridview
-            DataGridView_BTS_ToaDo.ColumnCount = 2;
-            DataGridView_BTS_ToaDo.RowCount = 4;
-            DataGridView_BTS_ToaDo.Columns[0].HeaderText = "Tọa độ E";
-            DataGridView_BTS_ToaDo.Columns[1].HeaderText = "Tọa độ N";
-            DataGridView_BTS_ToaDo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DataGridView_BTS_ToaDo.AllowUserToAddRows = true;
-            DataGridView_BTS_ToaDo.ReadOnly = false;
-            DataGridView_BTS_ToaDo.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
-            DataGridView_BTS_ToaDo.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            dgvToaDo.ColumnCount = 2;
+            dgvToaDo.RowCount = 4;
+            dgvToaDo.Columns[0].HeaderText = "Tọa độ E";
+            dgvToaDo.Columns[1].HeaderText = "Tọa độ N";
+            dgvToaDo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvToaDo.AllowUserToAddRows = true;
+            dgvToaDo.ReadOnly = false;
+            dgvToaDo.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
+            dgvToaDo.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
         }
         private void TextBox_BTS_HangMuc_TextChanged(object sender, EventArgs e)
         {
-            string input = TextBox_BTS_HangMuc.Text.Trim();
+            string input = cboHangMuc.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(input))
             {
-                TextBox_BTS_MaTram.Text = "";
+                txtMaTram.Text = "";
                 return;
             }
 
@@ -61,19 +60,19 @@ namespace Tamphan_WorkingBCMBP_WF
                     result = char.ToUpper(result[0]) + result.Substring(1);
                 }
 
-                TextBox_BTS_MaTram.Text = result;
+                txtMaTram.Text = result;
             }
             else
             {
                 // nếu không đúng format thì giữ nguyên
-                TextBox_BTS_MaTram.Text = input;
+                txtMaTram.Text = input;
             }
         }
         private void DataGridView_BTS_ToaDo_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.V)
             {
-                PasteExcelToGrid(DataGridView_BTS_ToaDo);
+                PasteExcelToGrid(dgvToaDo);
                 e.SuppressKeyPress = true; // chặn Ctrl+V mặc định
             }
         }
@@ -83,10 +82,7 @@ namespace Tamphan_WorkingBCMBP_WF
             string text = Clipboard.GetText();
             if (string.IsNullOrWhiteSpace(text)) return;
 
-            string[] rows = text.Split(
-                new[] { "\r\n" },
-                StringSplitOptions.RemoveEmptyEntries
-            );
+            string[] rows = text.Split( new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
 
             for (int i = 0; i < rows.Length && i < dgv.RowCount; i++)
             {
@@ -102,50 +98,37 @@ namespace Tamphan_WorkingBCMBP_WF
 
         private void Btn_BTS_ExportGridToToado_Click(object sender, EventArgs e)
         {
-            // 1. Kiểm tra 8 TextBox có trống hết không
-            bool allEmpty =
-                string.IsNullOrWhiteSpace(TextBox_BTS_L11.Text) &&
-                string.IsNullOrWhiteSpace(TextBox_BTS_L12.Text) &&
-                string.IsNullOrWhiteSpace(TextBox_BTS_L21.Text) &&
-                string.IsNullOrWhiteSpace(TextBox_BTS_L22.Text) &&
-                string.IsNullOrWhiteSpace(TextBox_BTS_L31.Text) &&
-                string.IsNullOrWhiteSpace(TextBox_BTS_L32.Text) &&
-                string.IsNullOrWhiteSpace(TextBox_BTS_L41.Text) &&
-                string.IsNullOrWhiteSpace(TextBox_BTS_L42.Text);
-            if (!allEmpty)
-                return; // có ít nhất 1 ô đã có dữ liệu → không làm gì
-            // 2. Lấy dữ liệu từ DataGridView (4x2)
-            TextBox_BTS_L11.Text = DataGridView_BTS_ToaDo.Rows[0].Cells[0].Value?.ToString() ?? "";
-            TextBox_BTS_L12.Text = DataGridView_BTS_ToaDo.Rows[0].Cells[1].Value?.ToString() ?? "";
-            TextBox_BTS_L21.Text = DataGridView_BTS_ToaDo.Rows[1].Cells[0].Value?.ToString() ?? "";
-            TextBox_BTS_L22.Text = DataGridView_BTS_ToaDo.Rows[1].Cells[1].Value?.ToString() ?? "";
-            TextBox_BTS_L31.Text = DataGridView_BTS_ToaDo.Rows[2].Cells[0].Value?.ToString() ?? "";
-            TextBox_BTS_L32.Text = DataGridView_BTS_ToaDo.Rows[2].Cells[1].Value?.ToString() ?? "";
-            TextBox_BTS_L41.Text = DataGridView_BTS_ToaDo.Rows[3].Cells[0].Value?.ToString() ?? "";
-            TextBox_BTS_L42.Text = DataGridView_BTS_ToaDo.Rows[3].Cells[1].Value?.ToString() ?? "";
+            txtL11.Text = dgvToaDo.Rows[0].Cells[0].Value?.ToString() ?? "";
+            txtL12.Text = dgvToaDo.Rows[0].Cells[1].Value?.ToString() ?? "";
+            txtL21.Text = dgvToaDo.Rows[1].Cells[0].Value?.ToString() ?? "";
+            txtL22.Text = dgvToaDo.Rows[1].Cells[1].Value?.ToString() ?? "";
+            txtL31.Text = dgvToaDo.Rows[2].Cells[0].Value?.ToString() ?? "";
+            txtL32.Text = dgvToaDo.Rows[2].Cells[1].Value?.ToString() ?? "";
+            txtL41.Text = dgvToaDo.Rows[3].Cells[0].Value?.ToString() ?? "";
+            txtL42.Text = dgvToaDo.Rows[3].Cells[1].Value?.ToString() ?? "";
         }
 
         private void Btn_BTS_Build_Click(object sender, EventArgs e)
         {
             var map = new Dictionary<string, string>
             {
-                ["{{SOTTR}}"] = TextBox_BTS_SoTTr1506.Text.Trim(),
-                ["{{DAY}}"] = TextBox_BTS_Ngay.Text.Trim(),
-                ["{{MONTH}}"] = TextBox_BTS_Thang.Text.Trim(),
-                ["{{YEAR}}"] = TextBox_BTS_Nam.Text.Trim(),
-                ["{{DUAN}}"] = ComboBox_BTS_DuAn.Text.Trim(),
-                ["{{CONGTRINH}}"] = ComboBox_BTS_CongTrinh.Text.Trim(),
-                ["{{HANGMUC}}"] = TextBox_BTS_HangMuc.Text.Trim(),
-                ["{{DIADIEM}}"] = ComboBox_BTS_DiaDiem.Text.Trim(),
-                ["{{MATRAM}}"] = TextBox_BTS_MaTram.Text.Trim(),
-                ["{{L11}}"] = TextBox_BTS_L11.Text.Trim(),
-                ["{{L12}}"] = TextBox_BTS_L12.Text.Trim(),
-                ["{{L21}}"] = TextBox_BTS_L21.Text.Trim(),
-                ["{{L22}}"] = TextBox_BTS_L22.Text.Trim(),
-                ["{{L31}}"] = TextBox_BTS_L31.Text.Trim(),
-                ["{{L32}}"] = TextBox_BTS_L32.Text.Trim(),
-                ["{{L41}}"] = TextBox_BTS_L41.Text.Trim(),
-                ["{{L42}}"] = TextBox_BTS_L42.Text.Trim(),
+                ["{{SOTTR}}"] = txtSoTTr.Text.Trim(),
+                ["{{DAY}}"] = txtDay.Text.Trim(),
+                ["{{MONTH}}"] = txtMonth.Text.Trim(),
+                ["{{YEAR}}"] = txtYear.Text.Trim(),
+                ["{{DUAN}}"] = cboDuAn.Text.Trim(),
+                ["{{CONGTRINH}}"] = cboCongTrinh.Text.Trim(),
+                ["{{HANGMUC}}"] = cboHangMuc.Text.Trim(),
+                ["{{DIADIEM}}"] = cboDiaDiem.Text.Trim(),
+                ["{{MATRAM}}"] = txtMaTram.Text.Trim(),
+                ["{{L11}}"] = txtL11.Text.Trim(),
+                ["{{L12}}"] = txtL12.Text.Trim(),
+                ["{{L21}}"] = txtL21.Text.Trim(),
+                ["{{L22}}"] = txtL22.Text.Trim(),
+                ["{{L31}}"] = txtL31.Text.Trim(),
+                ["{{L32}}"] = txtL32.Text.Trim(),
+                ["{{L41}}"] = txtL41.Text.Trim(),
+                ["{{L42}}"] = txtL42.Text.Trim(),
             };
 
             string downloadFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),"Downloads");
@@ -153,7 +136,7 @@ namespace Tamphan_WorkingBCMBP_WF
             // đảm bảo thư mục tồn tại (thực ra Downloads luôn có, nhưng cứ cho chắc)
             Directory.CreateDirectory(downloadFolder);
 
-            string suffix = TextBox_BTS_NameAddFileBuild.Text.Trim();
+            string suffix = txtNameAddFileBuild.Text.Trim();
             string outputPath1506 = Path.Combine(downloadFolder,string.IsNullOrWhiteSpace(suffix)? "BM-15-06 TỜ TRÌNH XIN CHỦ TRƯƠNG.docx": $"BM-15-06 TỜ TRÌNH XIN CHỦ TRƯƠNG - {suffix}.docx");
             BuildWordService.Build(@"Templates\BTS\BM-15-06 TỜ TRÌNH XIN CHỦ TRƯƠNG BTS - Templates.docx", outputPath1506, map);
 
@@ -162,6 +145,9 @@ namespace Tamphan_WorkingBCMBP_WF
 
             string outputPathThoaThuan = Path.Combine( downloadFolder,string.IsNullOrWhiteSpace(suffix)? "BIÊN BẢN THỎA THUẬN.docx": $"BIÊN BẢN THỎA THUẬN - {suffix}.docx");
             BuildWordService.Build(@"Templates\BTS\BIÊN BẢN THỎA THUẬN BTS - Templates.docx", outputPathThoaThuan, map);
+
+            string outputPathBienbangiaomatbang = Path.Combine(downloadFolder, string.IsNullOrWhiteSpace(suffix) ? "BM-62-12 BIÊN BẢN BÀN GIAO MẶT BẰNG BTS.docx" : $"BM-62-12 BIÊN BẢN BÀN GIAO MẶT BẰNG BTS - {suffix}.docx");
+            BuildWordService.Build(@"Templates\BTS\BM-62-12 BIÊN BẢN BÀN GIAO MẶT BẰNG BTS - Templates.docx", outputPathBienbangiaomatbang, map);
 
             MessageBox.Show("Done!");
         }

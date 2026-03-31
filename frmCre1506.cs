@@ -50,7 +50,7 @@ namespace Tamphan_WorkingBCMBP_WF
             }
         }
 
-        private void Btn_Build_Click(object sender, EventArgs e)
+        private async Task Btn_Build_Click(object sender, EventArgs e)
         {
             var map = new Dictionary<string, string>
             {

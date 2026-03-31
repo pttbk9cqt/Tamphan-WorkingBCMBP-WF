@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tamphan_WorkingBCMBP_WF.Services;
+
 
 namespace Tamphan_WorkingBCMBP_WF
 {
@@ -86,28 +88,56 @@ namespace Tamphan_WorkingBCMBP_WF
             await chromiumrequestleave.EvaluateScriptAsync(@"document.querySelector('[name=""Tiêu đề""]').value = '[P.SXKD] - PHAN THÀNH TÂM; NV P.SXKD; XIN NGHỈ PHÉP 01 NGÀY ĐỂ GIẢI QUYẾT CÔNG VIỆC CÁ NHÂN';");
             await Task.Delay(500);
             //await chromiumrequestleave.EvaluateScriptAsync(@"document.querySelector('[name=""Kính gửi:""]').value = 'Nội dung mới';");
-            //await chromiumrequestleave.EvaluateScriptAsync(@"
-            //                                                (function () {
-            //                                                    const el = document.querySelector('[name=""Kính gửi:""]');
-            //                                                    if (!el) return;
-
-            //                                                    el.value = `- Tổng Giám đốc
-            //                                                - Phòng Tổ chức Hành chính;
-            //                                                - Phòng Sản xuất Kinh doanh (Quản lý trực tiếp).`;
-
-            //                                                    el.dispatchEvent(new Event('input', { bubbles: true }));
-            //                                                    el.dispatchEvent(new Event('change', { bubbles: true }));
-            //                                                })();
-            //                                                ");
-
             await chromiumrequestleave.EvaluateScriptAsync(@"
                                                             var el = document.querySelector('[name=""Kính gửi:""]');
-                                                            if (el) {
+                                                            if (el)
+                                                            {
                                                                 el.value = '- Tổng Giám đốc\n- Phòng Tổ chức Hành chính;\n- Phòng Sản xuất Kinh doanh (Quản lý trực tiếp).';
                                                                 el.dispatchEvent(new Event('input', { bubbles: true }));
                                                                 el.dispatchEvent(new Event('change', { bubbles: true }));
                                                             }
                                                             ");
+            await Task.Delay(500);
+            await chromiumrequestleave.EvaluateScriptAsync(@"document.querySelector('[name=""Tôi tên là:""]').value = 'Phan Thành Tâm';");
+            await Task.Delay(500);
+            await chromiumrequestleave.EvaluateScriptAsync(@"document.querySelector('[name=""Mã nhân viên:""]').value = '822006';");
+            await Task.Delay(500);
+            await chromiumrequestleave.EvaluateScriptAsync(@"document.querySelector('[name=""Chức vụ:""]').value = 'Nhân viên';");
+            await Task.Delay(500);
+            await chromiumrequestleave.EvaluateScriptAsync(@"document.querySelector('[name=""Lý do xin nghỉ:""]').value = 'Em xin phép nghỉ để xử lý công việc cá nhân';");
+            await Task.Delay(500);
+            //await chromiumrequestleave.EvaluateScriptAsync(@"document.querySelector('[name=""Số ngày nghỉ:""]').value = '1';");
+            await chromiumrequestleave.EvaluateScriptAsync(@"
+                                                            var el = document.querySelector('[name=""Số ngày nghỉ:""]');
+                                                            var widget = $(el).data('kendoNumericTextBox');
+
+                                                            if (widget) 
+                                                            {
+                                                                widget.value(1);
+                                                                widget.trigger('change');
+                                                            }
+                                                            ");
+            await Task.Delay(500);
+            await chromiumrequestleave.EvaluateScriptAsync(@"document.querySelector('[name=""từ ngày""]').value = '{today}'  ;");
+
+            await chromiumrequestleave.EvaluateScriptAsync(@"document.querySelector('[name=""đến hết ngày""]').value = '{today}'  ;");
+            var today = DateTime.Now.ToString("MM/dd/yyyy");
+
+            await chromiumrequestleave.EvaluateScriptAsync($@"
+            var el = document.querySelector('[name=""đến hết ngày""]');
+            if (el) {{
+                el.value = '{today}';
+                el.dispatchEvent(new Event('input', {{ bubbles: true }}));
+                el.dispatchEvent(new Event('change', {{ bubbles: true }}));
+            }}
+            ");
+
+            await Task.Delay(500);
+            await chromiumrequestleave.EvaluateScriptAsync(@"document.querySelector('[name=""Số ngày phép năm đã nghỉ:""]').value = '3';");
+            await Task.Delay(500);
+            await chromiumrequestleave.EvaluateScriptAsync(@"document.querySelector('[name=""Số ngày phép năm còn lại:""]').value = '10';");
+            await Task.Delay(500);
+            
         }
     }
 }

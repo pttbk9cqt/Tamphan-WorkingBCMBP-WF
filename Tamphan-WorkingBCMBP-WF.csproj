@@ -175,6 +175,7 @@
     <Compile Include="Services\BuildWordService.cs" />
     <Compile Include="Services\ExcelSuggestionEof.cs" />
     <Compile Include="Services\FieldBindingManager.cs" />
+    <Compile Include="Services\InputToBrowser.cs" />
     <Content Include="Hotkey.txt" />
     <EmbeddedResource Include="frmBTS.resx">
       <DependentUpon>frmBTS.cs</DependentUpon>

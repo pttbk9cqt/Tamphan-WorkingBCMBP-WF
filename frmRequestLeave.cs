@@ -19,14 +19,16 @@ namespace Tamphan_WorkingBCMBP_WF
         public string username;
         public string password;
         public string url;
+        public string songaydanghiphep;
         //////////////////////////////////////////////
-        public frmRequestLeave(string usernamehome, string passwordhome, string urlhome)
+        public frmRequestLeave(string usernamehome, string passwordhome, string urlhome, string songaydanghiphephome)
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
             username = usernamehome;
             password = passwordhome;
             url = urlhome;
+            songaydanghiphep = songaydanghiphephome;
             InitBrowser();
         }
         //////////////////////////////////////////////
@@ -87,7 +89,7 @@ namespace Tamphan_WorkingBCMBP_WF
             // dùng bắt vào name
             await chromiumrequestleave.EvaluateScriptAsync(@"document.querySelector('[name=""Tiêu đề""]').value = '[P.SXKD] - PHAN THÀNH TÂM; NV P.SXKD; XIN NGHỈ PHÉP 01 NGÀY ĐỂ GIẢI QUYẾT CÔNG VIỆC CÁ NHÂN';");
             await Task.Delay(500);
-            //await chromiumrequestleave.EvaluateScriptAsync(@"document.querySelector('[name=""Kính gửi:""]').value = 'Nội dung mới';");
+
             await chromiumrequestleave.EvaluateScriptAsync(@"
                                                             var el = document.querySelector('[name=""Kính gửi:""]');
                                                             if (el)
@@ -104,9 +106,18 @@ namespace Tamphan_WorkingBCMBP_WF
             await Task.Delay(500);
             await chromiumrequestleave.EvaluateScriptAsync(@"document.querySelector('[name=""Chức vụ:""]').value = 'Nhân viên';");
             await Task.Delay(500);
-            await chromiumrequestleave.EvaluateScriptAsync(@"document.querySelector('[name=""Lý do xin nghỉ:""]').value = 'Em xin phép nghỉ để xử lý công việc cá nhân';");
+
+            await chromiumrequestleave.EvaluateScriptAsync(@"
+                                                            (function() {
+                                                                var iframe = document.querySelector('iframe.k-content');
+                                                                if (!iframe) return;
+
+                                                                var doc = iframe.contentDocument || iframe.contentWindow.document;
+                                                                doc.body.innerHTML = 'Em xin phép nghỉ để xử lý công việc cá nhân';
+                                                            })();
+                                                            ");
             await Task.Delay(500);
-            //await chromiumrequestleave.EvaluateScriptAsync(@"document.querySelector('[name=""Số ngày nghỉ:""]').value = '1';");
+
             await chromiumrequestleave.EvaluateScriptAsync(@"
                                                             var el = document.querySelector('[name=""Số ngày nghỉ:""]');
                                                             var widget = $(el).data('kendoNumericTextBox');
@@ -118,24 +129,73 @@ namespace Tamphan_WorkingBCMBP_WF
                                                             }
                                                             ");
             await Task.Delay(500);
-            await chromiumrequestleave.EvaluateScriptAsync(@"document.querySelector('[name=""từ ngày""]').value = '{today}'  ;");
 
-            await chromiumrequestleave.EvaluateScriptAsync(@"document.querySelector('[name=""đến hết ngày""]').value = '{today}'  ;");
             var today = DateTime.Now.ToString("MM/dd/yyyy");
 
             await chromiumrequestleave.EvaluateScriptAsync($@"
-            var el = document.querySelector('[name=""đến hết ngày""]');
-            if (el) {{
-                el.value = '{today}';
-                el.dispatchEvent(new Event('input', {{ bubbles: true }}));
-                el.dispatchEvent(new Event('change', {{ bubbles: true }}));
-            }}
-            ");
+                                                            var el = document.querySelector('[name=""từ ngày""]');
+                                                            if (el) {{
+                                                                el.value = '{today}';
+                                                                el.dispatchEvent(new Event('input', {{ bubbles: true }}));
+                                                                el.dispatchEvent(new Event('change', {{ bubbles: true }}));
+                                                            }}
+                                                            ");
 
             await Task.Delay(500);
-            await chromiumrequestleave.EvaluateScriptAsync(@"document.querySelector('[name=""Số ngày phép năm đã nghỉ:""]').value = '3';");
+
+            await chromiumrequestleave.EvaluateScriptAsync($@"
+                                                            var el = document.querySelector('[name=""đến hết ngày""]');
+                                                            if (el) {{
+                                                                el.value = '{today}';
+                                                                el.dispatchEvent(new Event('input', {{ bubbles: true }}));
+                                                                el.dispatchEvent(new Event('change', {{ bubbles: true }}));
+                                                            }}
+                                                            ");
+
             await Task.Delay(500);
-            await chromiumrequestleave.EvaluateScriptAsync(@"document.querySelector('[name=""Số ngày phép năm còn lại:""]').value = '10';");
+            //set cứng
+            //await chromiumrequestleave.EvaluateScriptAsync(@"
+            //                                                var el = document.querySelector('[name=""Số ngày phép năm đã nghỉ:""]');
+            //                                                var widget = $(el).data('kendoNumericTextBox');
+
+            //                                                if (widget) 
+            //                                                {
+            //                                                    widget.value(10);
+            //                                                    widget.trigger('change');
+            //                                                }
+            //                                                ");
+
+            await Task.Delay(500);
+
+            int soNgay = 0;
+            int.TryParse(songaydanghiphep, out soNgay);
+            await chromiumrequestleave.EvaluateScriptAsync($@"
+                                                            (function() {{
+
+                                                                var soNgayDaNghi = {songaydanghiphep};
+                                                                var soNgayConLai = 12 - soNgayDaNghi;
+
+                                                                // ===== ĐÃ NGHỈ =====
+                                                                var el1 = document.querySelector('[name=""Số ngày phép năm đã nghỉ:""]');
+                                                                var widget1 = $(el1).data('kendoNumericTextBox');
+
+                                                                if (widget1) {{
+                                                                    widget1.value(soNgayDaNghi);
+                                                                    widget1.trigger('change');
+                                                                }}
+
+                                                                // ===== CÒN LẠI =====
+                                                                var el2 = document.querySelector('[name=""Số ngày phép năm còn lại:""]');
+                                                                var widget2 = $(el2).data('kendoNumericTextBox');
+
+                                                                if (widget2) {{
+                                                                    widget2.value(soNgayConLai);
+                                                                    widget2.trigger('change');
+                                                                }}
+
+                                                            }})();
+                                                            ");
+
             await Task.Delay(500);
             
         }

@@ -165,17 +165,12 @@
       <DependentUpon>frmRequestLeave.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\ContentData.cs" />
-    <Compile Include="Models\DataBTS.cs" />
     <Compile Include="Models\Input1506Data.cs" />
     <Compile Include="Models\NCC.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DevToolsService.cs" />
-    <Compile Include="Services\DomAutocompleteService.cs" />
     <Compile Include="Services\BuildWordService.cs" />
-    <Compile Include="Services\ExcelSuggestionEof.cs" />
-    <Compile Include="Services\FieldBindingManager.cs" />
-    <Compile Include="Services\InputToBrowser.cs" />
     <Content Include="Hotkey.txt" />
     <EmbeddedResource Include="frmBTS.resx">
       <DependentUpon>frmBTS.cs</DependentUpon>

@@ -21,8 +21,8 @@ namespace Tamphan_WorkingBCMBP_WF
         private void Btn_login_eof_Click(object sender, EventArgs e)
         {
             string url = "https://login.becamexbinhphuoc.com.vn/adfs/ls?wa=wsignin1.0&wtrealm=urn%3aeofficebecamexbinhphuoc&wctx=https%3a%2f%2feoffice.becamexbinhphuoc.com.vn";
-            string username = textBox_Eof_Username.Text.Trim();
-            string password = textBox_Eof_Password.Text.Trim();
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Text.Trim();
             frmMain frmlogin = new frmMain(username, password, url);
             frmlogin.Show();
         }
@@ -63,7 +63,8 @@ namespace Tamphan_WorkingBCMBP_WF
         private void btnRequestLeave_Click(object sender, EventArgs e)
         {
             string urlRequestLeave = "https://eoffice.becamexbinhphuoc.com.vn/workflow/SitePages/NewWorkflow.aspx?mode=1&ListID=57f94304-f426-447e-8c76-df5345588a9f";
-            frmRequestLeave frmRequestLeave = new frmRequestLeave(username, password, urlRequestLeave);
+            string songaydanghiphep = txtSoNgayDaNghiPhep.Text.Trim();
+            frmRequestLeave frmRequestLeave = new frmRequestLeave(username, password, urlRequestLeave, songaydanghiphep);
             frmRequestLeave.Show();
         }
     }

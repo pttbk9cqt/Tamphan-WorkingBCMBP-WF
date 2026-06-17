@@ -153,7 +153,7 @@
             this.cboDiaDiem.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboDiaDiem.FormattingEnabled = true;
             this.cboDiaDiem.Items.AddRange(new object[] {
-            "Phường Chơn Thành, Tỉnh Đồng Nai"});
+            "Phường Chơn Thành, Thành phố Đồng Nai"});
             this.cboDiaDiem.Location = new System.Drawing.Point(96, 203);
             this.cboDiaDiem.Name = "cboDiaDiem";
             this.cboDiaDiem.Size = new System.Drawing.Size(674, 22);
